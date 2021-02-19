@@ -1,0 +1,328 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.joyor.viewmodel.SignUpViewModel" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/signup_back">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/transparent_black"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="HardcodedText">
+
+
+            <ImageView
+                android:id="@+id/logo"
+                android:layout_width="@dimen/_120sdp"
+                android:layout_height="@dimen/_80sdp"
+                android:fontFamily="@font/futura_bold_font"
+                android:src="@drawable/logo_white"
+                android:textColor="@color/white"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.501"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/signUpView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_20sdp"
+                android:layout_marginEnd="@dimen/_20sdp"
+                android:layout_marginBottom="@dimen/_40sdp"
+                android:background="@drawable/signup_border"
+                android:paddingTop="@dimen/_100sdp"
+                android:paddingBottom="@dimen/_50sdp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+
+                >
+
+                <EditText
+                    android:id="@+id/name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_12sdp"
+                    android:layout_marginEnd="@dimen/_12sdp"
+                    android:autofillHints="Search"
+
+                    android:background="@color/background_color"
+                    android:fontFamily="@font/futura_medium_bt"
+
+                    android:hint="Name*"
+                    android:imeOptions="actionNext"
+                    android:paddingStart="@dimen/_5sdp"
+                    android:paddingTop="@dimen/_5sdp"
+                    android:paddingBottom="@dimen/_5sdp"
+                    android:singleLine="true"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_12ssp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:ignore="RtlSymmetry" />
+
+                <EditText
+                    android:id="@+id/sureName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_12sdp"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:layout_marginEnd="@dimen/_12sdp"
+                    android:autofillHints="Search"
+                    android:background="@color/background_color"
+                    android:fontFamily="@font/futura_medium_bt"
+                    android:hint="Sure name*"
+                    android:imeOptions="actionNext"
+                    android:paddingStart="@dimen/_5sdp"
+                    android:paddingTop="@dimen/_5sdp"
+                    android:paddingBottom="@dimen/_5sdp"
+                    android:singleLine="true"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_12ssp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/name"
+                    tools:ignore="RtlSymmetry" />
+
+
+                <EditText
+                    android:id="@+id/email"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_12sdp"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:layout_marginEnd="@dimen/_12sdp"
+                    android:autofillHints="Search"
+                    android:background="@color/background_color"
+                    android:fontFamily="@font/futura_medium_bt"
+                    android:hint="Email*"
+
+
+                    android:imeOptions="actionNext"
+                    android:paddingStart="@dimen/_5sdp"
+                    android:paddingTop="@dimen/_5sdp"
+                    android:paddingBottom="@dimen/_5sdp"
+                    android:singleLine="true"
+
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_12ssp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/sureName"
+                    tools:ignore="RtlSymmetry" />
+
+                <EditText
+                    android:id="@+id/password"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_12sdp"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:layout_marginEnd="@dimen/_12sdp"
+                    android:background="@color/background_color"
+                    android:fontFamily="@font/futura_medium_bt"
+                    android:hint="Password*"
+                    android:imeOptions="actionNext"
+                    android:paddingStart="@dimen/_5sdp"
+                    android:paddingTop="@dimen/_5sdp"
+                    android:paddingBottom="@dimen/_5sdp"
+
+                    android:singleLine="true"
+                    android:textColor="@color/black"
+
+                    android:textSize="@dimen/_12ssp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/email"
+                    tools:ignore="RtlSymmetry" />
+
+                <!--                <EditText-->
+                <!--                    android:id="@+id/country"-->
+                <!--                    android:layout_width="match_parent"-->
+                <!--                    android:layout_height="wrap_content"-->
+                <!--                    android:layout_marginStart="@dimen/_12sdp"-->
+                <!--                    android:layout_marginTop="@dimen/_5sdp"-->
+                <!--                    android:layout_marginEnd="@dimen/_12sdp"-->
+                <!--                    android:autofillHints="Search"-->
+                <!--                    android:background="@color/background_color"-->
+                <!--                    android:fontFamily="@font/futura_medium_bt"-->
+                <!--                    android:hint="Country of residence*"-->
+                <!--                    android:imeOptions="actionNext"-->
+                <!--                    android:paddingStart="@dimen/_5sdp"-->
+                <!--                    android:paddingTop="@dimen/_5sdp"-->
+                <!--                    android:paddingBottom="@dimen/_5sdp"-->
+                <!--                    android:singleLine="true"-->
+
+                <!--                    android:textColor="@color/black"-->
+                <!--                    android:textSize="@dimen/_12ssp"-->
+                <!--                    app:layout_constraintStart_toStartOf="parent"-->
+                <!--                    app:layout_constraintTop_toBottomOf="@id/phone"-->
+                <!--                    tools:ignore="RtlSymmetry" />-->
+
+                <!--                <EditText-->
+                <!--                    android:id="@+id/scooterModel"-->
+                <!--                    android:layout_width="match_parent"-->
+                <!--                    android:layout_height="wrap_content"-->
+
+                <!--                    android:layout_marginStart="@dimen/_12sdp"-->
+                <!--                    android:layout_marginTop="@dimen/_5sdp"-->
+                <!--                    android:layout_marginEnd="@dimen/_12sdp"-->
+                <!--                    android:autofillHints="Search"-->
+                <!--                    android:background="@color/background_color"-->
+
+                <!--                    android:fontFamily="@font/futura_medium_bt"-->
+
+                <!--                    android:hint="Scooter Model*"-->
+                <!--                    android:imeOptions="actionNext"-->
+                <!--                    android:paddingStart="@dimen/_5sdp"-->
+                <!--                    android:paddingTop="@dimen/_5sdp"-->
+                <!--                    android:paddingBottom="@dimen/_5sdp"-->
+
+                <!--                    android:singleLine="true"-->
+                <!--                    android:textColor="@color/black"-->
+                <!--                    android:textSize="@dimen/_12ssp"-->
+                <!--                    app:layout_constraintStart_toStartOf="parent"-->
+                <!--                    app:layout_constraintTop_toBottomOf="@id/country"-->
+                <!--                    tools:ignore="RtlSymmetry" />-->
+
+
+                <!--                <EditText-->
+                <!--                    android:id="@+id/scooterSerialNo"-->
+                <!--                    android:layout_width="match_parent"-->
+                <!--                    android:layout_height="wrap_content"-->
+                <!--                    android:layout_marginStart="@dimen/_12sdp"-->
+                <!--                    android:layout_marginTop="@dimen/_5sdp"-->
+                <!--                    android:layout_marginEnd="@dimen/_12sdp"-->
+                <!--                    android:background="@color/background_color"-->
+
+                <!--                    android:fontFamily="@font/futura_medium_bt"-->
+                <!--                    android:hint="Scooter serial no*"-->
+                <!--                    android:imeOptions="actionNext"-->
+                <!--                    android:importantForAutofill="no"-->
+                <!--                    android:paddingStart="@dimen/_5sdp"-->
+
+
+                <!--                    android:paddingTop="@dimen/_5sdp"-->
+                <!--                    android:paddingBottom="@dimen/_5sdp"-->
+                <!--                    android:singleLine="true"-->
+                <!--                    android:textColor="@color/black"-->
+
+
+                <!--                    android:textSize="@dimen/_12ssp"-->
+                <!--                    app:layout_constraintStart_toStartOf="parent"-->
+                <!--                    app:layout_constraintTop_toBottomOf="@id/scooterModel"-->
+                <!--                    tools:ignore="RtlSymmetry" />-->
+
+
+                <!--                <EditText-->
+                <!--                    android:id="@+id/distributor"-->
+                <!--                    android:layout_width="match_parent"-->
+                <!--                    android:layout_height="wrap_content"-->
+                <!--                    android:layout_marginStart="@dimen/_12sdp"-->
+                <!--                    android:layout_marginTop="@dimen/_5sdp"-->
+                <!--                    android:layout_marginEnd="@dimen/_12sdp"-->
+
+                <!--                    android:background="@color/background_color"-->
+                <!--                    android:fontFamily="@font/futura_medium_bt"-->
+                <!--                    android:hint="Distributor where it purchase*"-->
+                <!--                    android:imeOptions="actionNext"-->
+                <!--                    android:importantForAutofill="no"-->
+
+                <!--                    android:paddingStart="@dimen/_5sdp"-->
+
+
+                <!--                    android:paddingTop="@dimen/_5sdp"-->
+                <!--                    android:paddingBottom="@dimen/_5sdp"-->
+                <!--                    android:singleLine="true"-->
+                <!--                    android:textColor="@color/black"-->
+
+                <!--                    android:textSize="@dimen/_12ssp"-->
+                <!--                    app:layout_constraintStart_toStartOf="parent"-->
+                <!--                    app:layout_constraintTop_toBottomOf="@id/scooterSerialNo"-->
+                <!--                    tools:ignore="RtlSymmetry" />-->
+
+                <!--                <EditText-->
+                <!--                    android:id="@+id/purchaseInvoice"-->
+                <!--                    android:layout_width="match_parent"-->
+                <!--                    android:layout_height="wrap_content"-->
+                <!--                    android:layout_marginStart="@dimen/_12sdp"-->
+                <!--                    android:layout_marginTop="@dimen/_5sdp"-->
+                <!--                    android:layout_marginEnd="@dimen/_12sdp"-->
+                <!--                    android:background="@color/background_color"-->
+                <!--                    android:fontFamily="@font/futura_medium_bt"-->
+
+                <!--                    android:hint="Purchase invoice*"-->
+                <!--                    android:imeOptions="actionNext"-->
+                <!--                    android:importantForAutofill="no"-->
+
+                <!--                    android:paddingStart="@dimen/_5sdp"-->
+
+
+                <!--                    android:paddingTop="@dimen/_5sdp"-->
+                <!--                    android:paddingBottom="@dimen/_5sdp"-->
+                <!--                    android:singleLine="true"-->
+                <!--                    android:textColor="@color/black"-->
+
+                <!--                    android:textSize="@dimen/_12ssp"-->
+                <!--                    app:layout_constraintStart_toStartOf="parent"-->
+                <!--                    app:layout_constraintTop_toBottomOf="@id/distributor"-->
+                <!--                    tools:ignore="RtlSymmetry" />-->
+
+                <!--                <EditText-->
+                <!--                    android:id="@+id/purchaseDate"-->
+                <!--                    android:layout_width="match_parent"-->
+                <!--                    android:layout_height="wrap_content"-->
+                <!--                    android:layout_marginStart="@dimen/_12sdp"-->
+                <!--                    android:layout_marginTop="@dimen/_5sdp"-->
+                <!--                    android:layout_marginEnd="@dimen/_12sdp"-->
+                <!--                    android:background="@color/background_color"-->
+                <!--                    android:fontFamily="@font/futura_medium_bt"-->
+                <!--                    android:hint="Purchase date*"-->
+                <!--                    android:imeOptions="actionNext"-->
+                <!--                    android:importantForAutofill="no"-->
+                <!--                    android:paddingStart="@dimen/_5sdp"-->
+                <!--                    android:paddingTop="@dimen/_5sdp"-->
+                <!--                    android:paddingBottom="@dimen/_5sdp"-->
+                <!--                    android:singleLine="true"-->
+                <!--                    android:textColor="@color/black"-->
+                <!--                    android:textSize="@dimen/_12ssp"-->
+                <!--                    app:layout_constraintStart_toStartOf="parent"-->
+                <!--                    app:layout_constraintTop_toBottomOf="@id/purchaseInvoice"-->
+                <!--                    tools:ignore="RtlSymmetry" />-->
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/skipBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/round_border_brown"
+                android:fontFamily="@font/futura_bold_font"
+                android:onClick="@{viewModel.onClick}"
+                android:text="Skip"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_17ssp"
+                app:layout_constraintBottom_toBottomOf="@id/signUpView"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/signUpView"
+                tools:ignore="HardcodedText" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

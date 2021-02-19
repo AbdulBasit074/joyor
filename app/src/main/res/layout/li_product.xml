@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/productImage"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_100sdp"
+            android:scaleType="fitXY"
+            android:src="@drawable/signup_back"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/productDetail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_10sdp"
+            app:cardCornerRadius="@dimen/_10sdp"
+            app:cardElevation="@dimen/_15sdp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/productImage">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingBottom="@dimen/_5sdp">
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guideLine"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_percent="0.1"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/productName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:fontFamily="@font/futura_bold_font"
+                    android:singleLine="true"
+                    android:text="Joyor F5+"
+                    android:textColor="@color/light_reddish"
+                    android:textSize="@dimen/_15ssp"
+                    app:layout_constraintStart_toStartOf="@id/guideLine"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/motor"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:fontFamily="@font/futura_medium_bt"
+                    android:singleLine="true"
+                    android:text="-Motor 250W"
+                    android:textSize="@dimen/_10ssp"
+                    app:layout_constraintStart_toStartOf="@id/guideLine"
+                    app:layout_constraintTop_toBottomOf="@id/productName" />
+
+                <TextView
+                    android:id="@+id/distance"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:fontFamily="@font/futura_medium_bt"
+                    android:singleLine="true"
+                    android:text="-Distance 8-12km"
+                    android:textSize="@dimen/_10ssp"
+
+                    app:layout_constraintStart_toStartOf="@id/guideLine"
+                    app:layout_constraintTop_toBottomOf="@id/motor" />
+
+                <TextView
+                    android:id="@+id/weight"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:fontFamily="@font/futura_medium_bt"
+                    android:singleLine="true"
+                    android:text="-Weight 7,5kg"
+                    android:textSize="@dimen/_10ssp"
+
+                    app:layout_constraintStart_toStartOf="@id/guideLine"
+                    app:layout_constraintTop_toBottomOf="@id/distance" />
+
+                <TextView
+                    android:id="@+id/dimension"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:fontFamily="@font/futura_medium_bt"
+                    android:singleLine="true"
+                    android:text="-Dimension 870*150*860mm"
+                    android:textSize="@dimen/_10ssp"
+                    app:layout_constraintStart_toStartOf="@id/guideLine"
+                    app:layout_constraintTop_toBottomOf="@id/weight" />
+
+                <TextView
+                    android:id="@+id/speed"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:fontFamily="@font/futura_medium_bt"
+                    android:singleLine="true"
+                    android:text="-Speed Maximum 15km/h"
+                    android:textSize="@dimen/_10ssp"
+
+                    app:layout_constraintStart_toStartOf="@id/guideLine"
+                    app:layout_constraintTop_toBottomOf="@id/dimension" />
+
+                <TextView
+                    android:id="@+id/tire"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:fontFamily="@font/futura_medium_bt"
+                    android:singleLine="true"
+                    android:text="-Tire 6”"
+                    android:textSize="@dimen/_10ssp"
+                    app:layout_constraintStart_toStartOf="@id/guideLine"
+                    app:layout_constraintTop_toBottomOf="@id/speed" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/priceBtn"
+                    android:layout_width="@dimen/_50sdp"
+                    android:layout_height="@dimen/_30sdp"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:background="@drawable/round_border_brown"
+                    android:fontFamily="@font/futura_bold_font"
+                    android:text="349$"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_14ssp"
+                    app:layout_constraintStart_toStartOf="@id/guideLine"
+                    app:layout_constraintTop_toBottomOf="@id/tire" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.cardview.widget.CardView>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
