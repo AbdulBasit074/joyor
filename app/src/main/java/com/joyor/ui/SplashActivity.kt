@@ -8,6 +8,7 @@ import androidx.databinding.DataBindingUtil
 import com.joyor.R
 import com.joyor.databinding.SplashActivityBinding
 import com.joyor.helper.moveTo
+import com.joyor.helper.moveToAndFinish
 
 class SplashActivity : AppCompatActivity() {
 
@@ -18,7 +19,7 @@ class SplashActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.splash_activity)
         Handler(Looper.getMainLooper()).postDelayed(Runnable {
-            moveTo(SignUpActivity::class.java)
+            moveToAndFinish(SignUpActivity::class.java)
         }, splashTime)
 
 

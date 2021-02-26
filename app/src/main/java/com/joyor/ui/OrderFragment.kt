@@ -33,7 +33,6 @@ class OrderFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         viewModel = ViewModelProviders.of(this).get(OrderViewModel::class.java)
         setProductAdapter()
-
     }
 
     private fun setProductAdapter() {

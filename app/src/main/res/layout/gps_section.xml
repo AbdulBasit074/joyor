@@ -3,6 +3,17 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.joyor.viewmodel.GpsViewModel" />
+
+        <import type="com.joyor.R" />
+
+    </data>
+
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -15,10 +26,10 @@
 
             <ImageView
                 android:id="@+id/map_net"
+                android:src="@drawable/back_net"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:scaleType="centerCrop"
-                android:src="@drawable/back_net"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.333"
                 app:layout_constraintStart_toStartOf="parent"
@@ -41,12 +52,14 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/inputDetail"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/_200sdp"
+                android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/_20sdp"
                 android:layout_marginTop="@dimen/_10sdp"
                 android:layout_marginEnd="@dimen/_20sdp"
                 android:layout_marginBottom="@dimen/_50sdp"
                 android:background="@drawable/border_cut"
+                android:paddingTop="@dimen/_30sdp"
+                android:paddingBottom="@dimen/_30sdp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent">
@@ -56,7 +69,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/_12sdp"
-                    android:layout_marginTop="@dimen/_50sdp"
                     android:layout_marginEnd="@dimen/_12sdp"
                     android:autofillHints="Search"
                     android:background="@color/background_color"

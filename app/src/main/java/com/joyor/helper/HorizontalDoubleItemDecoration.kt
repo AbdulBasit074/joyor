@@ -16,11 +16,10 @@ class HorizontalDoubleItemDecoration : RecyclerView.ItemDecoration() {
         val itemPosition = (view.layoutParams as RecyclerView.LayoutParams).viewAdapterPosition
         val padding = parent.context.resources.getDimension(R.dimen._10sdp).toInt()
         if (itemPosition % 2 != 0) {
-            outRect.left = padding
+            outRect.left = padding / 2
         }
         outRect.top = padding
         outRect.bottom = padding
-
 
     }
 }

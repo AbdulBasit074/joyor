@@ -7,12 +7,10 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
-import androidx.recyclerview.widget.GridLayoutManager
 import com.joyor.R
 import com.joyor.adapter.DealerAdapterRv
 import com.joyor.databinding.LocationFragmentBinding
 import com.joyor.helper.HorizontalDecoration
-import com.joyor.helper.HorizontalDoubleItemDecoration
 import com.joyor.viewmodel.LocationViewModel
 
 
