@@ -9,6 +9,7 @@ import com.joyor.helper.moveTo
 import com.joyor.model.User
 import com.joyor.service.Results
 import com.joyor.service.auth.AuthService
+import com.joyor.service.auth.StoreService
 import com.joyor.ui.HomeActivity
 import org.json.JSONObject
 

@@ -13,7 +13,8 @@ fun setImage(imageView: ImageView, draw: Drawable) {
     Glide.with(imageView.context).load(draw).into(imageView)
 }
 
-@BindingAdapter("setImageConstraints")
-fun setImageConstraints(imageView: ConstraintLayout, draw: Drawable) {
-    imageView.background = draw
+@BindingAdapter("setImageUri")
+fun setImageUri(imageView: ImageView,src:String){
+    Glide.with(imageView.context).load(src).into(imageView)
+
 }

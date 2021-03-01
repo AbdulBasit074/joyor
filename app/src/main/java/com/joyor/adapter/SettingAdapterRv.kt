@@ -6,17 +6,17 @@ import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 
 import com.joyor.R
-import com.joyor.databinding.LiDealerBinding
-import com.joyor.model.Store
-import com.joyor.viewmodel.LocationViewModel
+import com.joyor.databinding.LiSettingBinding
+import com.joyor.model.Setting
+import com.joyor.viewmodel.SettingViewModel
 
-class DealerAdapterRv(private val items: ArrayList<Store>, private val viewModel: LocationViewModel) :
-    RecyclerView.Adapter<DealerAdapterRv.ViewHolder>() {
+class SettingAdapterRv(private val items: ArrayList<Setting>, private val viewModel: SettingViewModel) :
+    RecyclerView.Adapter<SettingAdapterRv.ViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(
             DataBindingUtil.inflate(
                 LayoutInflater.from(parent.context),
-                R.layout.li_dealer,
+                R.layout.li_setting,
                 parent,
                 false
             )
@@ -31,15 +31,12 @@ class DealerAdapterRv(private val items: ArrayList<Store>, private val viewModel
         holder.bindView(items[position])
     }
 
-    inner class ViewHolder(val binding: LiDealerBinding) : RecyclerView.ViewHolder(binding.root) {
+    inner class ViewHolder(val binding: LiSettingBinding) : RecyclerView.ViewHolder(binding.root) {
 
-        fun bindView(item: Store) {
-            binding.modelStore = item
+        fun bindView(item: Setting) {
+            binding.model = item
             binding.viewModel = viewModel
         }
-
-
-
     }
 
 

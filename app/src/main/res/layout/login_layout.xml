@@ -38,7 +38,8 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.501"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="ContentDescription" />
 
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -94,10 +95,8 @@
                 android:layout_marginEnd="@dimen/_20sdp"
                 android:background="@drawable/signup_border"
                 android:paddingTop="@dimen/_40sdp"
-                android:paddingBottom="@dimen/_50sdp"
-                app:layout_constraintTop_toBottomOf="@id/switchBtn"
-
-                >
+                android:paddingBottom="@dimen/_60sdp"
+                app:layout_constraintTop_toBottomOf="@id/switchBtn">
 
                 <EditText
                     android:id="@+id/name"
@@ -114,8 +113,9 @@
                     android:paddingStart="@dimen/_5sdp"
                     android:paddingTop="@dimen/_5sdp"
                     android:paddingBottom="@dimen/_5sdp"
+                    android:text="@={viewModel.name}"
                     android:textColor="@color/black"
-                    android:visibility="gone"
+                    android:visibility="invisible"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     tools:ignore="RtlSymmetry" />
@@ -135,8 +135,9 @@
                     android:paddingStart="@dimen/_5sdp"
                     android:paddingTop="@dimen/_5sdp"
                     android:paddingBottom="@dimen/_5sdp"
+                    android:text="@={viewModel.nameSure}"
                     android:textColor="@color/black"
-                    android:visibility="gone"
+                    android:visibility="invisible"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/name"
                     tools:ignore="RtlSymmetry" />
@@ -148,6 +149,7 @@
                     android:layout_marginStart="@dimen/_12sdp"
                     android:layout_marginTop="@dimen/_5sdp"
                     android:layout_marginEnd="@dimen/_12sdp"
+
                     android:autofillHints="Search"
                     android:background="@color/background_color"
                     android:fontFamily="@font/futura_medium_bt"
@@ -156,6 +158,7 @@
                     android:paddingStart="@dimen/_5sdp"
                     android:paddingTop="@dimen/_5sdp"
                     android:paddingBottom="@dimen/_5sdp"
+                    android:text="@={viewModel.email}"
                     android:textColor="@color/black"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/sureName"
@@ -176,8 +179,8 @@
                     android:inputType="textPassword"
                     android:paddingStart="@dimen/_5sdp"
                     android:paddingTop="@dimen/_5sdp"
-
                     android:paddingBottom="@dimen/_5sdp"
+                    android:text="@={viewModel.password}"
                     android:textColor="@color/black"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/email"
@@ -351,6 +354,7 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/round_border_brown"
                 android:fontFamily="@font/futura_bold_font"
+                android:onClick="@{()->viewModel.onLoginSignUpClick()}"
                 android:text="Login"
                 android:textColor="@color/white"
                 android:textSize="@dimen/_17ssp"

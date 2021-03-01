@@ -31,6 +31,7 @@ class ProductFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel = ViewModelProviders.of(this).get(ProductViewModel::class.java)
+        binding
         setProductAdapter()
     }
 
@@ -38,7 +39,6 @@ class ProductFragment : Fragment() {
         binding.productList.layoutManager = GridLayoutManager(activity, 2)
         binding.productList.adapter = ProductAdapterRv(viewModel.listDummy)
         binding.productList.addItemDecoration(HorizontalDoubleItemDecoration())
-
     }
 
 }

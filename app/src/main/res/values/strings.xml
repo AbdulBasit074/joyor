@@ -8,4 +8,5 @@
     <string name="order">Order</string>
     <string name="location">Location</string>
     <string name="user">user</string>
+    <string name="icon">icon</string>
 </resources>

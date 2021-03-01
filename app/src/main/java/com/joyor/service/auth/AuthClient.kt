@@ -24,5 +24,15 @@ interface AuthClient {
         @Field("nonce") nonce: String
     ): Call<ResponseBody>
 
+    @FormUrlEncoded
+    @POST("user/login")
+    fun userLogin(
+        @Field("nonce") first_name: String,
+        @Field("email") last_name: String,
+        @Field("password") user_pass: String
+    ): Call<ResponseBody>
+
+
+
 
 }

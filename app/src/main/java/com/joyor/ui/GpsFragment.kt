@@ -23,6 +23,7 @@ class GpsFragment : Fragment() {
     ): View? {
         binding = DataBindingUtil.inflate(inflater, R.layout.gps_section, container, false)
         return binding.root
+
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -30,8 +31,8 @@ class GpsFragment : Fragment() {
         viewModel = ViewModelProviders.of(this).get(GpsViewModel::class.java)
         binding.viewModel = viewModel
         viewModel.isStartClick.observe(this, Observer { it ->
-
             if (it) {
+
             }
         })
     }

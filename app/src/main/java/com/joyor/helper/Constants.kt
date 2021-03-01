@@ -7,7 +7,7 @@ class Constants {
         const val user: String = "user"
         const val login: String = "login"
         const val register: String = "register"
-
+        const val signupFirst: String = "SignUpFirst"
 
     }
 }

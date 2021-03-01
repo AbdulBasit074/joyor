@@ -19,9 +19,19 @@ fun AppCompatActivity.moveToAndFinish(clazz: Class<*>) {
     startActivity(Intent(this, clazz))
     finish()
 }
+fun Fragment.moveToAndFinish(clazz: Class<*>) {
+    startActivity(Intent(requireActivity(), clazz))
+    requireActivity().finish()
+}
+fun Fragment.moveTo(clazz: Class<*>) {
+    startActivity(Intent(requireActivity(), clazz))
+}
+
+
 fun Context.moveTo(clazz: Class<*>) {
     startActivity(Intent(this, clazz))
 }
+
 @BindingAdapter("setImageSrc")
 fun setImageSrc(imageView: ImageView, drawable: Drawable) {
     Glide.with(imageView.context).load(drawable).into(imageView)

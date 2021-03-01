@@ -21,7 +21,5 @@ class SplashActivity : AppCompatActivity() {
         Handler(Looper.getMainLooper()).postDelayed(Runnable {
             moveToAndFinish(SignUpActivity::class.java)
         }, splashTime)
-
-
     }
 }

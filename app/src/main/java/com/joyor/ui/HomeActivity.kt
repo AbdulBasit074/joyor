@@ -135,6 +135,7 @@ class HomeActivity : AppCompatActivity() {
                         return@OnNavigationItemSelectedListener true
                     }
                     R.id.setting -> {
+                        loadFragment(SettingFragment())
                         it.setIcon(R.drawable.ic_setting_active)
                         return@OnNavigationItemSelectedListener true
                     }
