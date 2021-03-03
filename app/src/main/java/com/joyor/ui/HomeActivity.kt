@@ -1,9 +1,9 @@
 package com.joyor.ui
 
 import android.os.Bundle
-import android.view.View
+import android.widget.LinearLayout
+import android.widget.PopupWindow
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
@@ -12,122 +12,79 @@ import androidx.lifecycle.ViewModelProviders
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.joyor.R
 import com.joyor.databinding.MainLayoutBinding
+import com.joyor.databinding.TopRightMenuBinding
+import com.joyor.helper.UserLoginEventBus
+import com.joyor.helper.moveTo
 import com.joyor.model.room.JoyorDb
 import com.joyor.viewmodel.HomeViewModel
+import org.greenrobot.eventbus.EventBus
+import org.greenrobot.eventbus.Subscribe
+import org.greenrobot.eventbus.ThreadMode
 
 class HomeActivity : AppCompatActivity() {
 
-    private var isMenuOpen: Boolean = false
     private lateinit var binding: MainLayoutBinding
     private lateinit var viewModel: HomeViewModel
     private lateinit var fragmentTransition: FragmentTransaction
+    private lateinit var bindingMenu: TopRightMenuBinding
+    private lateinit var popupWindow: PopupWindow
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        EventBus.getDefault().register(this)
         binding = DataBindingUtil.setContentView(this, R.layout.main_layout)
         viewModel = ViewModelProviders.of(this).get(HomeViewModel::class.java)
         binding.viewModelDetail = viewModel
         viewModel.user.value = JoyorDb.newInstance(this).userDao().getLoggedUser()
         viewModel.user.observe(this, Observer {
             if (it != null) {
-                binding.profileMenu.login.text = "Logout"
                 viewModel.isUserLogin = true
             }
             if (it == null) {
-                binding.profileMenu.login.text = "Login"
                 viewModel.isUserLogin = false
             }
         })
         viewModel.isProfileClick.observe(this, Observer { it ->
             if (it) {
-                binding.profileMenu.menuLayout.visibility = View.VISIBLE
-                if (viewModel.isUserLogin) {
-                    loadFragment(GpsFragment())
-                    binding.profileMenu.gps.setTextColor(
-                        ContextCompat.getColor(
-                            this,
-                            R.color.brown
-                        )
-                    )
-                    binding.profileMenu.login.setTextColor(
-                        ContextCompat.getColor(
-                            this,
-                            R.color.white
-                        )
-                    )
 
-                } else {
-                    loadFragment(LoginFragment())
-                    binding.profileMenu.login.setTextColor(
-                        ContextCompat.getColor(
-                            this,
-                            R.color.brown
-                        )
-                    )
-                    binding.profileMenu.gps.setTextColor(
-                        ContextCompat.getColor(
-                            this,
-                            R.color.white
-                        )
-                    )
-                }
-                viewModel.isProfileClick.value = false
-                isMenuOpen = true
-                binding.back.visibility = View.VISIBLE
+                bindingMenu = DataBindingUtil.inflate(layoutInflater, R.layout.top_right_menu, null, false)
+                popupWindow = PopupWindow(bindingMenu.root, LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT, true)
+                if (viewModel.isUserLogin)
+                    bindingMenu.login.text = "Profile"
+                else
+                    bindingMenu.login.text = "Login"
+                popupWindow.showAsDropDown(binding.profile)
+                bindingMenu.viewModel = viewModel
             }
         })
-        viewModel.isBackClick.observe(this, Observer { it ->
 
-            if (it) {
-                this.supportFragmentManager.popBackStack()
-                viewModel.isBackClick.value = false
-                loginBack()
-            }
-        })
         viewModel.isLoginClick.observe(this, Observer {
-
             if (it) {
-                binding.profileMenu.login.setTextColor(ContextCompat.getColor(this, R.color.brown))
-                binding.profileMenu.gps.setTextColor(ContextCompat.getColor(this, R.color.white))
-                if (viewModel.isUserLogin) {
-                    JoyorDb.newInstance(this).userDao().logOut()
-                    viewModel.isUserLogin = false
-                    this.supportFragmentManager.popBackStack()
-                    loginBack()
-                } else {
-                    loadFragment(LoginFragment())
-                    menuOpen()
-                }
+                if (!viewModel.isUserLogin)
+                    moveTo(LoginActivity::class.java)
+                else
+                    moveTo(EditProfileActivity::class.java)
+                popupWindow.dismiss()
+
             }
         })
+
         viewModel.isGpsClick.observe(this, Observer {
             if (it) {
-                binding.profileMenu.gps.setTextColor(ContextCompat.getColor(this, R.color.brown))
-                binding.profileMenu.login.setTextColor(ContextCompat.getColor(this, R.color.white))
-                loadFragment(GpsFragment())
-                menuOpen()
+                moveTo(GpsActivity::class.java)
+                popupWindow.dismiss()
+
             }
         })
         setBottomNavigationListener()
         loadFragment(ProductFragment())
     }
 
-    private fun menuOpen() {
-        isMenuOpen = true
-        binding.profileMenu.menuLayout.visibility = View.VISIBLE
-        binding.back.visibility = View.VISIBLE
-    }
-
-    private fun loginBack() {
-        isMenuOpen = false
-        binding.profileMenu.menuLayout.visibility = View.INVISIBLE
-        binding.back.visibility = View.INVISIBLE
-    }
 
     private fun setBottomNavigationListener() {
         val mBottomNavigationListener =
             BottomNavigationView.OnNavigationItemSelectedListener { it ->
-                loginBack()
                 when (it.itemId) {
                     R.id.cart -> {
                         loadFragment(ProductFragment())
@@ -140,14 +97,15 @@ class HomeActivity : AppCompatActivity() {
                         return@OnNavigationItemSelectedListener true
                     }
                     R.id.support -> {
+                        loadFragment(TechSupportFragment())
                         it.setIcon(R.drawable.ic_support_active)
                         return@OnNavigationItemSelectedListener true
                     }
-                    R.id.order -> {
-                        loadFragment(OrderFragment())
-                        it.setIcon(R.drawable.ic_order_active)
-                        return@OnNavigationItemSelectedListener true
-                    }
+//                    R.id.order -> {
+//                        loadFragment(OrderFragment())
+//                        it.setIcon(R.drawable.ic_order_active)
+//                        return@OnNavigationItemSelectedListener true
+//                    }
                     R.id.location -> {
                         loadFragment(LocationFragment())
                         it.setIcon(R.drawable.ic_location_active)
@@ -163,8 +121,6 @@ class HomeActivity : AppCompatActivity() {
     }
 
     private fun loadFragment(fragment: Fragment) {
-        if (isMenuOpen)
-            this.supportFragmentManager.popBackStack()
         fragmentTransition = supportFragmentManager.beginTransaction()
         fragmentTransition.replace(binding.frameContainer.id, fragment)
         fragmentTransition.addToBackStack(null)
@@ -172,10 +128,16 @@ class HomeActivity : AppCompatActivity() {
     }
 
     override fun onBackPressed() {
-        if (isMenuOpen) {
-            binding.back.performClick()
-        } else {
-            this.finish()
-        }
+        finish()
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    fun userLoginEventBus(user: UserLoginEventBus) {
+        viewModel.user.value = JoyorDb.newInstance(this).userDao().getLoggedUser()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        EventBus.getDefault().unregister(this)
     }
 }

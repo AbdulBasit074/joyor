@@ -10,7 +10,13 @@ class SettingService(requestCode: Int, callBack: Results) : BaseService(requestC
     fun getSetting() {
         RetrofitClient.getInstance().create(SettingClient::class.java).getSetting().enqueue(this)
     }
+
     fun getFaq() {
         RetrofitClient.getInstance().create(SettingClient::class.java).getFaq().enqueue(this)
     }
+
+    fun sendContact(name: String, email: String, message: String) {
+        RetrofitClient.getInstance().create(SettingClient::class.java).sendContact(name, email, message).enqueue(this)
+    }
+
 }

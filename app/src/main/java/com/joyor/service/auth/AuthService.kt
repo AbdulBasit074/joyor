@@ -27,8 +27,14 @@ class AuthService(requestCode: Int, callBack: Results) : BaseService(requestCode
     }
 
     fun userLogin(nonce: String, email: String, user_pass: String) {
-        RetrofitClient.getInstance().create(AuthClient::class.java)
-            .userLogin(nonce, email, user_pass)
-            .enqueue(this)
+        RetrofitClient.getInstance().create(AuthClient::class.java).userLogin(nonce, email, user_pass).enqueue(this)
     }
+
+    fun userUpdate(userId: Int, user_pass: String, email: String, nonce: String, first_name: String, last_name: String) {
+        RetrofitClient.getInstance().create(AuthClient::class.java).userUpdate(userId, user_pass, email, nonce, first_name, last_name).enqueue(this)
+    }
+    fun userDetail(userId: Int) {
+        RetrofitClient.getInstance().create(AuthClient::class.java).userDetail(userId).enqueue(this)
+    }
+
 }

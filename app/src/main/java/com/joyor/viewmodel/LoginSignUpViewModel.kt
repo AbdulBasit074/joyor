@@ -18,14 +18,18 @@ class LoginSignUpViewModel : ViewModel(), Results {
     var email: MutableLiveData<String> = MutableLiveData()
     var password: MutableLiveData<String> = MutableLiveData()
     var showToast: MutableLiveData<String> = MutableLiveData()
+    var isBack: MutableLiveData<Boolean> = MutableLiveData()
     var nonceForLoginRequest: Int = 1123
     var nonceForSignUpRequest: Int = 1322
     var loginRequest: Int = 5522
     var signUpRequest: Int = 3322
 
-
     init {
         isLogin.value = true
+    }
+
+    fun onBack() {
+        isBack.value = true
     }
 
     fun onLoginClick() {
@@ -44,7 +48,7 @@ class LoginSignUpViewModel : ViewModel(), Results {
             }
         } else {
             if (isSignUpOk()) {
-                AuthService(nonceForLoginRequest, this).userNonce(
+                AuthService(nonceForSignUpRequest, this).userNonce(
                     Constants.user,
                     Constants.register
                 )
@@ -57,11 +61,11 @@ class LoginSignUpViewModel : ViewModel(), Results {
             !isLoginInputOk() -> {
                 return false
             }
-            name.value!!.isEmpty() -> {
+            (name.value == null || name.value!!.isEmpty()) -> {
                 showToast.value = "Name is Required"
                 return false
             }
-            nameSure.value!!.isEmpty() -> {
+            (nameSure.value == null || nameSure.value!!.isEmpty()) -> {
                 showToast.value = "Sure Name is Required"
                 return false
             }
@@ -69,16 +73,15 @@ class LoginSignUpViewModel : ViewModel(), Results {
                 return true
             }
         }
-
     }
 
     private fun isLoginInputOk(): Boolean {
         return when {
-            email.value!!.isEmpty() -> {
+            (email.value == null || email.value!!.isEmpty()) -> {
                 showToast.value = "Email is required"
                 false
             }
-            password.value!!.isEmpty() -> {
+            (password.value == null || password.value!!.isEmpty()) -> {
                 showToast.value = "Password is required"
                 false
             }

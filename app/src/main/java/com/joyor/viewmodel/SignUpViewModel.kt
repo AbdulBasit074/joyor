@@ -51,6 +51,7 @@ class SignUpViewModel : ViewModel(), Results {
             userRegisterRequest -> {
                 saveUserInDb = true
                 user.value = Gson().fromJson(data, User::class.java)
+                showToast.value = "User Register"
             }
         }
     }

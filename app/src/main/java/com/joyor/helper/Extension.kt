@@ -26,6 +26,9 @@ fun Fragment.moveToAndFinish(clazz: Class<*>) {
 fun Fragment.moveTo(clazz: Class<*>) {
     startActivity(Intent(requireActivity(), clazz))
 }
+fun Fragment.moveTo(intent: Intent) {
+    startActivity(intent)
+}
 
 
 fun Context.moveTo(clazz: Class<*>) {

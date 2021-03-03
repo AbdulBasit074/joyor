@@ -17,26 +17,26 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:paddingBottom="@dimen/_10sdp">
+        android:layout_height="wrap_content">
 
         <ImageView
             android:id="@+id/productImage"
             setImageUri="@{modelStore.thumbnail}"
-            android:layout_width="@dimen/_120sdp"
-            android:layout_height="@dimen/_80sdp"
+            android:layout_width="@dimen/_100sdp"
+            android:layout_height="@dimen/_60sdp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            android:contentDescription="@string/icon" />
 
 
         <androidx.cardview.widget.CardView
             android:id="@+id/dealerDetail"
-            android:layout_width="@dimen/_140sdp"
+            android:layout_width="@dimen/_100sdp"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/_5sdp"
             app:cardCornerRadius="@dimen/_10sdp"
-            app:cardElevation="@dimen/_20sdp"
+            app:cardElevation="@dimen/_2sdp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/productImage">
 
@@ -53,9 +53,11 @@
                     android:fontFamily="@font/futura_bold_font"
                     android:singleLine="true"
                     android:text="@={modelStore.title}"
+                    android:layout_marginStart="@dimen/_5sdp"
+                    android:layout_marginEnd="@dimen/_5sdp"
                     android:textAlignment="center"
                     android:textColor="@color/light_reddish"
-                    android:textSize="@dimen/_12ssp"
+                    android:textSize="@dimen/_11ssp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -69,7 +71,9 @@
                     android:singleLine="true"
                     android:text="@={modelStore.address}"
                     android:textAlignment="center"
-                    android:textSize="@dimen/_10ssp"
+                    android:layout_marginStart="@dimen/_5sdp"
+                    android:layout_marginEnd="@dimen/_5sdp"
+                    android:textSize="@dimen/_9ssp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/title" />
 
@@ -77,14 +81,14 @@
                     android:id="@+id/telephone"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/_20sdp"
-                    android:layout_marginTop="@dimen/_40sdp"
-                    android:layout_marginEnd="@dimen/_20sdp"
+                    android:layout_marginStart="@dimen/_5sdp"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:layout_marginEnd="@dimen/_5sdp"
                     android:fontFamily="@font/futura_medium_bt"
                     android:singleLine="true"
                     android:text="@={modelStore.telephone}"
                     android:textAlignment="center"
-                    android:textSize="@dimen/_12ssp"
+                    android:textSize="@dimen/_11ssp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/address" />
 

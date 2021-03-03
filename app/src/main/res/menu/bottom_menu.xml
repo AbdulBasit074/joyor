@@ -18,11 +18,12 @@
         tools:ignore="MenuTitle"
         android:title="@string/support"
         android:icon="@drawable/ic_support_inactive" />
-    <item
-        android:id="@+id/order"
-        tools:ignore="MenuTitle"
-        android:title="@string/order"
-        android:icon="@drawable/ic_order_inactive" />
+<!--    <item-->
+<!--        android:id="@+id/order"-->
+<!--        tools:ignore="MenuTitle"-->
+<!--        android:title="@string/order"-->
+<!--        android:icon="@drawable/ic_order_inactive" />-->
+<!--    -->
     <item
         tools:ignore="MenuTitle"
         android:id="@+id/location"

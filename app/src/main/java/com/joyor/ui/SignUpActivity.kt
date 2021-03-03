@@ -5,8 +5,10 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import androidx.preference.PreferenceManager
 import com.joyor.R
 import com.joyor.databinding.SignupLayoutBinding
+import com.joyor.helper.Constants
 import com.joyor.helper.moveToAndFinish
 import com.joyor.helper.showToast
 import com.joyor.model.room.JoyorDb
@@ -29,6 +31,8 @@ class SignUpActivity : AppCompatActivity() {
                 JoyorDb.newInstance(this).userDao().login(it)
             if (it != null)
                 moveToAndFinish(HomeActivity::class.java)
+
+            PreferenceManager.getDefaultSharedPreferences(this).edit().putBoolean(Constants.signUpFirstShow, true).apply()
         })
         viewModel.showToast.observe(this, Observer { it ->
             showToast(it)

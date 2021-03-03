@@ -3,6 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.joyor.viewmodel.TechSupportViewModel" />
+    </data>
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -10,160 +17,116 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/formContainer"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/_350sdp"
-            tools:ignore="HardcodedText,RtlSymmetry"
+            android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/_30sdp"
             android:layout_marginEnd="@dimen/_30sdp"
             android:background="@drawable/border_support"
+            android:paddingBottom="@dimen/_50sdp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="HardcodedText,RtlSymmetry">
 
             <EditText
-                android:id="@+id/question1"
+                android:id="@+id/name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/_12sdp"
-                android:layout_marginTop="@dimen/_50sdp"
+                android:layout_marginStart="@dimen/_20sdp"
+                android:layout_marginTop="@dimen/_60sdp"
+                android:layout_marginEnd="@dimen/_20sdp"
                 android:autofillHints="Search"
-                android:fontFamily="@font/futura_medium_bt"
                 android:background="@color/background_color"
-                android:hint="Question1"
-                android:layout_marginEnd="@dimen/_12sdp"
+                android:fontFamily="@font/futura_medium_bt"
+                android:hint="Name"
+                android:inputType="textPersonName"
                 android:paddingStart="@dimen/_5sdp"
                 android:paddingTop="@dimen/_5sdp"
                 android:paddingBottom="@dimen/_5sdp"
+                android:text="@={viewModel.name}"
                 android:textColor="@color/black"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                android:inputType="text" />
+                app:layout_constraintTop_toTopOf="parent" />
+
             <EditText
-                android:id="@+id/question2"
+                android:id="@+id/email"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/_12sdp"
+                android:layout_marginStart="@dimen/_20sdp"
                 android:layout_marginTop="@dimen/_5sdp"
+                android:layout_marginEnd="@dimen/_20sdp"
                 android:autofillHints="Search"
-                android:fontFamily="@font/futura_medium_bt"
                 android:background="@color/background_color"
-                android:hint="Question2"
-                android:layout_marginEnd="@dimen/_12sdp"
+                android:fontFamily="@font/futura_medium_bt"
+                android:hint="Email"
+                android:inputType="textEmailAddress"
                 android:paddingStart="@dimen/_5sdp"
                 android:paddingTop="@dimen/_5sdp"
                 android:paddingBottom="@dimen/_5sdp"
+                android:text="@={viewModel.email}"
                 android:textColor="@color/black"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/question1"
-                android:inputType="text" />
-            <EditText
-                android:id="@+id/question3"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/_12sdp"
-                android:layout_marginTop="@dimen/_5sdp"
-                android:autofillHints="Search"
-                android:fontFamily="@font/futura_medium_bt"
-                android:background="@color/background_color"
-                android:hint="Question3"
-                android:layout_marginEnd="@dimen/_12sdp"
-                android:paddingStart="@dimen/_5sdp"
-                android:paddingTop="@dimen/_5sdp"
-                android:paddingBottom="@dimen/_5sdp"
-                android:textColor="@color/black"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/question2"
-                android:inputType="text" />
-            <EditText
-                android:id="@+id/question4"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/_12sdp"
-                android:layout_marginTop="@dimen/_5sdp"
-                android:autofillHints="Search"
-                android:fontFamily="@font/futura_medium_bt"
-                android:background="@color/background_color"
-                android:hint="Question4"
-                android:layout_marginEnd="@dimen/_12sdp"
-                android:paddingStart="@dimen/_5sdp"
-                android:paddingTop="@dimen/_5sdp"
-                android:paddingBottom="@dimen/_5sdp"
-                android:textColor="@color/black"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/question3"
-                android:inputType="text" />
-            <EditText
-                android:id="@+id/question5"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/_12sdp"
-                android:layout_marginTop="@dimen/_5sdp"
-                android:autofillHints="Search"
-                android:fontFamily="@font/futura_medium_bt"
-                android:background="@color/background_color"
-                android:hint="Question5"
-                android:layout_marginEnd="@dimen/_12sdp"
-                android:paddingStart="@dimen/_5sdp"
-                android:paddingTop="@dimen/_5sdp"
-                android:paddingBottom="@dimen/_5sdp"
-                android:textColor="@color/black"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/question4"
-                android:inputType="text" />
+                app:layout_constraintTop_toBottomOf="@id/name" />
+
             <EditText
                 android:id="@+id/observation"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/_90sdp"
-                android:layout_marginStart="@dimen/_12sdp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_20sdp"
                 android:layout_marginTop="@dimen/_5sdp"
+                android:layout_marginEnd="@dimen/_20sdp"
                 android:autofillHints="Search"
-                android:gravity="start"
-                android:fontFamily="@font/futura_medium_bt"
                 android:background="@color/background_color"
-                android:hint="Observations"
-                android:layout_marginEnd="@dimen/_12sdp"
+                android:fontFamily="@font/futura_medium_bt"
+                android:gravity="start"
+                android:hint="Message"
+                android:inputType="text"
+                android:isScrollContainer="true"
+                android:maxHeight="@dimen/_200sdp"
+                android:minHeight="@dimen/_100sdp"
                 android:paddingStart="@dimen/_5sdp"
                 android:paddingTop="@dimen/_5sdp"
                 android:paddingBottom="@dimen/_5sdp"
+                android:text="@={viewModel.message}"
                 android:textColor="@color/black"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/question5"
-                android:inputType="text" />
+                app:layout_constraintTop_toBottomOf="@id/email" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.cardview.widget.CardView
-            app:layout_constraintTop_toTopOf="@id/formContainer"
-            app:layout_constraintBottom_toTopOf="@id/formContainer"
-            android:layout_width="@dimen/_130sdp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_width="match_parent"
             android:layout_height="@dimen/_60sdp"
-            >
+            android:layout_marginStart="@dimen/_60sdp"
+            android:layout_marginEnd="@dimen/_60sdp"
+            app:layout_constraintBottom_toTopOf="@id/formContainer"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/formContainer">
+
             <TextView
+                android:id="@+id/labelTech"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/labelTech"
-                android:text="Tech support"
-                android:textSize="@dimen/_20sdp"
-                android:textColor="@color/light_reddish"
-                android:fontFamily="@font/futura_bold_font"
-                android:textAllCaps="true"
                 android:layout_gravity="center"
-                />
+                android:fontFamily="@font/futura_bold_font"
+                android:text="Tech support"
+                android:textAllCaps="true"
+                android:textColor="@color/light_reddish"
+                android:textSize="@dimen/_20sdp" />
         </androidx.cardview.widget.CardView>
 
         <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/sendBtn"
             android:layout_width="@dimen/_70sdp"
             android:layout_height="@dimen/_30sdp"
-            android:id="@+id/sendBtn"
+            android:background="@drawable/round_border_brown"
+            android:onClick="@{()->viewModel.onClickSend()}"
             android:text="Send"
             android:textColor="@color/white"
-            android:background="@drawable/round_border_brown"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="@id/formContainer"
-            app:layout_constraintTop_toBottomOf="@id/formContainer"
-            />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/formContainer" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

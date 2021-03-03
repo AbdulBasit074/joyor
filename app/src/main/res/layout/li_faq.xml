@@ -37,7 +37,7 @@
             android:fontFamily="@font/futura_medium_bt"
             android:text="@={model.answer}"
             android:textColor="@color/transparent_text"
-            android:textSize="@dimen/_12ssp"
+            android:textSize="@dimen/_11ssp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/title" />
 

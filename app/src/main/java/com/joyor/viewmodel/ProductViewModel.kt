@@ -12,14 +12,17 @@ import com.joyor.service.auth.StoreService
 class ProductViewModel : ViewModel(), Results {
 
     var productListing: MutableLiveData<ArrayList<Product>> = MutableLiveData()
+    var product: MutableLiveData<Product> = MutableLiveData()
     var showToast: MutableLiveData<String> = MutableLiveData()
-    val productListRequest = 6623
-
+    private val productListRequest = 6623
 
     init {
         getProducts()
     }
 
+    fun onProductClick(productClick: Product) {
+        product.value = productClick
+    }
     private fun getProducts() {
         StoreService(productListRequest, this).getProducts()
     }
@@ -27,7 +30,7 @@ class ProductViewModel : ViewModel(), Results {
     override fun onSuccess(requestCode: Int, data: String) {
         when (requestCode) {
             productListRequest -> {
-                productListing = Gson().fromJson(data, object : TypeToken<ArrayList<Product>>() {}.type)
+                productListing.value = Gson().fromJson(data, object : TypeToken<ArrayList<Product>>() {}.type)
             }
         }
     }

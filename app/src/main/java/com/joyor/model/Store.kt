@@ -37,10 +37,10 @@ class Store(
 
     @SerializedName("lat")
     @Expose
-    var lat: String? = null,
+    var lat: Double? = null,
 
     @SerializedName("lng")
     @Expose
-    var lng: String? = null
+    var lng: Double? = null
 
 ) {}

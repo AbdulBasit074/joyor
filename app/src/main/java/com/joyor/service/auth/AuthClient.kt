@@ -7,7 +7,6 @@ import retrofit2.http.*
 
 interface AuthClient {
 
-
     @GET("get_nonce")
     fun userNonce(
         @Query("controller") user: String,
@@ -32,7 +31,21 @@ interface AuthClient {
         @Field("password") user_pass: String
     ): Call<ResponseBody>
 
+    @FormUrlEncoded
+    @POST("user/update/")
+    fun userUpdate(
+        @Field("user_id") userId: Int,
+        @Field("pass") password: String,
+        @Field("email") email: String,
+        @Field("nonce") nonce: String,
+        @Field("first_name") first_name: String,
+        @Field("last_name") last_name: String
+    ): Call<ResponseBody>
 
 
+    @GET("user/userinfo/")
+    fun userDetail(
+        @Query("user_id") userId: Int
+    ): Call<ResponseBody>
 
 }
