@@ -18,6 +18,7 @@ class RetrofitClient {
 
         private var instance: Retrofit? = null
         private var extendedTimeoutInstance: Retrofit? = null
+        private var instanceGoogleMap: Retrofit? = null
 
 
         fun getInstance(): Retrofit {
@@ -39,6 +40,34 @@ class RetrofitClient {
             return instance!!
         }
 
+        fun getInstanceForGoogleMap(): Retrofit {
+            if (instanceGoogleMap == null) {
+                val clientBuilder = OkHttpClient.Builder()
+                clientBuilder.connectTimeout(timeOut, TimeUnit.SECONDS)
+                clientBuilder.readTimeout(timeOut, TimeUnit.SECONDS)
+                clientBuilder.writeTimeout(timeOut, TimeUnit.SECONDS)
+
+                clientBuilder.addInterceptor(HeaderInterceptor())
+
+                val loggingInterceptor = HttpLoggingInterceptor()
+                loggingInterceptor.level = HttpLoggingInterceptor.Level.BODY
+                clientBuilder.addInterceptor(loggingInterceptor)
+
+                val genericHeader = Interceptor {
+                    val request = it.request().newBuilder()
+                        .addHeader("Accept", "application/json").build()
+                    return@Interceptor it.proceed(request)
+
+                }
+                clientBuilder.addInterceptor(genericHeader)
+
+
+                instanceGoogleMap =
+                    Retrofit.Builder().baseUrl(Constants.googleMapUrl).client(clientBuilder.build())
+                        .build()
+            }
+            return instanceGoogleMap!!
+        }
 
         fun getInstanceWithExtendedTimeout(): Retrofit {
             if (extendedTimeoutInstance == null) {

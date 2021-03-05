@@ -24,5 +24,15 @@
         <item name="android:background">@color/light_reddish</item>
         <item name="android:textColorSecondary">@color/white</item>
     </style>
+    <!-- For Search Dealer -->
+
+    <style name="AppSearchView" parent="Widget.AppCompat.SearchView" >
+        <item name="android:textSize">@dimen/_11ssp</item>
+        <item name="android:fontFamily">@font/futura_bold_font</item>
+        <item name="android:textColor">@color/transparent_text</item>
+
+
+
+    </style>
 
 </resources>

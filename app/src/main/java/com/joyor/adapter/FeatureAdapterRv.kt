@@ -6,11 +6,10 @@ import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 
 import com.joyor.R
-import com.joyor.databinding.LiFaqBinding
 import com.joyor.databinding.LiFeatureBinding
 import com.joyor.model.Product
 
-class FeatureAdapterRv(private val items: ArrayList<Product.Image>) :
+class FeatureAdapterRv(private val items: ArrayList<Product.Spec>) :
     RecyclerView.Adapter<FeatureAdapterRv.ViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(
@@ -33,7 +32,8 @@ class FeatureAdapterRv(private val items: ArrayList<Product.Image>) :
 
     inner class ViewHolder(val binding: LiFeatureBinding) : RecyclerView.ViewHolder(binding.root) {
 
-        fun bindView(item: Product.Image) {
+        fun bindView(item: Product.Spec) {
+            binding.model = item
         }
     }
 }

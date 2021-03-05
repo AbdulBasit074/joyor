@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
@@ -21,7 +22,7 @@
 
         <ImageView
             android:id="@+id/productImage"
-            setImageUri="@{model.images[0].src}"
+            setImageUri="@{model.thumbnail}"
             android:layout_width="match_parent"
             android:layout_height="@dimen/_100sdp"
             android:layout_marginStart="@dimen/_5sdp"
@@ -58,104 +59,39 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
-                    android:id="@+id/productName"
-                    android:layout_width="wrap_content"
+                    android:id="@+id/title"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_5sdp"
-                    android:layout_marginEnd="@dimen/_5sdp"
+                    android:layout_marginStart="@dimen/_10sdp"
+                    android:layout_marginEnd="@dimen/_10sdp"
+                    android:ellipsize="end"
                     android:fontFamily="@font/futura_bold_font"
-                    android:singleLine="true"
-                    android:text="@={model.name}"
+                    android:maxLines="2"
+                    android:text="@{model.name}"
                     android:textColor="@color/light_reddish"
-
-                    android:textSize="@dimen/_15ssp"
+                    android:textSize="@dimen/_12ssp"
                     app:layout_constraintStart_toStartOf="@id/guideLine"
                     app:layout_constraintTop_toTopOf="parent" />
 
-                <TextView
-                    android:id="@+id/motor"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_5sdp"
-                    android:layout_marginEnd="@dimen/_5sdp"
-                    android:fontFamily="@font/futura_medium_bt"
-                    android:singleLine="true"
-                    android:text="-Motor 250W"
-                    android:textSize="@dimen/_10ssp"
+                <androidx.recyclerview.widget.RecyclerView
 
-                    app:layout_constraintStart_toStartOf="@id/guideLine"
-                    app:layout_constraintTop_toBottomOf="@id/productName" />
-
-                <TextView
-                    android:id="@+id/distance"
-                    android:layout_width="wrap_content"
+                    android:id="@+id/productFeature"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_5sdp"
-                    android:layout_marginEnd="@dimen/_5sdp"
-                    android:fontFamily="@font/futura_medium_bt"
-                    android:singleLine="true"
-                    android:text="-Distance 8-12km"
-                    android:textSize="@dimen/_10ssp"
-                    app:layout_constraintStart_toStartOf="@id/guideLine"
-                    app:layout_constraintTop_toBottomOf="@id/motor" />
-
-                <TextView
-                    android:id="@+id/weight"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_5sdp"
-                    android:layout_marginEnd="@dimen/_5sdp"
-                    android:fontFamily="@font/futura_medium_bt"
-                    android:singleLine="true"
-                    android:text="-Weight 7,5kg"
-                    android:textSize="@dimen/_10ssp"
-                    app:layout_constraintStart_toStartOf="@id/guideLine"
-                    app:layout_constraintTop_toBottomOf="@id/distance" />
-
-                <TextView
-                    android:id="@+id/dimension"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_5sdp"
-                    android:layout_marginEnd="@dimen/_5sdp"
-                    android:fontFamily="@font/futura_medium_bt"
-                    android:singleLine="true"
-                    android:text="-Dimension 870"
-                    android:textSize="@dimen/_10ssp"
-                    app:layout_constraintStart_toStartOf="@id/guideLine"
-                    app:layout_constraintTop_toBottomOf="@id/weight" />
-
-                <TextView
-                    android:id="@+id/speed"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_5sdp"
-                    android:layout_marginEnd="@dimen/_5sdp"
-                    android:fontFamily="@font/futura_medium_bt"
-                    android:singleLine="true"
-                    android:text="-Speed Max"
-                    android:textSize="@dimen/_10ssp"
-                    app:layout_constraintStart_toStartOf="@id/guideLine"
-                    app:layout_constraintTop_toBottomOf="@id/dimension" />
-
-                <TextView
-                    android:id="@+id/tire"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_5sdp"
-                    android:layout_marginEnd="@dimen/_5sdp"
-                    android:fontFamily="@font/futura_medium_bt"
-                    android:singleLine="true"
-                    android:text="-Tire 6”"
-                    android:textSize="@dimen/_10ssp"
-                    app:layout_constraintStart_toStartOf="@id/guideLine"
-                    app:layout_constraintTop_toBottomOf="@id/speed" />
+                    android:layout_marginStart="@dimen/_10sdp"
+                    android:layout_marginEnd="@dimen/_10sdp"
+                    android:minHeight="@dimen/_130sdp"
+                    android:orientation="vertical"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    app:layout_constraintBottom_toTopOf="@id/priceBtn"
+                    app:layout_constraintTop_toBottomOf="@id/title"
+                    tools:listitem="@layout/li_feature_rv" />
 
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/priceBtn"
                     android:layout_width="@dimen/_50sdp"
                     android:layout_height="@dimen/_25sdp"
-                    android:layout_marginTop="@dimen/_10sdp"
+
                     android:layout_marginBottom="@dimen/_10sdp"
                     android:background="@drawable/round_border_brown"
                     android:fontFamily="@font/futura_bold_font"
@@ -164,7 +100,7 @@
                     android:textSize="@dimen/_13ssp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="@id/guideLine"
-                    app:layout_constraintTop_toBottomOf="@id/tire" />
+                    app:layout_constraintTop_toBottomOf="@id/productFeature" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.cardview.widget.CardView>

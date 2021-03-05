@@ -59,13 +59,13 @@
                 android:id="@+id/map_net"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:contentDescription="@string/icon"
                 android:scaleType="centerCrop"
                 android:src="@drawable/back_net"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.333"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                android:contentDescription="@string/icon" />
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/letsLabel"
@@ -96,7 +96,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent">
 
-                <EditText
+                <TextView
                     android:id="@+id/yourLocation"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -106,6 +106,7 @@
                     android:background="@color/background_color"
                     android:fontFamily="@font/futura_medium_bt"
                     android:hint="Your Location"
+                    android:onClick="@{()->viewModel.onYourLocationClick()}"
                     android:paddingStart="@dimen/_5sdp"
                     android:paddingTop="@dimen/_5sdp"
                     android:paddingBottom="@dimen/_5sdp"
@@ -115,18 +116,18 @@
                     app:layout_constraintTop_toTopOf="parent"
                     tools:ignore="RtlSymmetry" />
 
-                <EditText
+                <TextView
                     android:id="@+id/destination"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/_12sdp"
-
                     android:layout_marginTop="@dimen/_20sdp"
                     android:layout_marginEnd="@dimen/_12sdp"
                     android:autofillHints="Search"
                     android:background="@color/background_color"
                     android:fontFamily="@font/futura_medium_bt"
                     android:hint="Destination"
+                    android:onClick="@{()->viewModel.onDestinationClick()}"
                     android:paddingStart="@dimen/_5sdp"
                     android:paddingTop="@dimen/_5sdp"
                     android:paddingBottom="@dimen/_5sdp"
@@ -144,6 +145,7 @@
                 android:layout_height="@dimen/_30sdp"
                 android:background="@drawable/round_border_brown"
                 android:fontFamily="@font/futura_bold_font"
+                android:onClick="@{()->viewModel.onStartClick()}"
                 android:text="Start"
                 android:textColor="@color/white"
                 android:textSize="@dimen/_13ssp"

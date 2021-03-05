@@ -11,11 +11,11 @@ import com.joyor.databinding.LiSliderProductBinding
 import com.joyor.model.Product
 import androidx.databinding.DataBindingUtil.inflate
 
-class ProductSliderViewPagerAdapter(private val context: Context, private val sliderImage: ArrayList<Product.Image>) : PagerAdapter() {
+class ProductSliderViewPagerAdapter(private val context: Context, private val sliderImage: ArrayList<String>) : PagerAdapter() {
 
     override fun instantiateItem(container: ViewGroup, position: Int): Any {
         val binding = inflate<LiSliderProductBinding>(LayoutInflater.from(context), R.layout.li_slider_product, container, false)
-        Glide.with(binding.sliderImage.context).load(sliderImage[position].src).into(binding.sliderImage)
+        Glide.with(binding.sliderImage.context).load(sliderImage[position]).into(binding.sliderImage)
         container.addView(binding.root)
         return binding.root
     }

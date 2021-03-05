@@ -12,7 +12,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Joyor">
-
+        <activity android:name=".ui.GoogleMapRouteActivity"></activity>
         <activity
             android:name=".ui.SplashActivity"
             android:screenOrientation="portrait">
@@ -44,12 +44,13 @@
         <activity
             android:name=".ui.SignUpActivity"
             android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.MapActivity"
+            android:screenOrientation="portrait" />
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_api" />
-
-
     </application>
 
 </manifest>

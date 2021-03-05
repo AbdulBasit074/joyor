@@ -23,9 +23,11 @@ class SignUpActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.signup_layout)
         viewModel = ViewModelProviders.of(this).get(SignUpViewModel::class.java)
+        viewModel.user.value = JoyorDb.newInstance(this).userDao().getLoggedUser()
+
         binding.viewModel = viewModel
         viewModel.saveUserInDb = false
-        viewModel.user.value = JoyorDb.newInstance(this).userDao().getLoggedUser()
+
         viewModel.user.observe(this, Observer {
             if (viewModel.saveUserInDb)
                 JoyorDb.newInstance(this).userDao().login(it)
@@ -34,15 +36,18 @@ class SignUpActivity : AppCompatActivity() {
 
             PreferenceManager.getDefaultSharedPreferences(this).edit().putBoolean(Constants.signUpFirstShow, true).apply()
         })
+
         viewModel.showToast.observe(this, Observer { it ->
             showToast(it)
         })
+
         viewModel.name.observe(this, Observer {
             if (it.isNotEmpty())
                 setButtonRegister()
             else
                 setButtonSkip()
         })
+
         viewModel.nameSure.observe(this, Observer {
             if (it.isNotEmpty())
                 setButtonRegister()
@@ -50,6 +55,7 @@ class SignUpActivity : AppCompatActivity() {
                 setButtonSkip()
 
         })
+
         viewModel.email.observe(this, Observer {
 
             if (it.isNotEmpty())
@@ -58,6 +64,7 @@ class SignUpActivity : AppCompatActivity() {
                 setButtonSkip()
 
         })
+
         viewModel.password.observe(this, Observer {
             if (it.isNotEmpty())
                 setButtonRegister()

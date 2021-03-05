@@ -30,7 +30,7 @@ class ProductDetailActivity : AppCompatActivity() {
 
     private lateinit var viewModel: ProductDetailViewModel
     private lateinit var binding: ActivityProductDetailBinding
-    private var imagesList: ArrayList<Product.Image> = ArrayList()
+    private var imagesList: ArrayList<String> = ArrayList()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_product_detail)
@@ -71,16 +71,18 @@ class ProductDetailActivity : AppCompatActivity() {
                 binding.descriptionView.visibility = View.GONE
                 binding.featureView.visibility = View.VISIBLE
             }
-
         })
-
-
     }
 
     private fun setAdapter() {
         binding.topSliderVp.adapter = ProductSliderViewPagerAdapter(this, imagesList)
         binding.topSliderIndicator.setViewPager(binding.topSliderVp)
-        binding.featureList.adapter = FeatureAdapterRv(viewModel.product.value?.images!! as ArrayList<Product.Image>)
+
+        if (viewModel.product.value?.specs?.size!! > 1) {
+            binding.divider1.visibility = View.VISIBLE
+            binding.divider2.visibility = View.VISIBLE
+        }
+        binding.featureList.adapter = FeatureAdapterRv(viewModel.product.value?.specs!!)
         binding.featureList.addItemDecoration(
             HorizantalMidDivider(
                 ContextCompat.getDrawable(

@@ -5,7 +5,6 @@ import android.os.Parcelable
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 
-
 class Product(
     @SerializedName("id")
     @Expose
@@ -27,9 +26,13 @@ class Product(
     @Expose
     var url: String? = null,
 
+    @SerializedName("thumbnail")
+    @Expose
+    var thumbnail: String? = null,
+
     @SerializedName("images")
     @Expose
-    var images: List<Image>? = null,
+    var images: ArrayList<String>? = null,
 
     @SerializedName("price")
     @Expose
@@ -58,26 +61,29 @@ class Product(
     @SerializedName("stock_quantity")
     @Expose
     var stockQuantity: String? = null,
-
     @SerializedName("categories")
     @Expose
-    var categories: List<Image.Category>? = null,
+    var categories: ArrayList<Category>? = null,
+
 
     @SerializedName("specs")
     @Expose
-    var specs: String? = null,
+    var specs: ArrayList<Spec>? = null,
 
     @SerializedName("variations")
     @Expose
     var variations: Variations? = null
-):Parcelable {
+) : Parcelable {
+
+
     constructor(parcel: Parcel) : this(
         parcel.readValue(Int::class.java.classLoader) as? Int,
         parcel.readString(),
         parcel.readString(),
         parcel.readString(),
         parcel.readString(),
-        parcel.createTypedArrayList(Image),
+        parcel.readString(),
+        parcel.createStringArrayList(),
         parcel.readString(),
         parcel.readString(),
         parcel.readString(),
@@ -85,131 +91,52 @@ class Product(
         parcel.readString(),
         parcel.readValue(Boolean::class.java.classLoader) as? Boolean,
         parcel.readString(),
-        parcel.createTypedArrayList(Image.Category.CREATOR),
-        parcel.readString(),
+        parcel.createTypedArrayList(Category),
+        parcel.createTypedArrayList(Spec),
         parcel.readParcelable(Variations::class.java.classLoader)
     ) {
     }
 
-    class Image(
+    class Category(
         @SerializedName("id")
         @Expose
         var id: Int? = null,
-
-        @SerializedName("date_created")
-        @Expose
-        var dateCreated: String? = null,
-
-        @SerializedName("date_created_gmt")
-        @Expose
-        var dateCreatedGmt: String? = null,
-
-        @SerializedName("date_modified")
-        @Expose
-        var dateModified: String? = null,
-
-        @SerializedName("date_modified_gmt")
-        @Expose
-        var dateModifiedGmt: String? = null,
-
-        @SerializedName("src")
-        @Expose
-        var src: String? = null,
 
         @SerializedName("name")
         @Expose
         var name: String? = null,
 
-        @SerializedName("alt")
+        @SerializedName("slug")
         @Expose
-        var alt: String? = null,
-
-        @SerializedName("position")
-        @Expose
-        var position: Int? = null
-    ):Parcelable {
+        var slug: String? = null
+    ) : Parcelable {
         constructor(parcel: Parcel) : this(
             parcel.readValue(Int::class.java.classLoader) as? Int,
             parcel.readString(),
-            parcel.readString(),
-            parcel.readString(),
-            parcel.readString(),
-            parcel.readString(),
-            parcel.readString(),
-            parcel.readString(),
-            parcel.readValue(Int::class.java.classLoader) as? Int
+            parcel.readString()
         ) {
-        }
-
-        class Category(
-            @SerializedName("id")
-            @Expose
-            var id: Int? = null,
-
-            @SerializedName("name")
-            @Expose
-            var name: String? = null,
-
-            @SerializedName("slug")
-            @Expose
-            var slug: String? = null
-
-        ):Parcelable {
-            constructor(parcel: Parcel) : this(
-                parcel.readValue(Int::class.java.classLoader) as? Int,
-                parcel.readString(),
-                parcel.readString()
-            ) {
-            }
-
-            override fun writeToParcel(parcel: Parcel, flags: Int) {
-                parcel.writeValue(id)
-                parcel.writeString(name)
-                parcel.writeString(slug)
-            }
-
-            override fun describeContents(): Int {
-                return 0
-            }
-
-            companion object CREATOR : Parcelable.Creator<Category> {
-                override fun createFromParcel(parcel: Parcel): Category {
-                    return Category(parcel)
-                }
-
-                override fun newArray(size: Int): Array<Category?> {
-                    return arrayOfNulls(size)
-                }
-            }
-
-
         }
 
         override fun writeToParcel(parcel: Parcel, flags: Int) {
             parcel.writeValue(id)
-            parcel.writeString(dateCreated)
-            parcel.writeString(dateCreatedGmt)
-            parcel.writeString(dateModified)
-            parcel.writeString(dateModifiedGmt)
-            parcel.writeString(src)
             parcel.writeString(name)
-            parcel.writeString(alt)
-            parcel.writeValue(position)
+            parcel.writeString(slug)
         }
 
         override fun describeContents(): Int {
             return 0
         }
 
-        companion object CREATOR : Parcelable.Creator<Image> {
-            override fun createFromParcel(parcel: Parcel): Image {
-                return Image(parcel)
+        companion object CREATOR : Parcelable.Creator<Category> {
+            override fun createFromParcel(parcel: Parcel): Category {
+                return Category(parcel)
             }
 
-            override fun newArray(size: Int): Array<Image?> {
+            override fun newArray(size: Int): Array<Category?> {
                 return arrayOfNulls(size)
             }
         }
+
     }
 
     class Variations(
@@ -220,25 +147,28 @@ class Product(
         @SerializedName("name")
         @Expose
         var name: String? = null
-    ):Parcelable {
+    ) : Parcelable {
         constructor(parcel: Parcel) : this(
             parcel.createTypedArrayList(Option),
             parcel.readString()
         ) {
         }
+
         class Option(
             @SerializedName("code")
             @Expose
             var code: String? = null,
+
             @SerializedName("name")
             @Expose
             var name: String? = null
-        ):Parcelable {
+        ) : Parcelable {
             constructor(parcel: Parcel) : this(
                 parcel.readString(),
                 parcel.readString()
             ) {
             }
+
             override fun writeToParcel(parcel: Parcel, flags: Int) {
                 parcel.writeString(code)
                 parcel.writeString(name)
@@ -277,6 +207,42 @@ class Product(
                 return arrayOfNulls(size)
             }
         }
+
+    }
+
+    class Spec(
+        @SerializedName("key")
+        @Expose
+        var key: String? = null,
+
+        @SerializedName("value")
+        @Expose
+        var value: String? = null
+    ) : Parcelable {
+        constructor(parcel: Parcel) : this(
+            parcel.readString(),
+            parcel.readString()
+        ) {
+        }
+
+        override fun writeToParcel(parcel: Parcel, flags: Int) {
+            parcel.writeString(key)
+            parcel.writeString(value)
+        }
+
+        override fun describeContents(): Int {
+            return 0
+        }
+
+        companion object CREATOR : Parcelable.Creator<Spec> {
+            override fun createFromParcel(parcel: Parcel): Spec {
+                return Spec(parcel)
+            }
+
+            override fun newArray(size: Int): Array<Spec?> {
+                return arrayOfNulls(size)
+            }
+        }
     }
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
@@ -285,7 +251,8 @@ class Product(
         parcel.writeString(shortDescription)
         parcel.writeString(description)
         parcel.writeString(url)
-        parcel.writeTypedList(images)
+        parcel.writeString(thumbnail)
+        parcel.writeStringList(images)
         parcel.writeString(price)
         parcel.writeString(regularPrice)
         parcel.writeString(salePrice)
@@ -294,7 +261,7 @@ class Product(
         parcel.writeValue(inStock)
         parcel.writeString(stockQuantity)
         parcel.writeTypedList(categories)
-        parcel.writeString(specs)
+        parcel.writeTypedList(specs)
         parcel.writeParcelable(variations, flags)
     }
 
@@ -312,6 +279,5 @@ class Product(
         }
     }
 
+
 }
-
-

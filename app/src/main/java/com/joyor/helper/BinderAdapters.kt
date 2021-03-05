@@ -33,3 +33,7 @@ fun setTextHtml(textView: TextView, src: String) {
     textView.text = HtmlCompat.fromHtml(src, HtmlCompat.FROM_HTML_MODE_LEGACY)
 }
 
+@BindingAdapter("setTextAbout")
+fun setTextAbout(textView: TextView, src: String) {
+    textView.text = "About$src"
+}

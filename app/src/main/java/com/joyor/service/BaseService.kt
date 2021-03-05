@@ -36,7 +36,7 @@ open class BaseService(
             if (response.isSuccessful && response.body() != null) {
                 val responseBody = response.body()!!.string()
                 val responseObject = JSONObject(responseBody)
-                if ((responseObject["status"] as String) == "success") {
+                if ((responseObject["status"] as String) == "success" || (responseObject["status"] as String) == "OK") {
                     if (returnRaw) {
                         callBack.onSuccess(requestCode, responseBody)
                     } else {

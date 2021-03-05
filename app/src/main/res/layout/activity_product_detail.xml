@@ -64,8 +64,7 @@
                     android:id="@+id/topSliderVp"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/_150sdp"
-                    app:layout_constraintTop_toTopOf="parent"
-                    />
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <com.tbuonomo.viewpagerdotsindicator.SpringDotsIndicator
                     android:id="@+id/topSliderIndicator"
@@ -300,13 +299,13 @@
 
                     <TextView
                         android:id="@+id/descriptionFeature"
+                        setTextAbout="@{viewModel.product.name}"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/_10sdp"
                         android:layout_marginTop="@dimen/_10sdp"
                         android:layout_marginEnd="@dimen/_10sdp"
                         android:fontFamily="@font/futura_medium_bt"
-                        android:text="@{viewModel.product.description}"
                         android:textColor="@color/light_reddish"
                         android:textSize="@dimen/_13ssp"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -320,6 +319,7 @@
                         android:layout_marginTop="@dimen/_20sdp"
                         android:layout_marginEnd="@dimen/_10sdp"
                         android:background="@color/divider"
+                        android:visibility="gone"
                         app:layout_constraintTop_toBottomOf="@id/descriptionFeature" />
 
                     <androidx.recyclerview.widget.RecyclerView
@@ -340,6 +340,7 @@
                         android:layout_marginStart="@dimen/_10sdp"
                         android:layout_marginEnd="@dimen/_10sdp"
                         android:background="@color/divider"
+                        android:visibility="gone"
                         app:layout_constraintTop_toBottomOf="@id/featureList" />
 
 

@@ -10,7 +10,7 @@ import com.joyor.databinding.LiProductBinding
 import com.joyor.model.Product
 import com.joyor.viewmodel.ProductViewModel
 
-class ProductAdapterRv(private val items: ArrayList<Product>,private val viewModel: ProductViewModel) :
+class ProductAdapterRv(private val items: ArrayList<Product>, private val viewModel: ProductViewModel) :
     RecyclerView.Adapter<ProductAdapterRv.ViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(
@@ -36,6 +36,8 @@ class ProductAdapterRv(private val items: ArrayList<Product>,private val viewMod
         fun bindView(item: Product) {
             binding.model = item
             binding.viewModel = viewModel
+            binding.productFeature.adapter = FeatureProductMainRv(item.specs)
+
         }
     }
 
