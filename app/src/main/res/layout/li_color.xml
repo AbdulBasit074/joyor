@@ -2,29 +2,24 @@
 <layout xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
-
         <variable
             name="model"
-            type="com.joyor.model.Product.Variations.Option" />
-
-        <variable
-            name="viewModel"
-            type="com.joyor.viewmodel.ProductDetailViewModel" />
-
+            type="com.joyor.model.Product.Option" />
     </data>
 
     <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/layoutColor"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:cardElevation="@dimen/_3sdp"
         android:layout_marginStart="@dimen/_3sdp"
-        android:onClick="@{()->viewModel.onColorSelect(model.name)}">
+        app:cardElevation="@dimen/_3sdp">
 
         <TextView
             android:id="@+id/color"
             setColor="@{model.code}"
             android:layout_width="@dimen/_30sdp"
             android:layout_height="@dimen/_30sdp"
+            android:layout_margin="@dimen/_1sdp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 

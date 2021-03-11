@@ -10,7 +10,7 @@ import com.joyor.databinding.LiColorBinding
 import com.joyor.model.Product
 import com.joyor.viewmodel.ProductDetailViewModel
 
-class ColorAdapterRv(private val items: ArrayList<Product.Variations.Option>?, private val viewModel: ProductDetailViewModel) :
+class ColorAdapterRv(private val items: ArrayList<Product.Option>?, private val viewModel: ProductDetailViewModel) :
     RecyclerView.Adapter<ColorAdapterRv.ViewHolder>() {
 
     private var itemSelectPositionIs: Int = 0
@@ -37,9 +37,19 @@ class ColorAdapterRv(private val items: ArrayList<Product.Variations.Option>?, p
 
     inner class ViewHolder(val binding: LiColorBinding) : RecyclerView.ViewHolder(binding.root) {
 
-        fun bindView(item: Product.Variations.Option) {
+        fun bindView(item: Product.Option) {
             binding.model = item
-            binding.viewModel = viewModel
+
+            if (viewModel.colorSelect.value?.name.equals(item.name)!!) {
+                binding.layoutColor.setCardBackgroundColor(binding.color.context.getColor(R.color.black))
+            } else
+                binding.layoutColor.setCardBackgroundColor(binding.color.context.getColor(R.color.transparent))
+
+            binding.layoutColor.setOnClickListener {
+                viewModel.onColorSelect(item)
+                notifyDataSetChanged()
+            }
+
         }
     }
 }

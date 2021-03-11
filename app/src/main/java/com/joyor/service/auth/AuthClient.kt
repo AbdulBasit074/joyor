@@ -1,6 +1,7 @@
 package com.joyor.service.auth
 
 
+import okhttp3.Address
 import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.http.*
@@ -47,5 +48,18 @@ interface AuthClient {
     fun userDetail(
         @Query("user_id") userId: Int
     ): Call<ResponseBody>
+
+    @FormUrlEncoded
+    @POST("get_addresses")
+    fun getAddress(
+        @Field("user_id") userId: Int
+    ): Call<ResponseBody>
+
+
+    @POST("add_addresses")
+    fun addAddress(
+        @Body body: com.joyor.model.Address
+    ): Call<ResponseBody>
+
 
 }

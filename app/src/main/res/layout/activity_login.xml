@@ -9,9 +9,7 @@
             name="viewModel"
             type="com.joyor.viewmodel.LoginSignUpViewModel" />
 
-
     </data>
-
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -40,6 +38,7 @@
                     android:id="@+id/back"
                     android:layout_width="@dimen/_40sdp"
                     android:layout_height="@dimen/_40sdp"
+                    android:contentDescription="@string/icon"
                     android:onClick="@{()->viewModel.onBack()}"
                     android:padding="@dimen/_10sdp"
                     android:src="@drawable/ic_back"
@@ -51,6 +50,7 @@
                     android:id="@+id/logo"
                     android:layout_width="@dimen/_100sdp"
                     android:layout_height="wrap_content"
+                    android:contentDescription="@string/icon"
                     android:src="@drawable/logo_white"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -80,7 +80,7 @@
                     android:fontFamily="@font/futura_bold_font"
                     android:gravity="center"
                     android:onClick="@{()->viewModel.onLoginClick()}"
-                    android:text="Login"
+                    android:text="@string/login"
                     android:textAllCaps="true"
                     android:textColor="@color/white"
                     android:textSize="@dimen/_12ssp"
@@ -95,8 +95,7 @@
                     android:fontFamily="@font/futura_bold_font"
                     android:gravity="center"
                     android:onClick="@{()->viewModel.onSignUpClick()}"
-                    android:text="SignUp"
-
+                    android:text="@string/sign_up"
                     android:textAllCaps="true"
                     android:textColor="@color/black"
                     android:textSize="@dimen/_12ssp"
@@ -128,7 +127,7 @@
                     android:autofillHints="Search"
                     android:background="@color/background_color"
                     android:fontFamily="@font/futura_medium_bt"
-                    android:hint="Name*"
+                    android:hint="@string/name"
                     android:inputType="text"
                     android:paddingStart="@dimen/_5sdp"
                     android:paddingTop="@dimen/_5sdp"
@@ -150,7 +149,7 @@
                     android:autofillHints="Search"
                     android:background="@color/background_color"
                     android:fontFamily="@font/futura_medium_bt"
-                    android:hint="Sure name*"
+                    android:hint="@string/sure_name"
                     android:inputType="text"
                     android:paddingStart="@dimen/_5sdp"
                     android:paddingTop="@dimen/_5sdp"
@@ -169,11 +168,10 @@
                     android:layout_marginStart="@dimen/_12sdp"
                     android:layout_marginTop="@dimen/_5sdp"
                     android:layout_marginEnd="@dimen/_12sdp"
-
                     android:autofillHints="Search"
                     android:background="@color/background_color"
                     android:fontFamily="@font/futura_medium_bt"
-                    android:hint="Email"
+                    android:hint="@string/email"
                     android:inputType="textEmailAddress"
                     android:paddingStart="@dimen/_5sdp"
                     android:paddingTop="@dimen/_5sdp"
@@ -195,7 +193,7 @@
                     android:autofillHints="Search"
                     android:background="@color/background_color"
                     android:fontFamily="@font/futura_medium_bt"
-                    android:hint="Password"
+                    android:hint="@string/password"
                     android:inputType="textPassword"
                     android:paddingStart="@dimen/_5sdp"
                     android:paddingTop="@dimen/_5sdp"
@@ -217,7 +215,7 @@
                 android:background="@drawable/round_border_brown"
                 android:fontFamily="@font/futura_bold_font"
                 android:onClick="@{()->viewModel.onLoginSignUpClick()}"
-                android:text="Login"
+                android:text="@string/login"
                 android:textColor="@color/white"
                 android:textSize="@dimen/_13ssp"
                 app:layout_constraintBottom_toBottomOf="@id/signUpView"

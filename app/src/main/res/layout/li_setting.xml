@@ -26,7 +26,6 @@
             android:background="@drawable/ic_setting"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
-
             <ImageView
                 android:id="@+id/imageBackView"
                 setImageUri="@{model.thumbnail}"

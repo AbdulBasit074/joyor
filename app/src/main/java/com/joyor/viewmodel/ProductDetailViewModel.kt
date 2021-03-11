@@ -2,12 +2,7 @@ package com.joyor.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.google.gson.Gson
-import com.google.gson.reflect.TypeToken
 import com.joyor.model.Product
-import com.joyor.model.Setting
-import com.joyor.service.Results
-import com.joyor.service.auth.StoreService
 
 class ProductDetailViewModel : ViewModel() {
 
@@ -16,20 +11,27 @@ class ProductDetailViewModel : ViewModel() {
     var product: MutableLiveData<Product> = MutableLiveData()
     var isDescription: MutableLiveData<Boolean> = MutableLiveData()
     var totalCount: MutableLiveData<Int?> = MutableLiveData()
-    var colorSelect: MutableLiveData<String> = MutableLiveData()
+    var colorSelect: MutableLiveData<Product.Option?> = MutableLiveData()
+    var addToCart: MutableLiveData<Boolean> = MutableLiveData()
 
     fun onBack() {
         isBack.value = true
     }
 
     init {
+        addToCart.value = false
         isDescription.value = true
         totalCount.value = 1
+        colorSelect.value = Product.Option()
     }
 
+    fun addToCartProduct() {
+        addToCart.value = true
 
-    fun onColorSelect(colorName: String) {
-        colorSelect.value = colorName
+    }
+
+    fun onColorSelect(color: Product.Option) {
+        colorSelect.value = color
     }
 
     fun onMinusClick() {

@@ -7,8 +7,10 @@ import android.content.Intent
 import android.content.IntentSender
 import android.content.pm.PackageManager
 import com.joyor.R
+
 import android.graphics.drawable.Drawable
 import android.widget.ImageView
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
@@ -28,6 +30,7 @@ import kotlin.collections.ArrayList
 fun AppCompatActivity.moveTo(clazz: Class<*>) {
     startActivity(Intent(this, clazz))
 }
+
 fun AppCompatActivity.moveTo(intent: Intent) {
     startActivity(intent)
 }
@@ -54,6 +57,16 @@ fun Fragment.moveTo(intent: Intent) {
     startActivity(intent)
 }
 
+fun Context.customTextView(text: String): TextView {
+    val textView = TextView(this)
+    textView.setTextColor(getColor(R.color.black))
+    textView.text = text
+    textView.setPadding(20, 30, 20, 30)
+    textView.textSize = 20f
+    textView.setTextColor(getColor(R.color.white))
+    textView.setBackgroundColor(getColor(R.color.light_reddish))
+    return textView
+}
 
 fun Context.moveTo(clazz: Class<*>) {
     startActivity(Intent(this, clazz))
@@ -134,3 +147,9 @@ fun AppCompatActivity.getCurrentLocation(fields: ArrayList<Place.Field>, onLocat
     }
 }
 
+fun AppCompatActivity.setLanguage(language:String) {
+    val displayMetrics = resources.displayMetrics
+    val configuration = resources.configuration
+    configuration.setLocale(Locale(language))
+    resources.updateConfiguration(configuration, displayMetrics)
+}

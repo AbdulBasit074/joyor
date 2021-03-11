@@ -14,10 +14,14 @@ import com.joyor.adapter.ColorAdapterRv
 import com.joyor.adapter.FeatureAdapterRv
 import com.joyor.adapter.ProductSliderViewPagerAdapter
 import com.joyor.databinding.ActivityProductDetailBinding
+import com.joyor.helper.CartUpdateEvent
 import com.joyor.helper.Constants
 import com.joyor.helper.HorizantalMidDivider
+import com.joyor.helper.showToast
 import com.joyor.model.Product
+import com.joyor.model.room.JoyorDb
 import com.joyor.viewmodel.ProductDetailViewModel
+import org.greenrobot.eventbus.EventBus
 
 class ProductDetailActivity : AppCompatActivity() {
 
@@ -39,21 +43,36 @@ class ProductDetailActivity : AppCompatActivity() {
         binding.viewModel = viewModel
 
         viewModel.product.observe(this, Observer {
-            imagesList.clear()
-            imagesList.addAll(it.images!!)
-            setAdapter()
+            if (!viewModel.addToCart.value!!) {
+                imagesList.clear()
+                imagesList.addAll(it.images!!)
+                setAdapter()
+            }
         })
         viewModel.totalCount.observe(this, Observer {
             binding.count.text = it.toString()
         })
-
         viewModel.isBack.observe(this, Observer {
             finish()
         })
         viewModel.colorSelect.observe(this, Observer {
-            binding.colorName.text = it
+            binding.colorName.text = it?.name
         })
-
+        viewModel.addToCart.observe(this, Observer {
+            if (it) {
+                showToast(getString(R.string.product_added))
+                viewModel.product.value!!.quantity = viewModel.totalCount.value as Int
+                viewModel.product.value!!.colorSelect = viewModel.colorSelect.value as Product.Option
+                val productSave: Product? = JoyorDb.newInstance(this).productDao().containsProduct(viewModel.product.value!!.id, viewModel.product.value!!.colorSelect.code)
+                if (productSave == null)
+                    JoyorDb.newInstance(this).productDao().addToCartNotReplace(viewModel.product.value!!)
+                else {
+                    productSave.quantity = viewModel.product.value!!.quantity + productSave.quantity
+                    JoyorDb.newInstance(this).productDao().addToCart(viewModel.product.value!!)
+                }
+                EventBus.getDefault().postSticky(CartUpdateEvent())
+            }
+        })
         viewModel.isDescription.observe(this, Observer {
             if (it) {
                 binding.description.setTextColor(getColor(R.color.white))
@@ -90,11 +109,13 @@ class ProductDetailActivity : AppCompatActivity() {
                 )
             )
         )
-        if (viewModel.product.value!!.variations?.options != null) {
-            binding.colorList.adapter = ColorAdapterRv(viewModel.product.value!!.variations?.options as ArrayList<Product.Variations.Option>?, viewModel)
-
-            viewModel.onColorSelect(viewModel.product.value!!.variations?.options!![0].name!!)
+        if (viewModel.product.value!!.variations?.options?.size!! > 0) {
+            binding.colorList.adapter = ColorAdapterRv(viewModel.product.value!!.variations?.options, viewModel)
+            viewModel.onColorSelect(viewModel.product.value!!.variations?.options!![0])
         }
+    }
 
+    override fun onDestroy() {
+        super.onDestroy()
     }
 }

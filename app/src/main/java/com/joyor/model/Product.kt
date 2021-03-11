@@ -2,82 +2,41 @@ package com.joyor.model
 
 import android.os.Parcel
 import android.os.Parcelable
+import androidx.annotation.NonNull
+import androidx.room.Embedded
+import androidx.room.Entity
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
+import org.jetbrains.annotations.NotNull
+import retrofit2.internal.EverythingIsNonNull
 
+@Entity(primaryKeys = ["id", "color_code"])
 class Product(
-    @SerializedName("id")
-    @Expose
-    var id: Int? = null,
-
-    @SerializedName("name")
-    @Expose
-    var name: String? = null,
-
-    @SerializedName("short_description")
-    @Expose
-    var shortDescription: String? = null,
-
-    @SerializedName("description")
-    @Expose
-    var description: String? = null,
-
-    @SerializedName("url")
-    @Expose
-    var url: String? = null,
-
-    @SerializedName("thumbnail")
-    @Expose
-    var thumbnail: String? = null,
-
-    @SerializedName("images")
-    @Expose
-    var images: ArrayList<String>? = null,
-
-    @SerializedName("price")
-    @Expose
-    var price: String? = null,
-
-    @SerializedName("regular_price")
-    @Expose
-    var regularPrice: String? = null,
-
-    @SerializedName("sale_price")
-    @Expose
-    var salePrice: String? = null,
-
-    @SerializedName("type")
-    @Expose
-    var type: String? = null,
-
-    @SerializedName("sku")
-    @Expose
-    var sku: String? = null,
-
-    @SerializedName("in_stock")
-    @Expose
-    var inStock: Boolean? = null,
-
-    @SerializedName("stock_quantity")
-    @Expose
-    var stockQuantity: String? = null,
-    @SerializedName("categories")
-    @Expose
-    var categories: ArrayList<Category>? = null,
-
-
-    @SerializedName("specs")
-    @Expose
-    var specs: ArrayList<Spec>? = null,
-
-    @SerializedName("variations")
-    @Expose
-    var variations: Variations? = null
+    @SerializedName("id") @Expose var id: Int = 0,
+    @SerializedName("name") @Expose var name: String? = null,
+    @SerializedName("short_description") @Expose var shortDescription: String? = null,
+    @SerializedName("description") @Expose var description: String? = null,
+    @SerializedName("url") @Expose var url: String? = null,
+    @SerializedName("thumbnail") @Expose var thumbnail: String? = null,
+    @SerializedName("images") @Expose var images: ArrayList<String>? = null,
+    @SerializedName("price") @Expose var price: String? = null,
+    @SerializedName("regular_price") @Expose var regularPrice: String? = null,
+    @SerializedName("sale_price") @Expose var salePrice: String? = null,
+    @SerializedName("type") @Expose var type: String? = null,
+    @SerializedName("sku") @Expose var sku: String? = null,
+    @SerializedName("in_stock") @Expose var inStock: Boolean? = null,
+    @SerializedName("stock_quantity") @Expose var stockQuantity: String? = null,
+    @SerializedName("categories") @Expose var categories: ArrayList<Category>? = null,
+    @SerializedName("specs") @Expose var specs: ArrayList<Spec>? = null,
+    @Embedded(prefix = "variations_")
+    @SerializedName("variations") @Expose var variations: Variations? = null,
+    var quantity: Int = 0,
+    @Embedded(prefix = "color_")
+    var colorSelect: Option = Option()
 ) : Parcelable {
 
-
     constructor(parcel: Parcel) : this(
-        parcel.readValue(Int::class.java.classLoader) as? Int,
+        (parcel.readValue(Int::class.java.classLoader)!! as? Int)!!,
         parcel.readString(),
         parcel.readString(),
         parcel.readString(),
@@ -97,18 +56,10 @@ class Product(
     ) {
     }
 
-    class Category(
-        @SerializedName("id")
-        @Expose
-        var id: Int? = null,
-
-        @SerializedName("name")
-        @Expose
-        var name: String? = null,
-
-        @SerializedName("slug")
-        @Expose
-        var slug: String? = null
+    data class Category(
+        @SerializedName("id") @Expose var id: Int? = null,
+        @SerializedName("name") @Expose var name: String? = null,
+        @SerializedName("slug") @Expose var slug: String? = null
     ) : Parcelable {
         constructor(parcel: Parcel) : this(
             parcel.readValue(Int::class.java.classLoader) as? Int,
@@ -139,55 +90,17 @@ class Product(
 
     }
 
-    class Variations(
-        @SerializedName("options")
-        @Expose
-        var options: List<Option>? = null,
-
-        @SerializedName("name")
-        @Expose
-        var name: String? = null
+    data class Variations(
+        @SerializedName("options") @Expose var options: ArrayList<Option>? = ArrayList(),
+        @SerializedName("name") @Expose var name: String = ""
     ) : Parcelable {
         constructor(parcel: Parcel) : this(
             parcel.createTypedArrayList(Option),
-            parcel.readString()
+            parcel.readString()!!
         ) {
         }
 
-        class Option(
-            @SerializedName("code")
-            @Expose
-            var code: String? = null,
 
-            @SerializedName("name")
-            @Expose
-            var name: String? = null
-        ) : Parcelable {
-            constructor(parcel: Parcel) : this(
-                parcel.readString(),
-                parcel.readString()
-            ) {
-            }
-
-            override fun writeToParcel(parcel: Parcel, flags: Int) {
-                parcel.writeString(code)
-                parcel.writeString(name)
-            }
-
-            override fun describeContents(): Int {
-                return 0
-            }
-
-            companion object CREATOR : Parcelable.Creator<Option> {
-                override fun createFromParcel(parcel: Parcel): Option {
-                    return Option(parcel)
-                }
-
-                override fun newArray(size: Int): Array<Option?> {
-                    return arrayOfNulls(size)
-                }
-            }
-        }
 
         override fun writeToParcel(parcel: Parcel, flags: Int) {
             parcel.writeTypedList(options)
@@ -209,15 +122,39 @@ class Product(
         }
 
     }
+    data class Option(
+        @NotNull
+        @SerializedName("code") @Expose var code: String = "",
+        @SerializedName("name") @Expose var name: String = ""
+    ) : Parcelable {
+        constructor(parcel: Parcel) : this(
+            parcel.readString()!!,
+            parcel.readString()!!
+        ) {
+        }
 
-    class Spec(
-        @SerializedName("key")
-        @Expose
-        var key: String? = null,
+        override fun writeToParcel(parcel: Parcel, flags: Int) {
+            parcel.writeString(code)
+            parcel.writeString(name)
+        }
 
-        @SerializedName("value")
-        @Expose
-        var value: String? = null
+        override fun describeContents(): Int {
+            return 0
+        }
+
+        companion object CREATOR : Parcelable.Creator<Option> {
+            override fun createFromParcel(parcel: Parcel): Option {
+                return Option(parcel)
+            }
+
+            override fun newArray(size: Int): Array<Option?> {
+                return arrayOfNulls(size)
+            }
+        }
+    }
+    data class Spec(
+        @SerializedName("key") @Expose var key: String? = null,
+        @SerializedName("value") @Expose var value: String? = null
     ) : Parcelable {
         constructor(parcel: Parcel) : this(
             parcel.readString(),

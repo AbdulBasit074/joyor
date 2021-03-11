@@ -31,7 +31,7 @@ class LoginActivity : AppCompatActivity() {
         viewModel.isLogin.observe(this, Observer { it ->
             TransitionManager.beginDelayedTransition(binding.parentView)
             if (it) {
-                binding.loginBtn.text = "Login"
+                binding.loginBtn.text = getString(R.string.login)
                 binding.login.background =
                     ContextCompat.getDrawable(this, R.drawable.round_border_brown)
                 binding.signUp.background =
@@ -47,7 +47,7 @@ class LoginActivity : AppCompatActivity() {
 
             } else {
 
-                binding.loginBtn.text = "Register"
+                binding.loginBtn.text = getString(R.string.register)
                 binding.login.background =
                     ContextCompat.getDrawable(this, R.drawable.round_border_white)
                 binding.login.setTextColor(ContextCompat.getColor(this, R.color.black))

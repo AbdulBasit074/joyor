@@ -1,33 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<menu xmlns:tools="http://schemas.android.com/tools"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
     <item
-        android:id="@+id/cart"
+        android:id="@+id/product"
         android:icon="@drawable/ic_cart_inactive"
-        android:title="@string/cart"
+        tools:ignore="MenuTitle" />
+    <item
+        android:id="@+id/cartMenu"
+        android:icon="@drawable/ic_order_inactive"
         tools:ignore="MenuTitle" />
 
     <item
-        tools:ignore="MenuTitle"
         android:id="@+id/setting"
+        android:icon="@drawable/ic_setting_inactive"
         android:title="@string/setting"
-        android:icon="@drawable/ic_setting_inactive" />
+        tools:ignore="MenuTitle" />
+
     <item
         android:id="@+id/support"
-        tools:ignore="MenuTitle"
+        android:icon="@drawable/ic_support_inactive"
         android:title="@string/support"
-        android:icon="@drawable/ic_support_inactive" />
-<!--    <item-->
-<!--        android:id="@+id/order"-->
-<!--        tools:ignore="MenuTitle"-->
-<!--        android:title="@string/order"-->
-<!--        android:icon="@drawable/ic_order_inactive" />-->
-<!--    -->
+        tools:ignore="MenuTitle" />
+
+
     <item
-        tools:ignore="MenuTitle"
         android:id="@+id/location"
-        android:title="@string/location"
         android:icon="@drawable/ic_location_inactive"
-        />
+        android:title="@string/location"
+        tools:ignore="MenuTitle" />
 </menu>

@@ -76,12 +76,12 @@ class SignUpActivity : AppCompatActivity() {
     }
 
     private fun setButtonRegister() {
-        binding.skipBtn.text = "Register"
+        binding.skipBtn.text = getString(R.string.register)
         viewModel.isSkip = false
     }
 
     private fun setButtonSkip() {
-        binding.skipBtn.text = "Skip"
+        binding.skipBtn.text = getString(R.string.skip)
         viewModel.isSkip = true
     }
 }

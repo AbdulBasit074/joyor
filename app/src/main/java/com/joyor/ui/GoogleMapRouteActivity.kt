@@ -22,7 +22,6 @@ import com.joyor.service.google.GoogleService
 import com.joyor.viewmodel.RouteViewModel
 import org.json.JSONObject
 
-
 class GoogleMapRouteActivity : AppCompatActivity(), OnMapReadyCallback, Results {
 
 

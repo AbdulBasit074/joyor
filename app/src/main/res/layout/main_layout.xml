@@ -26,10 +26,11 @@
                 android:id="@+id/back"
                 android:layout_width="@dimen/_40sdp"
                 android:layout_height="@dimen/_40sdp"
-                android:padding="@dimen/_10sdp"
-                android:visibility="gone"
+                android:contentDescription="@string/icon"
                 android:onClick="@{viewModelDetail::onBackClick}"
+                android:padding="@dimen/_10sdp"
                 android:src="@drawable/ic_back"
+                android:visibility="gone"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -38,6 +39,7 @@
                 android:id="@+id/logo"
                 android:layout_width="@dimen/_100sdp"
                 android:layout_height="wrap_content"
+                android:contentDescription="@string/icon"
                 android:src="@drawable/logo_white"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -49,15 +51,14 @@
                 android:layout_width="@dimen/_30sdp"
                 android:layout_height="match_parent"
                 android:layout_marginEnd="@dimen/_5sdp"
+                android:contentDescription="@string/icon"
                 android:onClick="@{viewModelDetail::onProfileClick}"
                 android:padding="@dimen/_5sdp"
                 android:src="@drawable/ic_profile"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
-
         </androidx.constraintlayout.widget.ConstraintLayout>
-
 
         <FrameLayout
             android:id="@+id/frameContainer"
@@ -73,12 +74,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/light_reddish"
+            android:padding="@dimen/_3sdp"
             android:theme="@style/BottomNavigationTheme"
             app:labelVisibilityMode="unlabeled"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:menu="@menu/bottom_menu"
-            />
-
-
+            app:menu="@menu/bottom_menu" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

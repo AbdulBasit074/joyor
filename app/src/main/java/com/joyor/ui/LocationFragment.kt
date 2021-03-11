@@ -11,8 +11,12 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
-import com.google.android.gms.maps.*
+import com.google.android.gms.maps.CameraUpdateFactory
+import com.google.android.gms.maps.GoogleMap
+import com.google.android.gms.maps.OnMapReadyCallback
+import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
+import com.google.android.gms.maps.model.LatLngBounds
 import com.google.android.gms.maps.model.MarkerOptions
 import com.joyor.R
 import com.joyor.adapter.DealerAdapterRv
@@ -32,7 +36,7 @@ class LocationFragment : Fragment(), OnMapReadyCallback {
     private lateinit var progressDialog: CustomProgressBar
 
     private var storeList: ArrayList<Store> = ArrayList()
-    private  var gMap: GoogleMap? = null
+    private var gMap: GoogleMap? = null
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -52,7 +56,7 @@ class LocationFragment : Fragment(), OnMapReadyCallback {
         val mapFragment: SupportMapFragment = childFragmentManager.findFragmentById(R.id.map) as SupportMapFragment
         mapFragment.getMapAsync(this)
         viewModel.progressBar.observe(requireActivity(), Observer {
-            if(it)
+            if (it)
                 progressDialog.show()
             else
                 progressDialog.dismiss()
@@ -84,26 +88,25 @@ class LocationFragment : Fragment(), OnMapReadyCallback {
 
     private fun updateMarker(store: ArrayList<Store>) {
         if (gMap != null) {
+
+            val builder = LatLngBounds.Builder()
             gMap!!.clear()
-            var focus = 0f
-            focus = if(store.size>1)
-                10f
-            else
-                15f
             store.forEach {
                 val markerOrigin = MarkerOptions().position(LatLng(it.lat!!, it.lng!!))
-                gMap!!.animateCamera(CameraUpdateFactory.newLatLngZoom(LatLng(it.lat!!, it.lng!!), focus))
+                builder.include(markerOrigin.position)
                 gMap!!.addMarker(markerOrigin)
             }
+            if (store.size > 0) {
+                val bounds = builder.build()
+                val cu = CameraUpdateFactory.newLatLngBounds(bounds, 20)
+                gMap!!.animateCamera(cu)
+            }
         }
-
     }
-
     private fun setProductAdapter() {
         binding.dealerList.adapter = adapter
         binding.dealerList.addItemDecoration(HorizontalDecoration())
     }
-
     override fun onMapReady(googleMap: GoogleMap?) {
         gMap = googleMap!!
     }

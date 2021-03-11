@@ -58,6 +58,7 @@ dependencies {
     // optional - Kotlin Extensions and Coroutines support for Room
     implementation "androidx.room:room-ktx:$room_version"
 
+
     // optional - Test helpers
     testImplementation "androidx.room:room-testing:$room_version"
 
@@ -90,6 +91,8 @@ dependencies {
     implementation 'com.google.android.gms:play-services-location:17.1.0'
     implementation 'com.google.android.libraries.places:places:2.4.0'
     implementation 'com.google.maps.android:maps-utils-ktx:2.4.0'
+    //SwipeLayout
+    implementation 'com.chauthai.swipereveallayout:swipe-reveal-layout:1.4.1'
 
 
 }

@@ -26,6 +26,13 @@ class EditProfileViewModel : ViewModel(), Results {
     var isLogout: MutableLiveData<Boolean> = MutableLiveData()
     var showToast: MutableLiveData<String> = MutableLiveData()
     var onBack: MutableLiveData<Boolean> = MutableLiveData()
+    var addressOpen: MutableLiveData<Boolean> = MutableLiveData()
+    var languageSelect: MutableLiveData<Boolean> = MutableLiveData()
+
+
+    fun onLanguageSelect() {
+        languageSelect.value = true
+    }
 
     fun onLogout() {
         isLogout.value = true
@@ -33,6 +40,10 @@ class EditProfileViewModel : ViewModel(), Results {
 
     fun onBackClick() {
         onBack.value = true
+    }
+
+    fun onAddressOpen() {
+        addressOpen.value = true
     }
 
     fun onUpdate() {

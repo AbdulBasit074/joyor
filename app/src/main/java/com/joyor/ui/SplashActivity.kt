@@ -29,6 +29,7 @@ class SplashActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.splash_activity)
         viewModel = ViewModelProviders.of(this).get(SplashViewModel::class.java)
+        viewModel.context = this
         Handler(Looper.getMainLooper()).postDelayed(Runnable {
             if (!androidx.preference.PreferenceManager.getDefaultSharedPreferences(this).getBoolean(Constants.signUpFirstShow, false))
                 moveToAndFinish(SignUpActivity::class.java)
@@ -43,7 +44,10 @@ class SplashActivity : AppCompatActivity() {
                 JoyorDb.newInstance(this).userDao().login(it!!)
                 moveToAndFinish(HomeActivity::class.java)
             } else if (it != null)
-                viewModel.getUserUpdateDetail()
+            {
+                viewModel.getUserUpdateAddress()
+
+            }
             else
                 moveToAndFinish(HomeActivity::class.java)
 

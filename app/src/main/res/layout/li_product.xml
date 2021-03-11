@@ -12,7 +12,6 @@
         <variable
             name="viewModel"
             type="com.joyor.viewmodel.ProductViewModel" />
-
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -39,6 +38,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/_3sdp"
+            android:clickable="true"
+            android:onClick="@{()->viewModel.onProductClick(model)}"
             android:padding="@dimen/_5sdp"
             app:cardCornerRadius="@dimen/_5sdp"
             app:cardElevation="4dp"
@@ -74,13 +75,11 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <androidx.recyclerview.widget.RecyclerView
-
                     android:id="@+id/productFeature"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="@dimen/_130sdp"
                     android:layout_marginStart="@dimen/_10sdp"
                     android:layout_marginEnd="@dimen/_10sdp"
-                    android:minHeight="@dimen/_130sdp"
                     android:orientation="vertical"
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                     app:layout_constraintBottom_toTopOf="@id/priceBtn"
@@ -91,7 +90,6 @@
                     android:id="@+id/priceBtn"
                     android:layout_width="@dimen/_50sdp"
                     android:layout_height="@dimen/_25sdp"
-
                     android:layout_marginBottom="@dimen/_10sdp"
                     android:background="@drawable/round_border_brown"
                     android:fontFamily="@font/futura_bold_font"

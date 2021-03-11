@@ -8,7 +8,6 @@
         <variable
             name="viewMOdel"
             type="com.joyor.viewmodel.LocationViewModel" />
-
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -26,7 +25,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_10sdp"
                 android:fontFamily="@font/futura_medium_bt"
-                android:text="Find Us"
+                android:text="@string/find_us"
                 android:textColor="@color/light_reddish"
                 android:textSize="@dimen/_15ssp"
                 android:textStyle="italic"
@@ -37,32 +36,34 @@
 
             <androidx.appcompat.widget.SearchView
                 android:id="@+id/searchEt"
+                style="@style/AppSearchView"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_25sdp"
-                android:background="@color/background_color"
                 android:layout_marginStart="@dimen/_20sdp"
                 android:layout_marginTop="@dimen/_5sdp"
-                style="@style/AppSearchView"
                 android:layout_marginEnd="@dimen/_20sdp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/findUsLabel"
+                android:background="@color/background_color"
                 android:textCursorDrawable="@null"
                 app:iconifiedByDefault="false"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/findUsLabel"
                 app:queryBackground="@null" />
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/containerMap"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/_100sdp"
+                android:layout_height="@dimen/_180sdp"
+                android:minHeight="@dimen/_80sdp"
                 android:layout_marginStart="@dimen/_30sdp"
                 android:layout_marginTop="@dimen/_10sdp"
                 android:layout_marginEnd="@dimen/_30sdp"
+                android:layout_marginBottom="@dimen/_20sdp"
                 app:cardCornerRadius="12dp"
                 app:cardElevation="1dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toTopOf="@id/dealerLabel"
                 app:layout_constraintTop_toBottomOf="@id/searchEt">
-
 
                 <fragment
                     android:id="@+id/map"
@@ -80,7 +81,7 @@
                 android:layout_marginTop="@dimen/_5sdp"
                 android:layout_marginBottom="@dimen/_5sdp"
                 android:fontFamily="@font/futura_medium_bt"
-                android:text="Our Official Dealer in Spain"
+                android:text="@string/our_dealer"
                 android:textAlignment="center"
                 android:textAllCaps="true"
                 android:textColor="@color/light_reddish"
@@ -94,8 +95,8 @@
                 android:id="@+id/dealerList"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:orientation="horizontal"
                 android:minHeight="@dimen/_140sdp"
+                android:orientation="horizontal"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -103,7 +104,5 @@
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
-
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

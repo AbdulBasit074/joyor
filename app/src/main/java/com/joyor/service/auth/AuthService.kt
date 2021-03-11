@@ -1,5 +1,6 @@
 package com.joyor.service.auth
 
+import com.joyor.model.Address
 import com.joyor.service.BaseService
 import com.joyor.service.Results
 import com.joyor.service.RetrofitClient
@@ -36,5 +37,10 @@ class AuthService(requestCode: Int, callBack: Results) : BaseService(requestCode
     fun userDetail(userId: Int) {
         RetrofitClient.getInstance().create(AuthClient::class.java).userDetail(userId).enqueue(this)
     }
-
+    fun getUserAddress(userId: Int) {
+        RetrofitClient.getInstance().create(AuthClient::class.java).getAddress(userId).enqueue(this)
+    }
+    fun addUserAddress(params: Address) {
+        RetrofitClient.getInstance().create(AuthClient::class.java).addAddress(params).enqueue(this)
+    }
 }

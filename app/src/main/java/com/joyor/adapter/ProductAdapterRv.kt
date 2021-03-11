@@ -37,7 +37,6 @@ class ProductAdapterRv(private val items: ArrayList<Product>, private val viewMo
             binding.model = item
             binding.viewModel = viewModel
             binding.productFeature.adapter = FeatureProductMainRv(item.specs)
-
         }
     }
 

@@ -1,6 +1,6 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Theme.Joyor" parent="Theme.AppCompat.Light.NoActionBar">
+    <style name="Theme.Joyor" parent="Theme.MaterialComponents.Light.NoActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/white</item>
         <item name="colorPrimaryVariant">@color/white</item>
@@ -14,10 +14,12 @@
 
         <!-- Customize your theme here. -->
     </style>
-    <style name="BottomNavigationTheme" parent="Theme.AppCompat.Light">
+    <style name="BottomNavigationTheme" parent="ThemeOverlay.MaterialComponents.Dark">
         <item name="colorPrimary">@color/select_tab</item>
         <item name="android:textColorSecondary">@color/white</item>
+
     </style>
+
     <style name="MyActionBar.MenuTextStyle" parent="Theme.AppCompat.Light.NoActionBar">
 
         <item name="android:src">@drawable/ic_profile</item>
