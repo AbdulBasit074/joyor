@@ -15,7 +15,6 @@ interface ProductDao {
     fun addToCartNotReplace(product: Product)
 
 
-
     @Query("SELECT * FROM Product WHERE id=:productId AND color_code=:colorCode LIMIT 1")
     fun containsProduct(productId: Int, colorCode: String): Product?
 
@@ -29,14 +28,17 @@ interface ProductDao {
 
 
     @Query("UPDATE product set quantity=:quantityUpdate WHERE id=:productId AND color_code=:color")
-    fun updateColorQuantity(quantityUpdate:Int,color:String,productId:Int)
+    fun updateColorQuantity(quantityUpdate: Int, color: String, productId: Int)
 
     @Query("UPDATE product set color_code=:colorCodeNew,color_name=:colorNameNew  WHERE id=:productId AND color_code=:colorOld")
-    fun updateColor(colorOld:String,colorCodeNew:String,colorNameNew:String,productId:Int)
+    fun updateColor(colorOld: String, colorCodeNew: String, colorNameNew: String, productId: Int)
 
 
     @Query("SELECT * FROM Product")
     fun getAllCartProduct(): List<Product>
+
+    @Query("DELETE FROM Product")
+    fun removeAllProducts()
 
 
 }

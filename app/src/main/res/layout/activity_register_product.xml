@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.joyor.viewmodel.RegisterProductViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.RegisterProduct">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/topHeader"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/light_reddish"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+            <ImageView
+                android:id="@+id/back"
+                android:layout_width="@dimen/_40sdp"
+                android:layout_height="@dimen/_40sdp"
+                android:contentDescription="@string/icon"
+                android:onClick="@{()->viewModel.onBack()}"
+                android:padding="@dimen/_10sdp"
+                android:src="@drawable/ic_back"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+            <ImageView
+                android:id="@+id/logoTop"
+                android:layout_width="@dimen/_100sdp"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/icon"
+                android:src="@drawable/logo_white"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+        <TextView
+            android:id="@+id/registerTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:fontFamily="@font/futura_bold_font"
+            android:text="@string/register_products"
+            android:layout_marginBottom="@dimen/_10sdp"
+            android:textColor="@color/light_reddish"
+            android:textSize="@dimen/_17ssp"
+            app:layout_constraintBottom_toTopOf="@id/productRegister"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/topHeader" />
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/productRegister"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+
+            android:orientation="vertical"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/registerTitle"
+            tools:listitem="@layout/li_register_product" />
+
+        <TextView
+            android:id="@+id/noRegister"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/futura_bold_font"
+            android:text="@string/no_register_products"
+            android:textAlignment="center"
+            android:textColor="@color/transparent_text"
+            android:textSize="@dimen/_17ssp"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/topHeader" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/addProduct"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_20sdp"
+            android:backgroundTint="@color/light_reddish"
+            android:contentDescription="@string/icon"
+            android:onClick="@{()->viewModel.addProduct()}"
+            android:src="@drawable/ic_plus"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:tint="@color/white" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

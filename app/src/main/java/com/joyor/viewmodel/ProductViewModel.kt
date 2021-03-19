@@ -1,9 +1,12 @@
 package com.joyor.viewmodel
 
+import android.content.Context
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
+import com.joyor.helper.Constants
+import com.joyor.helper.Persister
 import com.joyor.model.Product
 import com.joyor.service.Results
 import com.joyor.service.auth.StoreService
@@ -15,11 +18,7 @@ class ProductViewModel : ViewModel(), Results {
     var progressBar: MutableLiveData<Boolean> = MutableLiveData()
     var showToast: MutableLiveData<String> = MutableLiveData()
     private val productListRequest = 6623
-
-    init {
-        getProducts()
-    }
-
+    lateinit var context: Context
     private fun onShowProgress() {
         progressBar.value = true
     }
@@ -32,14 +31,18 @@ class ProductViewModel : ViewModel(), Results {
         product.value = productClick
     }
 
-    private fun getProducts() {
+   fun getProducts() {
         onShowProgress()
+        val productDataPersists = Persister.with(context).getPersisted(Constants.productDataPersists, null)
+        if (productDataPersists != null)
+            onSuccess(productListRequest, productDataPersists)
         StoreService(productListRequest, this).getProducts()
     }
 
     override fun onSuccess(requestCode: Int, data: String) {
         when (requestCode) {
             productListRequest -> {
+                Persister.with(context).persist(Constants.productDataPersists, data)
                 productListing.value = Gson().fromJson(data, object : TypeToken<ArrayList<Product>>() {}.type)
                 onDismissProgress()
             }

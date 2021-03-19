@@ -3,7 +3,6 @@ package com.joyor.service.setting
 import com.joyor.service.BaseService
 import com.joyor.service.Results
 import com.joyor.service.RetrofitClient
-import com.joyor.service.auth.StoreClient
 
 class SettingService(requestCode: Int, callBack: Results) : BaseService(requestCode, callBack) {
 
@@ -15,8 +14,17 @@ class SettingService(requestCode: Int, callBack: Results) : BaseService(requestC
         RetrofitClient.getInstance().create(SettingClient::class.java).getFaq().enqueue(this)
     }
 
-    fun sendContact(name: String, email: String, message: String) {
-        RetrofitClient.getInstance().create(SettingClient::class.java).sendContact(name, email, message).enqueue(this)
+    fun sendContact(
+        name: String,
+        email: String,
+        userId: Int?,
+        model: String?,
+        serialNumber: String?,
+        country: String?,
+        datePurchase: String?,
+        message: String
+    ) {
+        RetrofitClient.getInstance().create(SettingClient::class.java).sendContact(name, email,userId,model,serialNumber,country,datePurchase,message).enqueue(this)
     }
 
 }

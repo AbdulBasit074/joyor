@@ -10,7 +10,7 @@
 
         <variable
             name="viewModel"
-            type="com.joyor.viewmodel.LocationViewModel" />
+            type="com.joyor.viewmodel.DealerViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

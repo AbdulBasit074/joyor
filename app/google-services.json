@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "1090779626135",
+    "project_id": "joyor-8e3de",
+    "storage_bucket": "joyor-8e3de.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1090779626135:android:58b1852d1d79cb32fe07d2",
+        "android_client_info": {
+          "package_name": "com.joyorscooters.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1090779626135-048u5i2k6kilj1htek5ghmlfbu267e2s.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.joyorscooters.app",
+            "certificate_hash": "3dbb1c847262218fc623732a6c54cca743f787a6"
+          }
+        },
+        {
+          "client_id": "1090779626135-dpp8rshvl13rvduiacm1gk0o6i5rc472.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCFi5bwipGsySBM_SAI5FeDBVoCqMzmB1w"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1090779626135-dpp8rshvl13rvduiacm1gk0o6i5rc472.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "1090779626135-jh17o88ro6cokv999iu20fup3osv214f.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.joyorscooters.app"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

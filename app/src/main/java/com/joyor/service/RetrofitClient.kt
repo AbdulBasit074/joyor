@@ -46,13 +46,10 @@ class RetrofitClient {
                 clientBuilder.connectTimeout(timeOut, TimeUnit.SECONDS)
                 clientBuilder.readTimeout(timeOut, TimeUnit.SECONDS)
                 clientBuilder.writeTimeout(timeOut, TimeUnit.SECONDS)
-
                 clientBuilder.addInterceptor(HeaderInterceptor())
-
                 val loggingInterceptor = HttpLoggingInterceptor()
                 loggingInterceptor.level = HttpLoggingInterceptor.Level.BODY
                 clientBuilder.addInterceptor(loggingInterceptor)
-
                 val genericHeader = Interceptor {
                     val request = it.request().newBuilder()
                         .addHeader("Accept", "application/json").build()
@@ -104,7 +101,7 @@ class RetrofitClient {
             val newRequest = request.newBuilder()
                 .addHeader("Content-type", "application/json")
                 .addHeader("Accept", "application/json")
-                .addHeader("language", "en")
+                .addHeader("Accept-Language", "en")
                 .build()
             return chain.proceed(newRequest)
         }

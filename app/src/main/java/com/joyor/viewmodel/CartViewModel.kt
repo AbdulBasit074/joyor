@@ -9,7 +9,7 @@ import com.joyor.R
 import com.joyor.model.CouponDiscount
 import com.joyor.service.Results
 import com.joyor.service.order.OrderService
-import com.joyor.service.setting.SettingService
+
 
 class CartViewModel : ViewModel(), Results {
 
@@ -22,9 +22,13 @@ class CartViewModel : ViewModel(), Results {
     var showToast: MutableLiveData<String> = MutableLiveData()
     lateinit var context: Context
 
+    companion object {
+        var isCouponApply: Boolean = false
+    }
 
     init {
         couponCode.value = ""
+        isCouponApply = false
     }
 
     fun onCheckOut() {
@@ -33,8 +37,10 @@ class CartViewModel : ViewModel(), Results {
 
     fun applyCouponCode() {
         if (couponCode.value!!.isNotEmpty()) {
-            progressBar.value = true
-            OrderService(couponApplyRequest, this).getApplyCoupon(couponCode.value!!)
+            if (!isCouponApply) {
+                progressBar.value = true
+                OrderService(couponApplyRequest, this).getApplyCoupon(couponCode.value!!)
+            }
         } else {
             showToast.value = context.getString(R.string.coupon_required)
         }
@@ -44,6 +50,7 @@ class CartViewModel : ViewModel(), Results {
         progressBar.value = false
         val couponDiscount: ArrayList<CouponDiscount> = Gson().fromJson(data, object : TypeToken<ArrayList<CouponDiscount>>() {}.type)
         discountGot.value = couponDiscount[0].couponAmount
+        isCouponApply = true
     }
 
     override fun onFailure(requestCode: Int, data: String) {

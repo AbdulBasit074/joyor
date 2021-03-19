@@ -110,7 +110,7 @@ class HomeActivity : AppCompatActivity() {
                     }
 
                     R.id.location -> {
-                        loadFragment(LocationFragment())
+                        loadFragment(DealerFragment())
                         it.setIcon(R.drawable.ic_location_active)
                         return@OnNavigationItemSelectedListener true
                     }

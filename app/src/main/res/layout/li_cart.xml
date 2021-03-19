@@ -29,7 +29,7 @@
             android:id="@+id/deleteBtn"
             android:layout_width="@dimen/_80sdp"
             android:layout_height="match_parent"
-            android:background="@color/red"
+            android:background="@color/light_reddish"
             android:gravity="center"
             app:cardCornerRadius="@dimen/_15sdp"
             app:cardElevation="@dimen/_2sdp">

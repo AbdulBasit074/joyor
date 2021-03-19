@@ -23,11 +23,10 @@ class Address(
         @SerializedName("address_1") @Expose var address1: String? = "",
         @SerializedName("address_2") @Expose var address2: String? = "",
         @SerializedName("city") @Expose var city: String? = "",
-        @SerializedName("state") @Expose var state: String? = "",
         @SerializedName("postcode") @Expose var postcode: String? = "",
         @SerializedName("country") @Expose var country: String? = "",
         @SerializedName("email") @Expose var email: String? = "",
         @SerializedName("phone") @Expose var phone: String? = ""
-    ) {}
+        ) {}
 
 }

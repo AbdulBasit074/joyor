@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.joyor.viewmodel.RegisterNewProductViewModel" />
+
+
+    </data>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.PasswordUpdate">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/topHeader"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/light_reddish"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/back"
+                android:layout_width="@dimen/_40sdp"
+                android:layout_height="@dimen/_40sdp"
+                android:contentDescription="@string/icon"
+                android:onClick="@{()->viewModel.onBack()}"
+                android:padding="@dimen/_10sdp"
+                android:src="@drawable/ic_back"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/logoTop"
+                android:layout_width="@dimen/_100sdp"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/icon"
+                android:src="@drawable/logo_white"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <TextView
+            android:id="@+id/detailTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_15sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:fontFamily="@font/futura_bold_font"
+            android:text="@string/product_detail"
+            android:textColor="@color/light_reddish"
+            android:textSize="@dimen/_17ssp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/topHeader" />
+
+        <EditText
+            android:id="@+id/model"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_15sdp"
+            android:layout_marginTop="@dimen/_30sdp"
+            android:layout_marginEnd="@dimen/_15sdp"
+            android:autofillHints="Search"
+            android:background="@color/background_color"
+            android:fontFamily="@font/futura_medium_bt"
+            android:hint="@string/model"
+            android:inputType="text"
+            android:paddingStart="@dimen/_5sdp"
+            android:paddingTop="@dimen/_5sdp"
+            android:paddingBottom="@dimen/_5sdp"
+            android:singleLine="true"
+            android:text="@={viewModel.model}"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_13ssp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/detailTitle"
+            tools:ignore="RtlSymmetry" />
+
+        <EditText
+            android:id="@+id/serialTxt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_15sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_marginEnd="@dimen/_15sdp"
+            android:autofillHints="Search"
+            android:background="@color/background_color"
+            android:fontFamily="@font/futura_medium_bt"
+            android:hint="@string/serial_no"
+            android:inputType="text"
+            android:paddingStart="@dimen/_5sdp"
+            android:paddingTop="@dimen/_5sdp"
+            android:paddingBottom="@dimen/_5sdp"
+            android:singleLine="true"
+            android:text="@={viewModel.serialNumber}"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_13ssp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/model"
+            tools:ignore="RtlSymmetry" />
+
+        <TextView
+            android:id="@+id/country"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_15sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_marginEnd="@dimen/_15sdp"
+            android:autofillHints="Search"
+            android:background="@color/background_color"
+            android:fontFamily="@font/futura_medium_bt"
+            android:hint="@string/country"
+            android:onClick="@{()->viewModel.onCountrySelect()}"
+            android:paddingStart="@dimen/_5sdp"
+            android:paddingTop="@dimen/_5sdp"
+            android:paddingBottom="@dimen/_5sdp"
+            android:singleLine="true"
+            android:text="@={viewModel.country}"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_13ssp"
+            app:drawableEndCompat="@drawable/ic_drop_down"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/serialTxt"
+            tools:ignore="RtlSymmetry" />
+
+        <TextView
+            android:id="@+id/datePurchase"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_15sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_marginEnd="@dimen/_15sdp"
+            android:autofillHints="Search"
+            android:background="@color/background_color"
+            android:fontFamily="@font/futura_medium_bt"
+            android:hint="@string/date_purchase"
+            android:onClick="@{()->viewModel.onDateSelect()}"
+            android:paddingStart="@dimen/_5sdp"
+            android:paddingTop="@dimen/_5sdp"
+            android:paddingBottom="@dimen/_5sdp"
+            android:singleLine="true"
+            android:text="@={viewModel.purchaseDate}"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_13ssp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/country"
+            tools:ignore="RtlSymmetry" />
+
+        <TextView
+            android:id="@+id/addressBtn"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_30sdp"
+            android:layout_marginStart="@dimen/_40sdp"
+            android:layout_marginTop="@dimen/_40sdp"
+            android:layout_marginEnd="@dimen/_40sdp"
+            android:layout_marginBottom="@dimen/_5sdp"
+            android:background="@drawable/round_border_brown"
+            android:fontFamily="@font/futura_bold_font"
+            android:gravity="center"
+            android:onClick="@{()->viewModel.onProductRegister()}"
+            android:paddingStart="@dimen/_5sdp"
+            android:paddingEnd="@dimen/_5sdp"
+            android:text="@string/product_register"
+            android:textAllCaps="true"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_12ssp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/datePurchase" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

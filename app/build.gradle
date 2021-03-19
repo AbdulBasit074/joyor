@@ -2,6 +2,8 @@ plugins {
     id 'com.android.application'
     id 'kotlin-android'
     id 'kotlin-kapt'
+    id 'com.google.gms.google-services'
+    id 'com.google.firebase.crashlytics'
 }
 
 android {
@@ -80,9 +82,6 @@ dependencies {
     //Preference Manager
     implementation 'androidx.preference:preference-ktx:1.1.1'
 
-    //EVENT Bus
-    implementation 'org.greenrobot:eventbus:3.2.0'
-
     //ViewPager indicator
     implementation 'com.tbuonomo.andrui:viewpagerdotsindicator:4.1.2'
 
@@ -93,6 +92,23 @@ dependencies {
     implementation 'com.google.maps.android:maps-utils-ktx:2.4.0'
     //SwipeLayout
     implementation 'com.chauthai.swipereveallayout:swipe-reveal-layout:1.4.1'
+    //Brain Tree SDK
+    implementation 'com.braintreepayments.api:drop-in:3.7.1'
+    implementation 'com.braintreepayments.api:braintree:2.18.1'
+
+    //Event Bus
+    implementation 'org.greenrobot:eventbus:3.1.1'
+
+    //FireBase
+    implementation platform('com.google.firebase:firebase-bom:26.5.0')
+    implementation 'com.google.firebase:firebase-analytics-ktx'
+    implementation 'com.google.firebase:firebase-crashlytics-ktx'
+    implementation 'com.google.firebase:firebase-perf-ktx'
+    implementation 'com.google.firebase:firebase-messaging-ktx'
+    implementation 'com.google.firebase:firebase-perf-ktx'
+
+    //Presister
+    implementation 'androidx.preference:preference-ktx:1.1.1'
 
 
 }

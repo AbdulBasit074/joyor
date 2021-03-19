@@ -51,6 +51,12 @@
         <item>Spanish</item>
         <item>Portuguese</item>
     </string-array>
+    <string-array name="filter_list">
+        <item>Filter</item>
+        <item>Joyor Scooters</item>
+        <item>Accessories</item>
+        <item>Joyor Spare Parts</item>
+    </string-array>
 
     <string name="no_cart_item">"no se ha encontrado ningún artículo en el carrito "</string>
     <string name="subtotal">Sub total</string>

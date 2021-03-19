@@ -40,6 +40,10 @@ fun AppCompatActivity.moveToAndFinish(clazz: Class<*>) {
     finish()
 }
 
+fun Context.secondDecimal(float: Float): String {
+    return String.format("€%.2f", float)
+}
+
 fun AppCompatActivity.moveForResult(clazz: Class<*>, requestCode: Int) {
     startActivityForResult(Intent(this, clazz), requestCode)
 }
@@ -147,7 +151,7 @@ fun AppCompatActivity.getCurrentLocation(fields: ArrayList<Place.Field>, onLocat
     }
 }
 
-fun AppCompatActivity.setLanguage(language:String) {
+fun AppCompatActivity.setLanguage(language: String) {
     val displayMetrics = resources.displayMetrics
     val configuration = resources.configuration
     configuration.setLocale(Locale(language))

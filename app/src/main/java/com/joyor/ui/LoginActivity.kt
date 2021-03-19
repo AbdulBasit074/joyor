@@ -2,7 +2,6 @@ package com.joyor.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.transition.Transition
 import android.transition.TransitionManager
 import android.view.View
 import androidx.core.content.ContextCompat
@@ -11,8 +10,8 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.joyor.R
 import com.joyor.databinding.ActivityLoginBinding
+import com.joyor.helper.CustomProgressBar
 import com.joyor.helper.UserLoginEventBus
-import com.joyor.helper.moveTo
 import com.joyor.helper.showToast
 import com.joyor.model.room.JoyorDb
 import com.joyor.viewmodel.LoginSignUpViewModel
@@ -22,13 +21,16 @@ class LoginActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityLoginBinding
     private lateinit var viewModel: LoginSignUpViewModel
+    private lateinit var loading: CustomProgressBar
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_login)
+        loading = CustomProgressBar(this)
         viewModel = ViewModelProviders.of(this).get(LoginSignUpViewModel::class.java)
+        viewModel.context = this
         binding.viewModel = viewModel
-        viewModel.isLogin.observe(this, Observer { it ->
+        viewModel.isLogin.observe(this, Observer {
             TransitionManager.beginDelayedTransition(binding.parentView)
             if (it) {
                 binding.loginBtn.text = getString(R.string.login)
@@ -65,19 +67,31 @@ class LoginActivity : AppCompatActivity() {
                 binding.password.visibility = View.VISIBLE
             }
         })
-
+        viewModel.saveRegister.observe(this, Observer {
+            JoyorDb.newInstance(this).registerProduct().removeAll()
+            JoyorDb.newInstance(this).registerProduct().addRegisterProduct(it)
+        })
+        viewModel.showProgress.observe(this, Observer {
+            if (it)
+                loading.show()
+            else
+                loading.dismiss()
+        })
         viewModel.showToast.observe(this, Observer {
             showToast(it)
         })
-
         viewModel.isBack.observe(this, Observer { finish() })
-
+        viewModel.userAddress.observe(this, Observer {
+            if (it != null) {
+                JoyorDb.newInstance(this).addressDao().deleteAddress()
+                JoyorDb.newInstance(this).addressDao().addAddress(it)
+                finish()
+            }
+        })
         viewModel.user.observe(this, Observer {
             JoyorDb.newInstance(this).userDao().logOut()
             JoyorDb.newInstance(this).userDao().login(it)
             EventBus.getDefault().postSticky(UserLoginEventBus(it))
-            moveTo(HomeActivity::class.java)
         })
-
     }
 }

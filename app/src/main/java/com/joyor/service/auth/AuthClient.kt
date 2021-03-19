@@ -1,7 +1,6 @@
 package com.joyor.service.auth
 
 
-import okhttp3.Address
 import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.http.*
@@ -61,5 +60,13 @@ interface AuthClient {
         @Body body: com.joyor.model.Address
     ): Call<ResponseBody>
 
+    @FormUrlEncoded
+    @POST("update_user_password")
+    fun changePassword(
+        @Field("user_id") userId: Int,
+        @Field("old_password") oldPassword: String,
+        @Field("new_password") newPassword: String,
+        @Field("confirm_password") confirmPassword: String
+    ): Call<ResponseBody>
 
 }

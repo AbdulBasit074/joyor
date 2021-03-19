@@ -31,7 +31,6 @@ open class BaseService(
     }
 
     override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
-
         try {
             if (response.isSuccessful && response.body() != null) {
                 val responseBody = response.body()!!.string()

@@ -93,7 +93,7 @@
                     android:layout_marginBottom="@dimen/_10sdp"
                     android:background="@drawable/round_border_brown"
                     android:fontFamily="@font/futura_bold_font"
-                    android:text="@={model.price}"
+                    setTextCurrency="@{model.price}"
                     android:textColor="@color/white"
                     android:textSize="@dimen/_13ssp"
                     app:layout_constraintBottom_toBottomOf="parent"

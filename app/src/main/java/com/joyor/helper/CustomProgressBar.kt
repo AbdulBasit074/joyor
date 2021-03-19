@@ -5,7 +5,6 @@ import android.content.Context
 import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
-import android.view.View
 import androidx.databinding.DataBindingUtil
 import com.joyor.R
 import com.joyor.databinding.ProgressLayoutBinding

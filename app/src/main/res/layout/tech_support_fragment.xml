@@ -15,119 +15,227 @@
         android:layout_height="match_parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/formContainer"
+            android:id="@+id/noteForTechSupport"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/_30sdp"
-            android:layout_marginEnd="@dimen/_30sdp"
-            android:background="@drawable/border_support"
-            android:paddingBottom="@dimen/_50sdp"
+            android:layout_height="match_parent"
+            android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:ignore="HardcodedText,RtlSymmetry">
-
-            <EditText
-                android:id="@+id/name"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/_20sdp"
-                android:layout_marginTop="@dimen/_60sdp"
-                android:layout_marginEnd="@dimen/_20sdp"
-                android:autofillHints="Search"
-                android:background="@color/background_color"
-                android:fontFamily="@font/futura_medium_bt"
-                android:hint="@string/name"
-                android:inputType="textPersonName"
-                android:paddingStart="@dimen/_5sdp"
-                android:paddingTop="@dimen/_5sdp"
-                android:paddingBottom="@dimen/_5sdp"
-                android:text="@={viewModel.name}"
-                android:textColor="@color/black"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <EditText
-                android:id="@+id/email"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/_20sdp"
-                android:layout_marginTop="@dimen/_5sdp"
-                android:layout_marginEnd="@dimen/_20sdp"
-                android:autofillHints="Search"
-                android:background="@color/background_color"
-                android:fontFamily="@font/futura_medium_bt"
-                android:hint="@string/email"
-                android:inputType="textEmailAddress"
-                android:paddingStart="@dimen/_5sdp"
-                android:paddingTop="@dimen/_5sdp"
-                android:paddingBottom="@dimen/_5sdp"
-                android:text="@={viewModel.email}"
-                android:textColor="@color/black"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/name" />
-
-            <EditText
-                android:id="@+id/observation"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/_20sdp"
-                android:layout_marginTop="@dimen/_5sdp"
-                android:layout_marginEnd="@dimen/_20sdp"
-                android:autofillHints="Search"
-                android:background="@color/background_color"
-                android:fontFamily="@font/futura_medium_bt"
-                android:gravity="start"
-                android:hint="@string/message"
-                android:inputType="text"
-                android:isScrollContainer="true"
-                android:maxHeight="@dimen/_200sdp"
-                android:minHeight="@dimen/_100sdp"
-                android:paddingStart="@dimen/_5sdp"
-                android:paddingTop="@dimen/_5sdp"
-                android:paddingBottom="@dimen/_5sdp"
-                android:text="@={viewModel.message}"
-                android:textColor="@color/black"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/email" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <androidx.cardview.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/_60sdp"
-            android:layout_marginStart="@dimen/_60sdp"
-            android:layout_marginEnd="@dimen/_60sdp"
-            app:layout_constraintBottom_toTopOf="@id/formContainer"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@id/formContainer">
+            app:layout_constraintTop_toTopOf="parent">
 
             <TextView
-                android:id="@+id/labelTech"
-                android:layout_width="wrap_content"
+                android:id="@+id/titleLogin"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
+                android:layout_margin="@dimen/_20sdp"
                 android:fontFamily="@font/futura_bold_font"
-                android:text="@string/tech_support"
-                android:textAllCaps="true"
-                android:textColor="@color/light_reddish"
-                android:textSize="@dimen/_20sdp" />
-        </androidx.cardview.widget.CardView>
+                android:text="@string/for_any_support"
+                android:textAlignment="center"
+                android:textColor="@color/transparent_text"
+                android:textSize="@dimen/_17ssp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/sendBtn"
-            android:layout_width="@dimen/_70sdp"
-            android:layout_height="@dimen/_30sdp"
-            android:background="@drawable/round_border_brown"
-            android:onClick="@{()->viewModel.onClickSend()}"
-            android:text="@string/send"
-            android:textColor="@color/white"
-            app:layout_constraintBottom_toBottomOf="@id/formContainer"
-            app:layout_constraintEnd_toEndOf="parent"
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/loginBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/_30sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:background="@drawable/round_border_brown"
+                android:fontFamily="@font/futura_bold_font"
+                android:onClick="@{()->viewModel.onMoveForLogin()}"
+                android:text="@string/login"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_13ssp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/titleLogin" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/noteForTechSupportRegister"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/titleRegister"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_20sdp"
+                android:fontFamily="@font/futura_bold_font"
+                android:text="@string/for_any_support"
+                android:textAlignment="center"
+                android:textColor="@color/transparent_text"
+                android:textSize="@dimen/_17ssp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/registerProduct"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/_30sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:background="@drawable/round_border_brown"
+                android:fontFamily="@font/futura_bold_font"
+                android:onClick="@{()->viewModel.onMoveForRegisterProducts()}"
+                android:text="@string/register"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_13ssp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/titleRegister" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/techSupport"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/formContainer" />
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/formContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_30sdp"
+                android:layout_marginEnd="@dimen/_30sdp"
+                android:background="@drawable/border_support"
+                android:paddingBottom="@dimen/_50sdp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="HardcodedText,RtlSymmetry">
+
+                <TextView
+                    android:id="@+id/registerProductDialog"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_20sdp"
+                    android:layout_marginTop="@dimen/_60sdp"
+                    android:layout_marginEnd="@dimen/_20sdp"
+                    android:autofillHints="Search"
+                    android:background="@color/background_color"
+                    android:fontFamily="@font/futura_medium_bt"
+                    android:hint="@string/select_product"
+                    android:onClick="@{()->viewModel.onSelectProduct()}"
+                    android:paddingStart="@dimen/_5sdp"
+                    android:paddingTop="@dimen/_5sdp"
+                    android:paddingEnd="@dimen/_5sdp"
+                    android:paddingBottom="@dimen/_5sdp"
+                    android:singleLine="true"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_13ssp"
+                    app:drawableEndCompat="@drawable/ic_drop_down"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:ignore="RtlSymmetry" />
+
+                <EditText
+                    android:id="@+id/name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_20sdp"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:layout_marginEnd="@dimen/_20sdp"
+                    android:autofillHints="Search"
+                    android:background="@color/background_color"
+                    android:fontFamily="@font/futura_medium_bt"
+                    android:hint="@string/name"
+                    android:inputType="textPersonName"
+                    android:paddingStart="@dimen/_5sdp"
+                    android:paddingTop="@dimen/_5sdp"
+                    android:paddingBottom="@dimen/_5sdp"
+                    android:text="@={viewModel.name}"
+                    android:textColor="@color/black"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/registerProductDialog" />
+
+                <EditText
+                    android:id="@+id/email"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_20sdp"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:layout_marginEnd="@dimen/_20sdp"
+                    android:autofillHints="Search"
+                    android:background="@color/background_color"
+                    android:fontFamily="@font/futura_medium_bt"
+                    android:hint="@string/email"
+                    android:inputType="textEmailAddress"
+                    android:paddingStart="@dimen/_5sdp"
+                    android:paddingTop="@dimen/_5sdp"
+                    android:paddingBottom="@dimen/_5sdp"
+                    android:text="@={viewModel.email}"
+                    android:textColor="@color/black"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/name" />
+
+                <EditText
+                    android:id="@+id/observation"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_20sdp"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:layout_marginEnd="@dimen/_20sdp"
+                    android:autofillHints="Search"
+                    android:background="@color/background_color"
+                    android:fontFamily="@font/futura_medium_bt"
+                    android:gravity="start"
+                    android:hint="@string/message"
+                    android:inputType="text"
+                    android:isScrollContainer="true"
+                    android:maxHeight="@dimen/_200sdp"
+                    android:minHeight="@dimen/_100sdp"
+                    android:paddingStart="@dimen/_5sdp"
+                    android:paddingTop="@dimen/_5sdp"
+                    android:paddingBottom="@dimen/_5sdp"
+                    android:text="@={viewModel.message}"
+                    android:textColor="@color/black"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/email" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_60sdp"
+                android:layout_marginStart="@dimen/_60sdp"
+                android:layout_marginEnd="@dimen/_60sdp"
+                app:layout_constraintBottom_toTopOf="@id/formContainer"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/formContainer">
+
+                <TextView
+                    android:id="@+id/labelTech"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/futura_bold_font"
+                    android:text="@string/tech_support"
+                    android:textAllCaps="true"
+                    android:textColor="@color/light_reddish"
+                    android:textSize="@dimen/_20sdp" />
+            </androidx.cardview.widget.CardView>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/sendBtn"
+                android:layout_width="@dimen/_70sdp"
+                android:layout_height="@dimen/_30sdp"
+                android:background="@drawable/round_border_brown"
+                android:onClick="@{()->viewModel.onClickSend()}"
+                android:text="@string/send"
+                android:textColor="@color/white"
+                app:layout_constraintBottom_toBottomOf="@id/formContainer"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/formContainer" />
 
 
+        </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 </layout>

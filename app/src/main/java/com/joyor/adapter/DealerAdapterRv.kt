@@ -10,12 +10,12 @@ import androidx.recyclerview.widget.RecyclerView
 import com.joyor.R
 import com.joyor.databinding.LiDealerBinding
 import com.joyor.model.Store
-import com.joyor.viewmodel.LocationViewModel
+import com.joyor.viewmodel.DealerViewModel
 import java.util.*
 import kotlin.collections.ArrayList
 
 
-class DealerAdapterRv(private val items: ArrayList<Store>, private val viewModel: LocationViewModel) :
+class DealerAdapterRv(private val items: ArrayList<Store>, private val viewModel: DealerViewModel) :
     RecyclerView.Adapter<DealerAdapterRv.ViewHolder>(), Filterable {
     companion object {
         var filterStoreList = ArrayList<Store>()

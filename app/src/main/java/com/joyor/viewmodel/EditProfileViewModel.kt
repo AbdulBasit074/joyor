@@ -1,9 +1,12 @@
 package com.joyor.viewmodel
 
+import android.content.Context
 import android.view.View
+import androidx.databinding.Bindable
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.google.gson.Gson
+import com.joyor.R
 import com.joyor.helper.Constants
 import com.joyor.helper.moveTo
 import com.joyor.model.User
@@ -26,12 +29,31 @@ class EditProfileViewModel : ViewModel(), Results {
     var isLogout: MutableLiveData<Boolean> = MutableLiveData()
     var showToast: MutableLiveData<String> = MutableLiveData()
     var onBack: MutableLiveData<Boolean> = MutableLiveData()
+    var isProgress: MutableLiveData<Boolean> = MutableLiveData()
     var addressOpen: MutableLiveData<Boolean> = MutableLiveData()
     var languageSelect: MutableLiveData<Boolean> = MutableLiveData()
+    var changePassword: MutableLiveData<Boolean> = MutableLiveData()
+    var registerProduct: MutableLiveData<Boolean> = MutableLiveData()
+    lateinit var context: Context
 
+    fun onShowProgress() {
+        isProgress.value = true
+    }
+
+    fun onDismissProgress() {
+        isProgress.value = false
+    }
 
     fun onLanguageSelect() {
         languageSelect.value = true
+    }
+
+    fun onChangePassword() {
+        changePassword.value = true
+    }
+
+    fun onRegisterProduct() {
+        registerProduct.value = true
     }
 
     fun onLogout() {
@@ -74,17 +96,17 @@ class EditProfileViewModel : ViewModel(), Results {
     }
 
     private fun isInputOk(): Boolean {
-        if (user.value?.firstName == null || user.value?.firstName!!.isEmpty()) {
-            showToast.value = "Name is empty"
-            return false
+        return if (user.value?.firstName == null || user.value?.firstName!!.isEmpty()) {
+            showToast.value = context.getString(R.string.first_name_required)
+            false
         } else if (user.value?.lastName == null || user.value?.lastName!!.isEmpty()) {
-            showToast.value = "Sure Namer is empty"
-            return false
+            showToast.value = context.getString(R.string.last_name_required)
+            false
         } else if (user.value?.email == null || user.value?.email!!.isEmpty()) {
-            showToast.value = "Email is empty"
-            return false
+            showToast.value = context.getString(R.string.email_required)
+            false
         } else {
-            return true
+            true
         }
 
     }

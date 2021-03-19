@@ -101,7 +101,6 @@ class Product(
         }
 
 
-
         override fun writeToParcel(parcel: Parcel, flags: Int) {
             parcel.writeTypedList(options)
             parcel.writeString(name)
@@ -122,20 +121,25 @@ class Product(
         }
 
     }
+
     data class Option(
         @NotNull
         @SerializedName("code") @Expose var code: String = "",
-        @SerializedName("name") @Expose var name: String = ""
+        @SerializedName("name") @Expose var name: String = "",
+        @SerializedName("id") @Expose var id: Int = 0
     ) : Parcelable {
         constructor(parcel: Parcel) : this(
             parcel.readString()!!,
-            parcel.readString()!!
+            parcel.readString()!!,
+            (parcel.readValue(Int::class.java.classLoader)!! as? Int)!!
+
         ) {
         }
 
         override fun writeToParcel(parcel: Parcel, flags: Int) {
             parcel.writeString(code)
             parcel.writeString(name)
+            parcel.writeValue(id)
         }
 
         override fun describeContents(): Int {
@@ -152,6 +156,7 @@ class Product(
             }
         }
     }
+
     data class Spec(
         @SerializedName("key") @Expose var key: String? = null,
         @SerializedName("value") @Expose var value: String? = null

@@ -18,8 +18,13 @@ interface SettingClient {
     @FormUrlEncoded
     @POST("submit_data")
     fun sendContact(
-        @Field("name") name: String,
-        @Field("email") email: String,
+        @Field("your-name") name: String,
+        @Field("your-email") email: String,
+        @Field("user_id") userId: Int?,
+        @Field("model") model: String?,
+        @Field("serial_number") serialNumber: String?,
+        @Field("country") country: String?,
+        @Field("date_purchase") datePurchase: String?,
         @Field("message") message: String
     ): Call<ResponseBody>
 

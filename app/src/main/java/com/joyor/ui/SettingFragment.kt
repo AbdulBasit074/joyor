@@ -34,11 +34,12 @@ class SettingFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         viewModel = ViewModelProviders.of(this).get(SettingViewModel::class.java)
         progressDialog = CustomProgressBar(requireContext())
+        viewModel.context = requireContext()
         binding.viewModel = viewModel
 
 
         viewModel.settingListing.observe(requireActivity(), Observer {
-            settingListUpdated.removeAll(settingListUpdated)
+            settingListUpdated.clear()
             settingListUpdated.addAll(it)
             binding.settingList.adapter!!.notifyDataSetChanged()
         })
@@ -57,9 +58,8 @@ class SettingFragment : Fragment() {
             else
                 progressDialog.dismiss()
         })
-
         setAdapter()
-
+        viewModel.getSettingList()
     }
 
     private fun setAdapter() {

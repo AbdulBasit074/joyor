@@ -11,6 +11,7 @@ import com.joyor.model.Address
 import com.joyor.model.Product
 import com.joyor.model.Setting
 import com.joyor.model.User
+import com.joyor.model.room.JoyorDb
 import com.joyor.service.Results
 import com.joyor.service.auth.AuthService
 import com.joyor.service.setting.SettingService
@@ -23,16 +24,22 @@ class AddressViewModel : ViewModel(), Results {
     var isBack: MutableLiveData<Boolean> = MutableLiveData()
     var isCountrySelect: MutableLiveData<Boolean> = MutableLiveData()
     var showToast: MutableLiveData<String> = MutableLiveData()
+    var showProgress: MutableLiveData<Boolean> = MutableLiveData()
     var isOrderPlace: MutableLiveData<Boolean> = MutableLiveData()
     lateinit var context: Context
     private var addAddressRequest: Int = 2811
 
-    init {
-        userAddress.value = Address()
+    private fun onShowProgress() {
+        showProgress.value = true
+    }
+
+    private fun onDismissProgress() {
+        showProgress.value = false
     }
 
     fun onPressAddress() {
         if (allInputIsOk()) {
+            onShowProgress()
             userAddress.value!!.userId = userLogged.value!!.iD
             AuthService(addAddressRequest, this).addUserAddress(userAddress.value!!)
         }
@@ -45,7 +52,6 @@ class AddressViewModel : ViewModel(), Results {
                 showToast.value = context.getString(R.string.first_name_required)
                 return false
             }
-
             userAddress.value!!.billing!!.lastName!!.isEmpty() -> {
                 showToast.value = context.getString(R.string.last_name_required)
                 return false
@@ -60,10 +66,6 @@ class AddressViewModel : ViewModel(), Results {
             }
             userAddress.value!!.billing!!.city!!.isEmpty() -> {
                 showToast.value = context.getString(R.string.town_required)
-                return false
-            }
-            userAddress.value!!.billing!!.state!!.isEmpty() -> {
-                showToast.value = context.getString(R.string.state_required)
                 return false
             }
             userAddress.value!!.billing!!.postcode!!.isEmpty() -> {
@@ -92,10 +94,18 @@ class AddressViewModel : ViewModel(), Results {
     }
 
     override fun onSuccess(requestCode: Int, data: String) {
-        showToast.value = "Address Added"
+        onDismissProgress()
+        when (requestCode) {
+            addAddressRequest -> {
+                showToast.value = context.getString(R.string.add_address)
+                JoyorDb.newInstance(context).addressDao().deleteAddress()
+                JoyorDb.newInstance(context).addressDao().addAddress(userAddress.value!!)
+            }
+        }
     }
 
     override fun onFailure(requestCode: Int, data: String) {
+        onDismissProgress()
         showToast.value = data
     }
 }

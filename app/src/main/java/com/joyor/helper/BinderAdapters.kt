@@ -49,3 +49,16 @@ fun setTextHtml(textView: TextView, src: String) {
 fun setTextAbout(textView: TextView, src: String) {
     textView.text = textView.context.getString(R.string.about, src)
 }
+
+@BindingAdapter("setTextCurrency")
+fun setTextCurrency(textView: TextView, price: String) {
+    textView.text = textView.context.getString(R.string.currency, price)
+}
+
+@BindingAdapter("setDate")
+fun setDate(textView: TextView, date: String) {
+    var date = date.split(" ")
+    textView.text = (date[0])
+}
+
+

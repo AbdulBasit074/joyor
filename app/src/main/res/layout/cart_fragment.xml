@@ -25,6 +25,22 @@
             app:layout_constraintTop_toTopOf="parent"
             tools:listitem="@layout/li_cart" />
 
+        <TextView
+            android:id="@+id/noItem"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/_90sdp"
+            android:fontFamily="@font/futura_bold_font"
+            android:text="@string/no_cart_item"
+            android:textAlignment="center"
+            android:textColor="@color/transparent_text"
+            android:textSize="@dimen/_17ssp"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
         <androidx.cardview.widget.CardView
             android:id="@+id/checkOutPhase"
             android:layout_width="match_parent"
@@ -40,15 +56,18 @@
 
                 <EditText
                     android:id="@+id/couponCode"
-                    android:layout_width="@dimen/_100sdp"
+                    android:layout_width="wrap_content"
                     android:layout_height="@dimen/_25sdp"
                     android:layout_marginStart="@dimen/_10sdp"
                     android:layout_marginTop="@dimen/_10sdp"
+                    android:layout_marginEnd="@dimen/_5sdp"
                     android:autofillHints="Search"
                     android:background="@drawable/border_coupon"
                     android:fontFamily="@font/futura_medium_bt"
                     android:hint="@string/coupon_code"
                     android:inputType="text"
+                    android:paddingStart="@dimen/_5sdp"
+                    android:paddingEnd="@dimen/_5sdp"
                     android:text="@={viewModel.couponCode}"
                     android:textAlignment="center"
                     android:textColor="@color/transparent_text"
@@ -58,7 +77,7 @@
 
                 <TextView
                     android:id="@+id/couponApplyBtn"
-                    android:layout_width="@dimen/_100sdp"
+                    android:layout_width="wrap_content"
                     android:layout_height="@dimen/_25sdp"
                     android:layout_marginStart="@dimen/_10sdp"
                     android:layout_marginTop="@dimen/_10sdp"
@@ -67,6 +86,8 @@
                     android:fontFamily="@font/futura_medium_bt"
                     android:gravity="center"
                     android:onClick="@{()->viewModel.applyCouponCode()}"
+                    android:paddingStart="@dimen/_5sdp"
+                    android:paddingEnd="@dimen/_5sdp"
                     android:text="@string/apply_coupon"
                     android:textAlignment="center"
                     android:textColor="@color/transparent_text"
@@ -98,12 +119,12 @@
                     android:textSize="@dimen/_13ssp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/couponCode" />
+
                 <TextView
                     android:id="@+id/discountTitle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/_10sdp"
-                    android:visibility="gone"
                     android:layout_marginTop="@dimen/_10sdp"
                     android:fontFamily="@font/futura_bold_font"
                     android:text="@string/discount_amount"
@@ -119,7 +140,7 @@
                     android:layout_marginTop="@dimen/_10sdp"
                     android:layout_marginEnd="@dimen/_10sdp"
                     android:fontFamily="@font/futura_bold_font"
-                    android:visibility="gone"
+                    android:text="@string/no_amount"
                     android:textColor="@color/transparent_text"
                     android:textSize="@dimen/_13ssp"
                     app:layout_constraintEnd_toEndOf="parent"

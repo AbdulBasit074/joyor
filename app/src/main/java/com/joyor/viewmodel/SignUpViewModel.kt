@@ -61,20 +61,20 @@ class SignUpViewModel : ViewModel(), Results {
     }
 
     private fun isInputOk(): Boolean {
-        if (name.value == null || name.value!!.isEmpty()) {
+        return if (name.value == null || name.value!!.isEmpty()) {
             showToast.value = "Name is empty"
-            return false
+            false
         } else if (nameSure.value == null || nameSure.value!!.isEmpty()) {
             showToast.value = "Sure Namer is empty"
-            return false
+            false
         } else if (email.value == null || email.value!!.isEmpty()) {
             showToast.value = "Email is empty"
-            return false
+            false
         } else if (password.value == null || password.value!!.isEmpty()) {
             showToast.value = "Password is empty"
-            return false
+            false
         } else {
-            return true
+            true
         }
 
     }

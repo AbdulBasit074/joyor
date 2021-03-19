@@ -42,7 +42,7 @@ class CartAdapterRv(private val context: Context, private val items: ArrayList<P
                 if (item.quantity != 1)
                     item.quantity = item.quantity - 1
                 binding.count.text = item.quantity.toString()
-                binding.totalAmount.text = (item.price!!.toInt() * item.quantity.toInt()).toString()
+                binding.totalAmount.text = (item.price!!.toInt() * item.quantity).toString()
                 JoyorDb.newInstance(context).productDao().updateProduct(item)
 
                 changeCallBack()
@@ -50,7 +50,7 @@ class CartAdapterRv(private val context: Context, private val items: ArrayList<P
             binding.plus.setOnClickListener {
                 item.quantity = item.quantity + 1
                 binding.count.text = item.quantity.toString()
-                binding.totalAmount.text = (item.price!!.toInt() * item.quantity.toInt()).toString()
+                binding.totalAmount.text = (item.price!!.toInt() * item.quantity).toString()
                 JoyorDb.newInstance(context).productDao().updateProduct(item)
                 changeCallBack()
             }
@@ -60,7 +60,7 @@ class CartAdapterRv(private val context: Context, private val items: ArrayList<P
             }
             if (item.variations?.options != null)
                 binding.colorRv.adapter = ColorAdapterOrderRv(item.variations?.options, item) { option -> onColorChange(option, item) }
-            binding.totalAmount.text = (item.price!!.toInt() * item.quantity.toInt()).toString()
+            binding.totalAmount.text = context.getString(R.string.currency, (item.price!!.toInt() * item.quantity).toString())
             binding.count.text = item.quantity.toString()
         }
 

@@ -9,6 +9,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.joyor.R
 import com.joyor.databinding.ActivityAddressBinding
+import com.joyor.helper.CustomProgressBar
 import com.joyor.helper.customTextView
 import com.joyor.helper.showToast
 import com.joyor.model.room.JoyorDb
@@ -21,25 +22,34 @@ class AddressActivity : AppCompatActivity() {
     private lateinit var binding: ActivityAddressBinding
     private lateinit var viewModel: AddressViewModel
     private val countries = ArrayList<String>()
+    private lateinit var progressBar: CustomProgressBar
     private var countrySelect: Int = -1
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_address)
         viewModel = ViewModelProviders.of(this).get(AddressViewModel::class.java)
+        progressBar = CustomProgressBar(this)
         viewModel.context = this
         viewModel.userAddress.value = JoyorDb.newInstance(this).addressDao().getUserAddress()
         viewModel.userLogged.value = JoyorDb.newInstance(this).userDao().getLoggedUser()
         binding.viewModel = viewModel
         getCountryFromLocale()
         viewModel.userAddress.observe(this, Observer {
-            if (it!=null && it.userId != 0) {
+            if (it != null && it.userId != 0) {
                 binding.addressBtn.text = getString(R.string.update_address)
             }
         })
         viewModel.isCountrySelect.observe(this, Observer {
             countrySelect()
         })
+        viewModel.showProgress.observe(this, Observer {
+            if (it)
+                progressBar.show()
+            else
+                progressBar.dismiss()
 
+
+        })
         viewModel.isBack.observe(this, Observer {
             if (it) {
                 finish()
@@ -52,6 +62,7 @@ class AddressActivity : AppCompatActivity() {
     }
 
     private fun getCountryFromLocale() {
+        /**get Countries from local*/
         val locales = Locale.getAvailableLocales()
         for (locale in locales) {
             val country = locale.displayCountry

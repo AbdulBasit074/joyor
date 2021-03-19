@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:tools="http://schemas.android.com/tools">
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
@@ -12,11 +13,35 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+        <Spinner
+            android:id="@+id/spinner"
+            android:layout_width="match_parent"
+            android:layout_height="?actionBarSize"
+            android:backgroundTint="@color/light_reddish"
+            android:drawSelectorOnTop="true"
+            android:dropDownVerticalOffset="?actionBarSize"
+            android:paddingStart="@dimen/_10sdp"
+            android:spinnerMode="dropdown"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="RtlSymmetry" />
+
+        <View
+            android:id="@+id/divider"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/divider"
+            app:layout_constraintTop_toBottomOf="@id/spinner" />
+
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/productList"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/divider"
             tools:listitem="@layout/li_product" />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

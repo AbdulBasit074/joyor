@@ -63,6 +63,20 @@
                 android:layout_height="0dp"
                 android:paddingBottom="@dimen/_80sdp">
 
+                <TextView
+                    android:id="@+id/addressTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_15sdp"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:layout_marginBottom="@dimen/_10sdp"
+                    android:fontFamily="@font/futura_bold_font"
+                    android:text="@string/address_detail"
+                    android:textColor="@color/light_reddish"
+                    android:textSize="@dimen/_17ssp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
                 <EditText
                     android:id="@+id/firstNameEt"
                     android:layout_width="@dimen/_130sdp"
@@ -84,7 +98,7 @@
                     android:textColor="@color/black"
                     android:textSize="@dimen/_13ssp"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toBottomOf="@id/addressTitle" />
 
                 <EditText
                     android:id="@+id/lastNameEt"
@@ -105,7 +119,8 @@
                     android:textColor="@color/black"
                     android:textSize="@dimen/_13ssp"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/addressTitle"
+
                     tools:ignore="RtlSymmetry" />
 
                 <EditText
@@ -203,29 +218,6 @@
                     tools:ignore="RtlSymmetry" />
 
                 <EditText
-                    android:id="@+id/stateCountryEt"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/_15sdp"
-                    android:layout_marginTop="@dimen/_15sdp"
-                    android:layout_marginEnd="@dimen/_15sdp"
-                    android:autofillHints="Search"
-                    android:background="@color/background_color"
-                    android:fontFamily="@font/futura_medium_bt"
-                    android:hint="@string/state_country"
-                    android:inputType="text"
-                    android:paddingStart="@dimen/_5sdp"
-                    android:paddingTop="@dimen/_5sdp"
-                    android:paddingBottom="@dimen/_5sdp"
-                    android:singleLine="true"
-                    android:text="@={viewModel.userAddress.billing.state}"
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/_13ssp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/townCityEt"
-                    tools:ignore="RtlSymmetry" />
-
-                <EditText
                     android:id="@+id/postCodeZipEt"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -245,7 +237,7 @@
                     android:textColor="@color/black"
                     android:textSize="@dimen/_13ssp"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/stateCountryEt"
+                    app:layout_constraintTop_toBottomOf="@id/townCityEt"
                     tools:ignore="RtlSymmetry" />
 
                 <EditText
@@ -305,10 +297,10 @@
                     android:background="@drawable/round_border_brown"
                     android:fontFamily="@font/futura_bold_font"
                     android:gravity="center"
-                    android:text="@string/add_address"
                     android:onClick="@{()->viewModel.onPressAddress()}"
                     android:paddingStart="@dimen/_5sdp"
                     android:paddingEnd="@dimen/_5sdp"
+                    android:text="@string/add_address"
                     android:textAllCaps="true"
                     android:textColor="@color/white"
                     android:textSize="@dimen/_12ssp"

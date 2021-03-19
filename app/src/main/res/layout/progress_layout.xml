@@ -11,6 +11,7 @@
         <ProgressBar
             android:id="@+id/progressBar"
             android:layout_width="wrap_content"
+            android:indeterminateTint="@color/light_reddish"
             android:layout_height="wrap_content"
             android:padding="@dimen/_20sdp" />
     </androidx.cardview.widget.CardView>
