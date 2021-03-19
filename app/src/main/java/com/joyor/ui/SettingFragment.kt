@@ -61,7 +61,6 @@ class SettingFragment : Fragment() {
         setAdapter()
         viewModel.getSettingList()
     }
-
     private fun setAdapter() {
         binding.settingList.adapter = SettingAdapterRv(settingListUpdated, viewModel)
     }

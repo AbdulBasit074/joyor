@@ -1,7 +1,6 @@
 package com.joyor.ui
 
 import android.os.Bundle
-import android.widget.ArrayAdapter
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
@@ -19,7 +18,7 @@ class EditProfileActivity : AppCompatActivity() {
 
     private lateinit var viewModel: EditProfileViewModel
     private lateinit var binding: EditProfileActivityBinding
-    private var language = arrayOf("en", "fr", "pt", "es")
+    private var language = arrayOf("en", "es")
     private lateinit var loading: CustomProgressBar
 
 
@@ -35,8 +34,6 @@ class EditProfileActivity : AppCompatActivity() {
             moveTo(AddressActivity::class.java)
         })
 
-        viewModel
-
         viewModel.user.observe(this, Observer {
             if (it != null) {
                 JoyorDb.newInstance(this).userDao().logOut()
@@ -47,7 +44,7 @@ class EditProfileActivity : AppCompatActivity() {
         viewModel.languageSelect.observe(this, Observer {
             selectLanguage()
         })
-        viewModel.showToast.observe(this, Observer { it ->
+        viewModel.showToast.observe(this, Observer {
             showToast(it)
         })
         viewModel.isLogout.observe(this, Observer {
@@ -75,17 +72,23 @@ class EditProfileActivity : AppCompatActivity() {
             showToast(getString(R.string.update_address))
         })
     }
+
     private fun selectLanguage() {
-        val builder = AlertDialog.Builder(this)
-        val adapter = ArrayAdapter(this, R.layout.support_simple_spinner_dropdown_item, resources.getStringArray(R.array.country))
-        builder.setAdapter(adapter) { _, which ->
-            setLanguage(language[which])
+
+        val builder = AlertDialog.Builder(this, R.style.DialogTheme)
+        var selectedItem = 0
+        if (Persister.with(this).getPersisted(Constants.selectedLanguage, "en") != "en")
+            selectedItem = 1
+        builder.setSingleChoiceItems(resources.getStringArray(R.array.lang), selectedItem) { _, which ->
+            Persister.with(this).persist(Constants.selectedLanguage, language[which])
+            setLanguage()
             moveTo(HomeActivity::class.java)
             finishAffinity()
         }
         val dialog = builder.create()
         dialog.setCustomTitle(binding.root.context.customTextView(getString(R.string.select_country)))
         dialog.show()
+
     }
 
 }

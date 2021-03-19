@@ -24,6 +24,7 @@ class Constants {
         const val cheque: String = "cheque"
         const val brainTreePaypal: String = "braintree_paypal"
         const val clientToken: String = "clientToken"
+        const val selectedLanguage: String = "selectedLanguage"
         const val consumerKey: String = "ck_f98ffa65905adc453ae1b0b9b33ea56e50ca9f3d"
         const val emailPattern: String = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+"
         const val consumerSecret: String = "cs_f191226a6faaaea35d893d8a708644e7b1e0c341"

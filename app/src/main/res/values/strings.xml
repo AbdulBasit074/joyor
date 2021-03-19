@@ -11,25 +11,10 @@
     <string name="user">user</string>
     <string name="let_start">Lets start</string>
     <string name="destination">Destination</string>
-    <string name="filter">Filter</string>
-    <string name="cancle_process">Cancle Process</string>
-    <string name="new_password">New Password</string>
-    <string name="old_password">Old Password</string>
-    <string name="confirm_password">Confirm Password</string>
 
-    <string name="register_product">Registered Products</string>
     <string name="your_location">Your Location</string>
 
 
-    <string name="model">Model</string>
-    <string name="serial_no">Serial Number</string>
-    <string name="country">Country</string>
-    <string name="date_purchase">Date Purchase</string>
-    <string name="product_register_succuessfully">Product Register Successfully</string>
-    <string name="model_">Model:</string>
-    <string name="serial_no_">Serial Number:</string>
-    <string name="country_">Country:</string>
-    <string name="date_purchase_">Date Purchase:</string>
 
     <string name="icon">icon</string>
     <string name="start">Start</string>
@@ -46,67 +31,36 @@
     <string name="last_name">Last Name</string>
     <string name="company_name">Company Name(Optional)</string>
     <string name="add_address">Add Address</string>
-    <string name="address_detail">Address Detail</string>
-    <string name="no_amount">€0.0</string>
-    <string name="product_register">Register Product</string>
-    <string name="product_detail">Product Detail</string>
-    <string name="d">Product Detail</string>
-    <string name="date_format"> 1%$s - 2%$s - 3%$s</string>
     <string name="update_address">Update Address</string>
-    <string name="password_change_successfully">Password Change Successfully</string>
     <string name="address">Address</string>
-    <string name="profile_profile">Profile Update</string>
-    <string name="change_password">Change Password</string>
-    <string name="reset_password">Reset Password</string>
-    <string name="model_required">Model is Required</string>
-    <string name="serial_required">Serial Number is Required</string>
-    <string name="date_required">Date is Required</string>
+
     <string name="online">Online</string>
     <string name="town_city">Town / City</string>
     <string name="state_country">State / Country</string>
     <string name="billing_detail">Billing Detail</string>
-    <string name="register_products">Registered Products</string>
     <string name="additional_information">Additional Information</string>
     <string name="payment_method">Payment Method</string>
     <string name="post_zip">Postcode / ZIP</string>
     <string name="select_country">Select Country</string>
-    <string name="select_product">Select Product</string>
-    <string name="euro_currency">EUR</string>
+
     <string name="place_order">Place Order</string>
     <string name="order_notes">Notes about your order(Optional)</string>
-    <string name="order_place_successfully">Order Place Successfully</string>
-    <string name="name_required">Name is Required</string>
+
     <string name="first_name_required">First name is Required</string>
     <string name="last_name_required">Last name is Required</string>
     <string name="phone_required">Phone is Required</string>
     <string name="country_required">Country is Required</string>
     <string name="street_required">Street Address is Required</string>
     <string name="street_address">Street Address</string>
-    <string name="for_any_support"> You Must Register Your Product &amp; Login For Tech Support</string>
     <string name="town_required">Town/City is Required</string>
     <string name="state_required">State is Required</string>
     <string name="post_required">PostCode is Required</string>
     <string name="email_required">Email is Required</string>
     <string name="password_required">Password is Required</string>
-
-    <string name="old_password_required">Old Password is Required</string>
-    <string name="confirm_password_required">Confirm Password is Required</string>
-    <string name="new_password_required">New Password is Required</string>
-
     <string name="coupon_required">Coupon is Required</string>
-    <string name="pal_login">Paypal Login</string>
-    <string name="ok_key">Ok</string>
-    <string-array name="country">
+    <string-array name="lang">
         <item>English</item>
-        <item>French</item>
         <item>Spanish</item>
-        <item>Portuguese</item>
-    </string-array>
-    <string-array name="filter_list">
-        <item>Filter</item>
-        <item>Joyor Scooters</item>
-        <item>Accessories</item>
-        <item>Joyor Spare Parts</item>
     </string-array>
     <string name="name">Name*</string>
     <string name="sure_name">Sure Name*</string>
@@ -122,9 +76,6 @@
     <string name="our_dealer">Our Official Dealer </string>
     <string name="skip">Skip</string>
     <string name="message">Message</string>
-    <string name="message_required">Message is Required</string>
-    <string name="register_product_required">Select Registered Product</string>
-    <string name="no_register_products">No Registered Products</string>
     <string name="send">Send</string>
     <string name="gps">GPS</string>
     <string name="update">Update</string>
@@ -132,10 +83,63 @@
     <string name="website">Website</string>
     <string name="add_to_cart">Add to Cart</string>
     <string name="about">About %1$s</string>
-    <string name="currency">€%1$s</string>
     <string name="language">Language</string>
     <string name="no_cart_item">No Cart Item Found</string>
     <string name="cash_on_delivery">Cash on delivery</string>
     <string name="tech_support">Tech Support</string>
     <string name="product_added">Product added in Cart</string>
+
+    <string-array name="filter_list">
+        <item>Filter</item>
+        <item>Joyor Scooters</item>
+        <item>Accessories</item>
+        <item>Joyor Spare Parts</item>
+    </string-array>
+
+
+
+    <string name="filter">Filter</string>
+    <string name="cancle_process">Cancle Process</string>
+    <string name="new_password">New Password</string>
+    <string name="old_password">Old Password</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="register_product">Registered Products</string>
+    <string name="model">Model</string>
+    <string name="serial_no">Serial Number</string>
+    <string name="country">Country</string>
+    <string name="date_purchase">Date Purchase</string>
+    <string name="product_register_succuessfully">Product Register Successfully</string>
+    <string name="model_">Model:</string>
+    <string name="serial_no_">Serial Number:</string>
+    <string name="country_">Country:</string>
+    <string name="date_purchase_">Date Purchase:</string>
+    <string name="address_detail">Address Detail</string>
+    <string name="no_amount">€0.0</string>
+    <string name="product_register">Register Product</string>
+    <string name="product_detail">Product Detail</string>
+    <string name="password_change_successfully">Password Change Successfully</string>
+    <string name="profile_profile">Profile Update</string>
+    <string name="change_password">Change Password</string>
+    <string name="reset_password">Reset Password</string>
+    <string name="model_required">Model is Required</string>
+    <string name="serial_required">Serial Number is Required</string>
+    <string name="date_required">Date is Required</string>
+    <string name="select_product">Select Product</string>
+    <string name="euro_currency">EUR</string>
+    <string name="register_products">Registered Products</string>
+    <string name="order_place_successfully">Order Place Successfully</string>
+    <string name="name_required">Name is Required</string>
+    <string name="old_password_required">Old Password is Required</string>
+    <string name="for_any_support"> You Must Register Your Product &amp; Login For Tech Support</string>
+    <string name="confirm_password_required">Confirm Password is Required</string>
+    <string name="new_password_required">New Password is Required</string>
+    <string name="new_password_old_password">Entered Password Not Match</string>
+    <string name="pal_login">Paypal Login</string>
+    <string name="ok_key">OK</string>
+    <string name="message_required">Message is Required</string>
+    <string name="currency">€%1$s</string>
+    <string name="register_product_required">Select Registered Product</string>
+    <string name="no_register_products">No Registered Products</string>
+
+
 </resources>

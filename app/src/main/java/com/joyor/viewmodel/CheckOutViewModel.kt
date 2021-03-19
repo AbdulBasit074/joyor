@@ -126,7 +126,7 @@ class CheckOutViewModel : ViewModel(), Results {
              * otherwise order place directly
              */
 
-            if (userLogged != null && (userAddress.value == null || userAddress.value!!.billing!!.firstName != addressSave!!.billing!!.firstName || userAddress.value!!.billing!!.country != addressSave!!.billing!!.country || userAddress.value!!.billing!!.email != addressSave!!.billing!!.email)) {
+            if (userLogged != null && (userAddress.value == null || addressSave==null || userAddress.value!!.billing!!.firstName != addressSave!!.billing!!.firstName || userAddress.value!!.billing!!.country != addressSave!!.billing!!.country || userAddress.value!!.billing!!.email != addressSave!!.billing!!.email)) {
                 userAddress.value!!.userId = userLogged!!.iD
                 onShowProgress()
                 AuthService(updateUserAddressRq, this).addUserAddress(userAddress.value!!)

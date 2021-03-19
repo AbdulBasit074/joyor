@@ -151,9 +151,10 @@ fun AppCompatActivity.getCurrentLocation(fields: ArrayList<Place.Field>, onLocat
     }
 }
 
-fun AppCompatActivity.setLanguage(language: String) {
+fun AppCompatActivity.setLanguage() {
     val displayMetrics = resources.displayMetrics
     val configuration = resources.configuration
-    configuration.setLocale(Locale(language))
+    val defaultLanguage = Persister.with(this).getPersisted(Constants.selectedLanguage, "en")
+    configuration.setLocale(Locale(defaultLanguage))
     resources.updateConfiguration(configuration, displayMetrics)
 }

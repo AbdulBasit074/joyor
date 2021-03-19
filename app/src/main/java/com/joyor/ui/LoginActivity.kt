@@ -77,6 +77,10 @@ class LoginActivity : AppCompatActivity() {
             else
                 loading.dismiss()
         })
+        viewModel.isSignUp.observe(this, Observer {
+            JoyorDb.newInstance(this).registerProduct().removeAll()
+            finish()
+        })
         viewModel.showToast.observe(this, Observer {
             showToast(it)
         })

@@ -263,7 +263,7 @@
                 android:background="@drawable/round_border_brown"
                 android:fontFamily="@font/futura_bold_font"
                 android:onClick="@{()->viewModel.onLogout()}"
-                android:text="Logout"
+                android:text="@string/logout"
                 android:textColor="@color/white"
                 android:textSize="@dimen/_15ssp"
                 app:layout_constraintLeft_toLeftOf="parent"

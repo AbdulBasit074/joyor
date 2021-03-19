@@ -40,7 +40,7 @@ class ColorAdapterRv(private val items: ArrayList<Product.Option>?, private val 
         fun bindView(item: Product.Option) {
             binding.model = item
 
-            if (viewModel.colorSelect.value?.name.equals(item.name)!!) {
+            if (viewModel.colorSelect.value?.name.equals(item.name)) {
                 binding.layoutColor.setCardBackgroundColor(binding.color.context.getColor(R.color.black))
             } else
                 binding.layoutColor.setCardBackgroundColor(binding.color.context.getColor(R.color.transparent))

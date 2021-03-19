@@ -9,6 +9,7 @@ import androidx.preference.PreferenceManager
 import com.joyor.R
 import com.joyor.databinding.SignupLayoutBinding
 import com.joyor.helper.Constants
+import com.joyor.helper.CustomProgressBar
 import com.joyor.helper.moveToAndFinish
 import com.joyor.helper.showToast
 import com.joyor.model.room.JoyorDb
@@ -18,16 +19,27 @@ class SignUpActivity : AppCompatActivity() {
 
     private lateinit var binding: SignupLayoutBinding
     private lateinit var viewModel: SignUpViewModel
+    private lateinit var loading: CustomProgressBar
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.signup_layout)
+        loading = CustomProgressBar(this)
         viewModel = ViewModelProviders.of(this).get(SignUpViewModel::class.java)
         viewModel.user.value = JoyorDb.newInstance(this).userDao().getLoggedUser()
-
         binding.viewModel = viewModel
         viewModel.saveUserInDb = false
 
+
+        viewModel.showProgress.observe(this, Observer {
+            if (it)
+                loading.show()
+            else
+                loading.dismiss()
+        })
+        viewModel.isSkipPress.observe(this, Observer {
+            moveToAndFinish(HomeActivity::class.java)
+        })
         viewModel.user.observe(this, Observer {
             if (viewModel.saveUserInDb)
                 JoyorDb.newInstance(this).userDao().login(it)

@@ -3,54 +3,88 @@
     <string name="app_name">Joyor</string>
 
     <string name="setting">Configuración</string>
-    <string name="support">Apoyo</string>
-    <string name="location">Localización</string>
-    <string name="login">Acceso</string>
-    <string name="sign_up">Inscribirse</string>
+    <string name="support">Soporte</string>
+    <string name="update">Actualizar</string>
+    <string name="login">Iniciar sesión</string>
+    <string name="sign_up">Registrarse</string>
     <string name="confirm">Confirmar</string>
-    <string name="search_for_location">"Buscar ubicación "</string>
-    <string name="user">el usuario</string>
-    <string name="let_start">Empecemos</string>
+    <string name="search_for_location">Buscar ubicación</string>
+    <string name="user">Usuario</string>
+    <string name="let_start">Empezar</string>
     <string name="destination">Destino</string>
-    <string name="your_location">"Tu ubicación "</string>
+    <string name="your_location">Tu ubicación</string>
     <string name="icon">icono</string>
-    <string name="start">Comienzo</string>
+    <string name="start">Vamos</string>
+    <string name="email">Correo electrónico</string>
     <string name="google_maps_api">AIzaSyBs5jv2CS7LQWtjD8_mQMnWwhYC8KU1u0E</string>
-    <string name="email">Correo electrónico*</string>
-    <string name="password">Contraseña*</string>
+    <string name="password">Contraseña</string>
+    <string name="profile">Perfil</string>
+    <string name="subtotal">Subtotal</string>
+    <string name="discount_amount">Descuento</string>
+    <string name="coupon_code">Código promocional</string>
+    <string name="apply_coupon">Aplicar código</string>
+    <string name="first_name">Nombre</string>
+    <string name="last_name">Apellido</string>
+    <string name="company_name">Nombre de empresa (opcional)</string>
+    <string name="add_address">Añadir dirección</string>
+    <string name="update_address">Actualizar dirección</string>
+    <string name="address">Dirección</string>
+    <string name="online">Online</string>
+    <string name="town_city">Población / Ciudad</string>
+    <string name="state_country">Provincia / País</string>
+    <string name="billing_detail">Detalles de facturación</string>
+    <string name="additional_information">Información adicional</string>
+    <string name="payment_method">Método de pago</string>
+    <string name="post_zip">Código postal</string>
+    <string name="select_country">Eligir país</string>
+    <string name="place_order">Realizar pedido</string>
+    <string name="order_notes">Notas sobre tu pedido (opcional)</string>
+    <string name="street_address">Dirección</string>
+    <string name="first_name_required">Nombre es obligatorio</string>
+    <string name="last_name_required">Apellido es obligatorio</string>
+    <string name="phone_required">Teléfono es obligatorio</string>
+    <string name="country_required">El país es obligatorio</string>
+    <string name="street_required">La dirección es obligatoria</string>
+    <string name="town_required">Población / ciudad es obligatorio</string>
+    <string name="state_required">Provincia es obligatorio</string>
+    <string name="post_required">Código postal es obligatorio</string>
+    <string name="email_required">Correo electronico es obligatorio</string>
+    <string name="password_required">La contraseña es obligatoria</string>
+    <string name="coupon_required">Código promocional es obligatorio</string>
+    <string name="location">Localización</string>
     <string name="name">Nombre*</string>
     <string name="sure_name">Apellido*</string>
     <string name="phone">Teléfono</string>
     <string name="register">Registrarse</string>
     <string name="color">Color</string>
     <string name="Description">Descripción</string>
-    <string name="spec_feature">Especificación y característica</string>
+    <string name="spec_feature">Especificaciónes y características</string>
     <string name="quantity">Cantidad</string>
-    <string name="total_amount">"Cantidad total "</string>
-    <string name="check_out">"Revisa "</string>
-    <string name="website">"Sitio web "</string>
-    <string name="find_us">"Encuéntranos "</string>
-    <string name="our_dealer">"Nuestro distribuidor oficial "</string>
+    <string name="total_amount">Cantidad total</string>
+    <string name="check_out">Realizar pedido</string>
+    <string name="find_us">Encuéntranos</string>
+    <string name="our_dealer">Nuestro distribuidor oficial</string>
     <string name="skip">Saltar</string>
     <string name="message">Mensaje</string>
     <string name="send">Enviar</string>
-    <string name="gps">"GPS "</string>
-    <string name="update">Actualizar</string>
-    <string name="logout">"Cerrar sesión "</string>
-    <string name="discount_amount">Descuento</string>
-    <string name="add_to_cart">Añadir al carrito</string>
-    <string name="about">sobre %1$s</string>
-    <string name="profile">"Perfil "</string>
-    <string name="address">Dirección</string>
-    <string name="additional_information">"información adicional "</string>
-    <string name="language">"idioma "</string>
-    <string name="select_country">Seleccionar país</string>
-    <string-array name="country">
-        <item>English</item>
-        <item>French</item>
-        <item>Spanish</item>
-        <item>Portuguese</item>
+    <string name="gps">GPS</string>
+    <string name="logout">Cerrar sesión</string>
+    <string name="no_cart_item">No hay articulos en la cesta</string>
+    <string name="cash_on_delivery">Contra reembolso</string>
+    <string name="tech_support">Soporte técnico</string>
+    <string name="product_added">Producto añadido a la cesta</string>
+    <string name="website">Sitio web</string>
+    <string name="add_to_cart">Añadir a la cesta</string>
+    <string name="about">Sobre %1$s</string>
+    <string name="language">Idioma</string>
+    <string-array name="lang">
+        <item>Ingles</item>
+        <item>Español</item>
     </string-array>
+
+    <!-- BELOW STRING NOT ADDED YET NOW-->
+
+
     <string-array name="filter_list">
         <item>Filter</item>
         <item>Joyor Scooters</item>
@@ -58,36 +92,5 @@
         <item>Joyor Spare Parts</item>
     </string-array>
 
-    <string name="no_cart_item">"no se ha encontrado ningún artículo en el carrito "</string>
-    <string name="subtotal">Sub total</string>
-    <string name="coupon_code">Código promocional</string>
-    <string name="password_required">"La contraseña debe tener 8 caracteres "</string>
-    <string name="apply_coupon">"Aplicar cupón "</string>
-    <string name="first_name">"Nombre de pila "</string>
-    <string name="last_name">"Apellido "</string>
-    <string name="company_name">"Nombre de la compañía (opcional) "</string>
-    <string name="street_address">Dirección</string>
-    <string name="town_city">"Pueblo / Ciudad "</string>
-    <string name="state_country">"País Estado "</string>
-    <string name="billing_detail">"Detalle de facturación "</string>
-    <string name="payment_method">"Método de pago "</string>
-    <string name="post_zip">"Código postal / ZIP "</string>
-    <string name="place_order">"Realizar pedido "</string>
-    <string name="order_notes">"Notas sobre su pedido (opcional) "</string>
-    <string name="first_name_required">"Se requiere el primer nombre "</string>
-    <string name="last_name_required">"Se requiere el apellido "</string>
-    <string name="phone_required">"Se requiere teléfono "</string>
-    <string name="country_required">"El país es obligatorio "</string>
-    <string name="street_required">"La dirección de la calle es obligatoria "</string>
-    <string name="town_required">"Se requiere pueblo / ciudad "</string>
-    <string name="state_required">"El estado es obligatorio "</string>
-    <string name="post_required">"Se requiere el código postal "</string>
-    <string name="email_required">"Correo electronico es requerido "</string>
-    <string name="coupon_required">"Se requiere cupón "</string>
-    <string name="add_address">"Añadir dirección "</string>
-    <string name="update_address">"Actualizar dirección "</string>
-    <string name="online">"En línea "</string>
-    <string name="cash_on_delivery">"Contra reembolso "</string>
-    <string name="tech_support">"Apoyo técnico "</string>
-    <string name="product_added">"Producto añadido al carrito "</string>
+
 </resources>

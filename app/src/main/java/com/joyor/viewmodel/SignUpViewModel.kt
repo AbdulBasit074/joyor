@@ -24,22 +24,36 @@ class SignUpViewModel : ViewModel(), Results {
     var password: MutableLiveData<String> = MutableLiveData()
     var isSkip: Boolean = true
     var showToast: MutableLiveData<String> = MutableLiveData()
+    var isSkipPress: MutableLiveData<Boolean> = MutableLiveData()
+    var showProgress: MutableLiveData<Boolean> = MutableLiveData()
     var saveUserInDb: Boolean = false
 
 
+    fun onShowProgress() {
+        showProgress.value = true
+    }
+
+    fun onDismissProgress() {
+        showProgress.value = false
+    }
+
+
     fun onClick(view: View) {
-        if (isSkip)
-            view.context.moveTo(HomeActivity::class.java)
-        else {
-            if (isInputOk())
+        if (isSkip) {
+            isSkipPress.value = true
+        } else {
+            if (isInputOk()) {
+                onShowProgress()
                 AuthService(userRegisterNonceRequest, this).userNonce(
                     Constants.user,
                     Constants.register
                 )
+            }
         }
     }
 
     override fun onSuccess(requestCode: Int, data: String) {
+        onDismissProgress()
         when (requestCode) {
             userRegisterNonceRequest -> {
                 val nonce = JSONObject(data).getString("nonce")
@@ -57,6 +71,7 @@ class SignUpViewModel : ViewModel(), Results {
     }
 
     override fun onFailure(requestCode: Int, data: String) {
+        onDismissProgress()
         showToast.value = data
     }
 

@@ -30,12 +30,15 @@ class LoginSignUpViewModel : ViewModel(), Results {
     var showToast: MutableLiveData<String> = MutableLiveData()
     var isBack: MutableLiveData<Boolean> = MutableLiveData()
     var saveRegister: MutableLiveData<ArrayList<RegisterProduct>> = MutableLiveData()
+    var isSignUp: MutableLiveData<Boolean> = MutableLiveData()
+
     var nonceForLoginRequest: Int = 1123
     var nonceForSignUpRequest: Int = 1322
     var userAddressRequest: Int = 3772
     var userRegisterProduct: Int = 3472
     var loginRequest: Int = 5522
     var signUpRequest: Int = 3322
+
     lateinit var context: Context
 
     init {
@@ -125,7 +128,7 @@ class LoginSignUpViewModel : ViewModel(), Results {
             }
             nonceForSignUpRequest -> {
                 val nonce = JSONObject(data).getString("nonce")
-                AuthService(loginRequest, this).userRegister(
+                AuthService(signUpRequest, this).userRegister(
                     name.value!!,
                     nameSure.value!!, password.value!!, email.value!!, nonce
                 )
@@ -152,6 +155,7 @@ class LoginSignUpViewModel : ViewModel(), Results {
             signUpRequest -> {
                 onDismissProgress()
                 user.value = Gson().fromJson(data, User::class.java)
+                isSignUp.value = true
             }
         }
     }
