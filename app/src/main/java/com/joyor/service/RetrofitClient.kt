@@ -2,6 +2,7 @@ package com.joyor.service
 
 
 import com.joyor.helper.Constants
+import com.joyor.helper.Persister
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.Response
@@ -101,7 +102,7 @@ class RetrofitClient {
             val newRequest = request.newBuilder()
                 .addHeader("Content-type", "application/json")
                 .addHeader("Accept", "application/json")
-                .addHeader("Accept-Language", "en")
+                .addHeader("Accept-Language", Persister.withOutContext().getPersisted(Constants.selectedLanguage, "en")!!)
                 .build()
             return chain.proceed(newRequest)
         }

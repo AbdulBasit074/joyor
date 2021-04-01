@@ -4,10 +4,12 @@ import android.content.Context
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.joyor.R
+import com.joyor.helper.Constants
 import com.joyor.model.RegisterProduct
 import com.joyor.model.User
 import com.joyor.service.Results
 import com.joyor.service.setting.SettingService
+import java.util.regex.Pattern
 
 class TechSupportViewModel : ViewModel(), Results {
 
@@ -69,6 +71,10 @@ class TechSupportViewModel : ViewModel(), Results {
 
     private fun isInputOk(): Boolean {
         return when {
+            registerSelectedProduct.value == null -> {
+                showToast.value = context.getString(R.string.register_product_required)
+                false
+            }
             (name.value == null || name.value!!.isEmpty()) -> {
                 showToast.value = context.getString(R.string.name_required)
                 false
@@ -77,13 +83,16 @@ class TechSupportViewModel : ViewModel(), Results {
                 showToast.value = context.getString(R.string.email_required)
                 false
             }
+
             (message.value == null || message.value!!.isEmpty()) -> {
                 showToast.value = context.getString(R.string.message_required)
                 false
             }
-            registerSelectedProduct.value == null -> {
-                showToast.value = context.getString(R.string.register_product_required)
-                false
+
+            !Pattern.compile(Constants.emailPattern, Pattern.CASE_INSENSITIVE)
+                .matcher(email.value!!).matches() -> {
+                showToast.value = context.getString(R.string.email_required)
+                return false
             }
             else -> true
         }

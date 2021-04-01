@@ -11,6 +11,7 @@ import com.joyor.R
 import com.joyor.databinding.ActivityAddressBinding
 import com.joyor.helper.CustomProgressBar
 import com.joyor.helper.customTextView
+import com.joyor.helper.setLanguage
 import com.joyor.helper.showToast
 import com.joyor.model.room.JoyorDb
 import com.joyor.viewmodel.AddressViewModel
@@ -26,6 +27,7 @@ class AddressActivity : AppCompatActivity() {
     private var countrySelect: Int = -1
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setLanguage()
         binding = DataBindingUtil.setContentView(this, R.layout.activity_address)
         viewModel = ViewModelProviders.of(this).get(AddressViewModel::class.java)
         progressBar = CustomProgressBar(this)
@@ -35,9 +37,11 @@ class AddressActivity : AppCompatActivity() {
         binding.viewModel = viewModel
         getCountryFromLocale()
         viewModel.userAddress.observe(this, Observer {
-            if (it != null && it.userId != 0) {
+            if (it != null && it.billing?.email!!.isNotEmpty())
                 binding.addressBtn.text = getString(R.string.update_address)
-            }
+            else
+                binding.addressBtn.text = getString(R.string.add_address)
+
         })
         viewModel.isCountrySelect.observe(this, Observer {
             countrySelect()

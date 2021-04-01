@@ -9,6 +9,7 @@ import com.joyor.R
 import com.joyor.databinding.ActivityPasswordUpdateBinding
 import com.joyor.helper.CustomProgressBar
 import com.joyor.helper.DialogButton
+import com.joyor.helper.setLanguage
 import com.joyor.helper.showToast
 import com.joyor.model.room.JoyorDb
 import com.joyor.viewmodel.PasswordChangeViewModel
@@ -22,6 +23,7 @@ class PasswordUpdate : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setLanguage()
         binding = DataBindingUtil.setContentView(this, R.layout.activity_password_update)
         loading = CustomProgressBar(this)
         viewModel = ViewModelProviders.of(this).get(PasswordChangeViewModel::class.java)

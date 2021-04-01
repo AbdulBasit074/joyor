@@ -39,7 +39,6 @@
                 android:layout_height="@dimen/_30sdp"
                 android:contentDescription="@null"
                 android:src="@drawable/ic_delete" />
-
         </LinearLayout>
 
         <FrameLayout
@@ -63,7 +62,7 @@
                         android:id="@+id/productImage"
                         setImageUri="@{model.thumbnail}"
                         android:layout_width="@dimen/_70sdp"
-                        android:layout_height="@dimen/_80sdp"
+                        android:layout_height="@dimen/_90sdp"
                         android:contentDescription="@string/icon"
                         android:scaleType="fitXY"
                         app:layout_constraintStart_toStartOf="parent"
@@ -71,15 +70,15 @@
 
                     <TextView
                         android:id="@+id/productName"
-                        android:layout_width="@dimen/_220sdp"
+                        android:layout_width="@dimen/_200sdp"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/_5sdp"
                         android:fontFamily="@font/futura_bold_font"
+                        android:maxLines="2"
                         android:paddingEnd="@dimen/_5sdp"
-                        android:singleLine="true"
                         android:text="@={model.name}"
                         android:textColor="@color/light_reddish"
-                        android:textSize="@dimen/_14ssp"
+                        android:textSize="@dimen/_12ssp"
                         app:layout_constraintStart_toEndOf="@id/productImage"
                         app:layout_constraintTop_toTopOf="parent"
                         tools:ignore="RtlSymmetry" />
@@ -89,12 +88,13 @@
                         android:layout_width="@dimen/_220sdp"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/_5sdp"
-                        android:layout_marginTop="@dimen/_5sdp"
+                        android:layout_marginTop="@dimen/_3sdp"
                         android:fontFamily="@font/futura_bold_font"
                         android:orientation="horizontal"
                         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                         app:layout_constraintStart_toEndOf="@id/productImage"
                         app:layout_constraintTop_toBottomOf="@id/productName"
+                        app:layout_constraintBottom_toTopOf="@id/minus"
                         tools:listitem="@layout/li_color" />
 
                     <TextView
@@ -102,7 +102,7 @@
                         android:layout_width="@dimen/_30sdp"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/_5sdp"
-                        android:layout_marginTop="@dimen/_5sdp"
+
                         android:background="@color/divider"
                         android:fontFamily="@font/futura_bold_font"
                         android:text="-"
@@ -110,25 +110,26 @@
                         android:textColor="@color/light_reddish"
                         android:textSize="@dimen/_17ssp"
                         app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintStart_toEndOf="@id/productImage" />
+
+                        app:layout_constraintStart_toEndOf="@id/productImage"
+                        />
 
                     <TextView
                         android:id="@+id/count"
                         android:layout_width="@dimen/_40sdp"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/_5sdp"
                         android:fontFamily="@font/futura_bold_font"
                         android:textAlignment="center"
                         android:textColor="@color/transparent_text"
                         android:textSize="@dimen/_17ssp"
                         app:layout_constraintBottom_toBottomOf="parent"
+
                         app:layout_constraintStart_toEndOf="@id/minus" />
 
                     <TextView
                         android:id="@+id/plus"
                         android:layout_width="@dimen/_30sdp"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/_5sdp"
                         android:background="@color/divider"
                         android:fontFamily="@font/futura_bold_font"
                         android:text="+"
@@ -149,9 +150,11 @@
                         android:elevation="5dp"
                         android:fontFamily="@font/futura_bold_font"
                         android:textAlignment="center"
+                        android:textColor="@color/transparent_text"
                         android:textSize="@dimen/_17ssp"
                         app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent" />
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/colorRv" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 

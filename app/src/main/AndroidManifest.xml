@@ -14,9 +14,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Joyor"
         tools:ignore="AllowBackup">
-        <activity android:name=".ui.RegisterNewProduct"></activity>
-        <activity android:name=".ui.RegisterProduct" />
-        <activity android:name=".ui.PasswordUpdate" />
+        <activity
+            android:name=".ui.RegisterNewProduct"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.RegisterProduct"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.PasswordUpdate"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".ui.SplashActivity"
             android:screenOrientation="portrait">

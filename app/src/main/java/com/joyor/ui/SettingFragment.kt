@@ -15,6 +15,7 @@ import com.joyor.adapter.SettingAdapterRv
 import com.joyor.databinding.FragmentSettingBinding
 import com.joyor.helper.CustomProgressBar
 import com.joyor.helper.moveTo
+import com.joyor.helper.showToast
 import com.joyor.model.Setting
 import com.joyor.viewmodel.SettingViewModel
 
@@ -42,6 +43,9 @@ class SettingFragment : Fragment() {
             settingListUpdated.clear()
             settingListUpdated.addAll(it)
             binding.settingList.adapter!!.notifyDataSetChanged()
+        })
+        viewModel.showToast.observe(requireActivity(), Observer {
+            showToast(it)
         })
 
         viewModel.openFAQ.observe(requireActivity(), Observer {

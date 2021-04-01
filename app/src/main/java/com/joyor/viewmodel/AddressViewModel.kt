@@ -7,6 +7,7 @@ import com.google.gson.Gson
 import com.google.gson.JsonDeserializationContext
 import com.google.gson.reflect.TypeToken
 import com.joyor.R
+import com.joyor.helper.Constants
 import com.joyor.model.Address
 import com.joyor.model.Product
 import com.joyor.model.Setting
@@ -15,6 +16,7 @@ import com.joyor.model.room.JoyorDb
 import com.joyor.service.Results
 import com.joyor.service.auth.AuthService
 import com.joyor.service.setting.SettingService
+import java.util.regex.Pattern
 
 class AddressViewModel : ViewModel(), Results {
 
@@ -80,6 +82,11 @@ class AddressViewModel : ViewModel(), Results {
                 showToast.value = context.getString(R.string.email_required)
                 return false
             }
+            !Pattern.compile(Constants.emailPattern, Pattern.CASE_INSENSITIVE)
+                .matcher(userAddress.value!!.billing?.email!!).matches() -> {
+                showToast.value = context.getString(R.string.email_required)
+                return false
+            }
             else ->
                 return true
         }
@@ -98,6 +105,7 @@ class AddressViewModel : ViewModel(), Results {
         when (requestCode) {
             addAddressRequest -> {
                 showToast.value = context.getString(R.string.add_address)
+                userAddress.value = userAddress.value
                 JoyorDb.newInstance(context).addressDao().deleteAddress()
                 JoyorDb.newInstance(context).addressDao().addAddress(userAddress.value!!)
             }

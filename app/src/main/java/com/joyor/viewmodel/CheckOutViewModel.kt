@@ -96,6 +96,7 @@ class CheckOutViewModel : ViewModel(), Results {
                 showToast.value = context.getString(R.string.email_required)
                 return false
             }
+
             else ->
                 return true
         }

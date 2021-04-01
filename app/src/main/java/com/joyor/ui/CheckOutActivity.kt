@@ -45,6 +45,7 @@ class CheckOutActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setLanguage()
         binding = DataBindingUtil.setContentView(this, R.layout.activity_check_out)
         viewModel = ViewModelProviders.of(this).get(CheckOutViewModel::class.java)
         loading = CustomProgressBar(this)
@@ -137,7 +138,7 @@ class CheckOutActivity : AppCompatActivity() {
                     viewModel.saveNonceKey(result.paymentMethodNonce?.nonce!!)
                 }
                 Activity.RESULT_CANCELED -> {
-                    viewModel.showToast.value = getString(R.string.cancle_process)
+                    viewModel.showToast.value = getString(R.string.cancel_process)
                 }
                 else -> {
                     val error = data?.getSerializableExtra(DropInActivity.EXTRA_ERROR) as Exception

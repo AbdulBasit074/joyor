@@ -10,9 +10,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.joyor.R
 import com.joyor.databinding.ActivityLoginBinding
-import com.joyor.helper.CustomProgressBar
-import com.joyor.helper.UserLoginEventBus
-import com.joyor.helper.showToast
+import com.joyor.helper.*
 import com.joyor.model.room.JoyorDb
 import com.joyor.viewmodel.LoginSignUpViewModel
 import org.greenrobot.eventbus.EventBus
@@ -25,6 +23,7 @@ class LoginActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setLanguage()
         binding = DataBindingUtil.setContentView(this, R.layout.activity_login)
         loading = CustomProgressBar(this)
         viewModel = ViewModelProviders.of(this).get(LoginSignUpViewModel::class.java)
@@ -79,6 +78,7 @@ class LoginActivity : AppCompatActivity() {
         })
         viewModel.isSignUp.observe(this, Observer {
             JoyorDb.newInstance(this).registerProduct().removeAll()
+            Persister(this).persist(Constants.userProductRegister, false)
             finish()
         })
         viewModel.showToast.observe(this, Observer {

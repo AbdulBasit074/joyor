@@ -16,6 +16,7 @@ import com.joyor.databinding.TopRightMenuBinding
 import com.joyor.helper.CartUpdateEvent
 import com.joyor.helper.UserLoginEventBus
 import com.joyor.helper.moveTo
+import com.joyor.helper.setLanguage
 import com.joyor.model.Product
 import com.joyor.model.room.JoyorDb
 import com.joyor.viewmodel.HomeViewModel
@@ -34,6 +35,7 @@ class HomeActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setLanguage()
         EventBus.getDefault().register(this)
         binding = DataBindingUtil.setContentView(this, R.layout.main_layout)
         viewModel = ViewModelProviders.of(this).get(HomeViewModel::class.java)
@@ -126,6 +128,7 @@ class HomeActivity : AppCompatActivity() {
         fragmentTransition.addToBackStack(null)
         fragmentTransition.commit()
     }
+
 
     override fun onBackPressed() {
         finish()

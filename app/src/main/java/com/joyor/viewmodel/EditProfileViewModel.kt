@@ -70,8 +70,10 @@ class EditProfileViewModel : ViewModel(), Results {
 
     fun onUpdate() {
         if (isInputOk())
-            if (isInputOk())
+            if (isInputOk()) {
+                onShowProgress()
                 AuthService(userUpdateNonceRequest, this).userNonce(Constants.user, Constants.update)
+            }
     }
 
     override fun onSuccess(requestCode: Int, data: String) {
@@ -86,6 +88,7 @@ class EditProfileViewModel : ViewModel(), Results {
                 )
             }
             userUpdateRequest -> {
+                onDismissProgress()
                 isUpdate.value = true
             }
         }

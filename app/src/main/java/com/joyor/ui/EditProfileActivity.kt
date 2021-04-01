@@ -24,6 +24,7 @@ class EditProfileActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setLanguage()
         binding = DataBindingUtil.setContentView(this, R.layout.edit_profile_activity)
         loading = CustomProgressBar(this)
         viewModel = ViewModelProviders.of(this).get(EditProfileViewModel::class.java)
@@ -33,7 +34,12 @@ class EditProfileActivity : AppCompatActivity() {
         viewModel.addressOpen.observe(this, Observer {
             moveTo(AddressActivity::class.java)
         })
-
+        viewModel.isProgress.observe(this, Observer {
+            if (it)
+                loading.show()
+            else
+                loading.dismiss()
+        })
         viewModel.user.observe(this, Observer {
             if (it != null) {
                 JoyorDb.newInstance(this).userDao().logOut()
@@ -50,6 +56,8 @@ class EditProfileActivity : AppCompatActivity() {
         viewModel.isLogout.observe(this, Observer {
             if (it) {
                 JoyorDb.newInstance(this).addressDao().deleteAddress()
+                JoyorDb.newInstance(this).registerProduct().removeAll()
+                Persister(this).persist(Constants.userProductRegister, false)
                 JoyorDb.newInstance(this).userDao().logOut()
                 EventBus.getDefault().postSticky(UserLoginEventBus(null))
                 finish()
@@ -82,7 +90,7 @@ class EditProfileActivity : AppCompatActivity() {
         builder.setSingleChoiceItems(resources.getStringArray(R.array.lang), selectedItem) { _, which ->
             Persister.with(this).persist(Constants.selectedLanguage, language[which])
             setLanguage()
-            moveTo(HomeActivity::class.java)
+            moveTo(SplashActivity::class.java)
             finishAffinity()
         }
         val dialog = builder.create()

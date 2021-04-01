@@ -5,19 +5,21 @@ import android.content.SharedPreferences
 import androidx.preference.PreferenceManager
 
 class Persister(context: Context) {
-
     private var prefs: SharedPreferences = PreferenceManager.getDefaultSharedPreferences(context)
 
     companion object {
-
         var instance: Persister? = null
-
         fun with(context: Context): Persister {
             if (instance == null)
                 instance = Persister(context)
             return instance!!
         }
+
+        fun withOutContext(): Persister {
+            return instance!!
+        }
     }
+
 
     fun persist(key: String, data: String?) {
         prefs.edit().putString(key, data).apply()

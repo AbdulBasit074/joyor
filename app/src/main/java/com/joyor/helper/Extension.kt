@@ -23,6 +23,7 @@ import com.google.android.gms.tasks.Task
 import com.google.android.libraries.places.api.Places
 import com.google.android.libraries.places.api.model.Place
 import com.google.android.libraries.places.api.net.FindCurrentPlaceRequest
+import com.joyor.service.RetrofitClient
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -43,7 +44,6 @@ fun AppCompatActivity.moveToAndFinish(clazz: Class<*>) {
 fun Context.secondDecimal(float: Float): String {
     return String.format("€%.2f", float)
 }
-
 fun AppCompatActivity.moveForResult(clazz: Class<*>, requestCode: Int) {
     startActivityForResult(Intent(this, clazz), requestCode)
 }
