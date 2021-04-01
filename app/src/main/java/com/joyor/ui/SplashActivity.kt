@@ -11,6 +11,7 @@ import com.joyor.R
 import com.joyor.databinding.SplashActivityBinding
 import com.joyor.helper.Constants
 import com.joyor.helper.moveToAndFinish
+import com.joyor.helper.setLanguage
 import com.joyor.model.room.JoyorDb
 import com.joyor.viewmodel.SplashViewModel
 
@@ -20,11 +21,12 @@ class SplashActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setLanguage()
         binding = DataBindingUtil.setContentView(this, R.layout.splash_activity)
         viewModel = ViewModelProviders.of(this).get(SplashViewModel::class.java)
         viewModel.context = this
 
-        Handler(Looper.getMainLooper()).postDelayed( {
+        Handler(Looper.getMainLooper()).postDelayed({
             if (!androidx.preference.PreferenceManager.getDefaultSharedPreferences(this).getBoolean(Constants.signUpFirstShow, false))
                 moveToAndFinish(SignUpActivity::class.java)
             else {

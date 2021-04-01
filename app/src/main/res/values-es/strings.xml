@@ -9,6 +9,8 @@
     <string name="sign_up">Registrarse</string>
     <string name="confirm">Confirmar</string>
     <string name="search_for_location">Buscar ubicación</string>
+    <string name="search">Buscar</string>
+
     <string name="user">Usuario</string>
     <string name="let_start">Empezar</string>
     <string name="destination">Destino</string>
@@ -81,15 +83,59 @@
         <item>Ingles</item>
         <item>Español</item>
     </string-array>
+    <string name="filter">Filtro</string>
+    <string name="cancel_process">Cancelar proceso</string>
+    <string name="new_password">Nueva contraseña</string>
+    <string name="old_password">Contraseña anterior</string>
+    <string name="confirm_password">Confirmar contraseña</string>
+    <string name="register_product">Productos registrados</string>
+    <string name="model">Modelo</string>
+    <string name="serial_no">Número de serie</string>
+    <string name="country">País</string>
+    <string name="date_purchase">Fecha de compra</string>
+    <string name="product_register_succuessfully">Producto registrado correctamente</string>
+    <string name="model_">Modelo:</string>
+    <string name="serial_no_">Número de serie:</string>
+    <string name="country_">País:</string>
+    <string name="date_purchase_">Fecha de compra:</string>
+    <string name="address_detail">Detalles de dirección</string>
+    <string name="no_amount">€0.0</string>
+    <string name="product_register">Registrar producto</string>
+    <string name="product_detail">Detalles de producto</string>
+    <string name="password_change_successfully">Contraseña cambiada con éxito</string>
+    <string name="profile_profile">Actualización de perfil</string>
+    <string name="change_password">Cambiar la contraseña</string>
+    <string name="reset_password">Restablecer la contraseña</string>
+    <string name="model_required">Modelo es obligatorio</string>
+    <string name="serial_required">Número de serie es obligatorio</string>
+    <string name="date_required">Fecha es obligatoria</string>
+    <string name="select_product">Seleccionar producto</string>
+    <string name="euro_currency">EUR</string>
+    <string name="register_products">Productos registrados</string>
+    <string name="order_place_successfully">Pedido realizado con éxito</string>
+    <string name="name_required">Nombre es obligatorio</string>
+    <string name="old_password_required">Contraseña anterior es obligatoria</string>
+    <string name="for_any_support"> Debe registrar su producto para iniciar sesión de soporte técnico</string>
+    <string name="confirm_password_required">Es obligatorio confirmar la contraseña</string>
+    <string name="new_password_required">Nueva contraseña es obligatoria</string>
+    <string name="new_password_old_password">Las contraseñas ingresadas no coinciden</string>
+    <string name="pal_login">Entrar con Paypal</string>
+    <string name="ok_key">Vale</string>
+    <string name="message_required">Mensaje es obligatorio</string>
+    <string name="register_product_required">Seleccionar producto registrado</string>
+    <string name="no_register_products">No hay productos registrados</string>
+    <string name="both_field_required">Ambos campos son obligatorios</string>
+    <string name="date_format">%1$s-%2$s-%3$s</string>
+    <string name="currency">€%1$s</string>
+
 
     <!-- BELOW STRING NOT ADDED YET NOW-->
 
-
     <string-array name="filter_list">
-        <item>Filter</item>
-        <item>Joyor Scooters</item>
-        <item>Accessories</item>
-        <item>Joyor Spare Parts</item>
+        <item>Filtro</item>
+        <item>Patinetes Elécticos Joyor</item>
+        <item>Accesorios</item>
+        <item>Piezas de Recambio Joyor</item>
     </string-array>
 
 

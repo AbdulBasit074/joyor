@@ -9,6 +9,7 @@ import com.joyor.R
 import com.joyor.adapter.FaqAdapterRv
 import com.joyor.adapter.SettingAdapterRv
 import com.joyor.databinding.ActivityFaqBinding
+import com.joyor.helper.setLanguage
 import com.joyor.model.Faq
 import com.joyor.viewmodel.FaqViewModel
 
@@ -19,6 +20,7 @@ class FaqActivity : AppCompatActivity() {
     private lateinit var viewModel: FaqViewModel
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setLanguage()
         binding = DataBindingUtil.setContentView(this, R.layout.activity_faq)
         viewModel = ViewModelProviders.of(this).get(FaqViewModel::class.java)
         binding.viewModel = viewModel

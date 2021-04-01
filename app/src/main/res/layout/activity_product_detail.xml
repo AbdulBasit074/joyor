@@ -200,7 +200,7 @@
                     android:onClick="@{()->viewModel.addToCartProduct()}"
                     android:paddingStart="@dimen/_10sdp"
                     android:paddingEnd="@dimen/_10sdp"
-                    android:text="Add to Cart"
+                    android:text="@string/add_to_cart"
                     android:textColor="@color/white"
                     android:textSize="@dimen/_12ssp"
                     app:layout_constraintBottom_toBottomOf="@id/productAttribute"
@@ -245,7 +245,7 @@
                     android:id="@+id/description"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/_40sdp"
+                    android:layout_marginStart="@dimen/_10sdp"
                     android:layout_marginTop="@dimen/_30sdp"
                     android:background="@drawable/round_border_brown"
                     android:fontFamily="@font/futura_bold_font"
@@ -255,7 +255,7 @@
                     android:text="@string/Description"
                     android:textAllCaps="false"
                     android:textColor="@color/white"
-                    android:textSize="@dimen/_15ssp"
+                    android:textSize="@dimen/_13ssp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/productAttribute" />
 
@@ -268,12 +268,12 @@
                     android:background="@drawable/border_product_tab"
                     android:fontFamily="@font/futura_bold_font"
                     android:onClick="@{()->viewModel.onFeatureClick()}"
-                    android:paddingStart="@dimen/_10sdp"
-                    android:paddingEnd="@dimen/_10sdp"
+                    android:paddingStart="@dimen/_5sdp"
+                    android:paddingEnd="@dimen/_5sdp"
                     android:text="@string/spec_feature"
                     android:textAllCaps="false"
                     android:textColor="@color/light_reddish"
-                    android:textSize="@dimen/_15ssp"
+                    android:textSize="@dimen/_13ssp"
                     app:layout_constraintStart_toEndOf="@id/description"
                     app:layout_constraintTop_toBottomOf="@id/productAttribute" />
 
@@ -287,7 +287,7 @@
                     android:layout_marginEnd="@dimen/_10sdp"
                     android:fontFamily="@font/futura_medium_bt"
                     android:textColor="@color/transparent_text"
-                    android:textSize="@dimen/_13ssp"
+                    android:textSize="@dimen/_12ssp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/description" />
 
@@ -304,12 +304,12 @@
                         setTextAbout="@{viewModel.product.name}"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="@dimen/_10sdp"
                         android:layout_marginTop="@dimen/_10sdp"
                         android:layout_marginEnd="@dimen/_10sdp"
+                        android:layout_marginStart="@dimen/_10sdp"
                         android:fontFamily="@font/futura_medium_bt"
                         android:textColor="@color/light_reddish"
-                        android:textSize="@dimen/_13ssp"
+                        android:textSize="@dimen/_12ssp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 

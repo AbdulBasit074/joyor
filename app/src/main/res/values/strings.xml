@@ -11,15 +11,12 @@
     <string name="user">user</string>
     <string name="let_start">Lets start</string>
     <string name="destination">Destination</string>
-
+    <string name="search">Search</string>
     <string name="your_location">Your Location</string>
-
-
-
     <string name="icon">icon</string>
     <string name="start">Start</string>
     <string name="google_maps_api">AIzaSyBs5jv2CS7LQWtjD8_mQMnWwhYC8KU1u0E</string>
-    <string name="email">Email*</string>
+    <string name="email">Email</string>
     <string name="password">Password</string>
     <string name="profile">Profile</string>
     <string name="subtotal">Sub Total</string>
@@ -42,10 +39,8 @@
     <string name="payment_method">Payment Method</string>
     <string name="post_zip">Postcode / ZIP</string>
     <string name="select_country">Select Country</string>
-
     <string name="place_order">Place Order</string>
     <string name="order_notes">Notes about your order(Optional)</string>
-
     <string name="first_name_required">First name is Required</string>
     <string name="last_name_required">Last name is Required</string>
     <string name="phone_required">Phone is Required</string>
@@ -95,11 +90,8 @@
         <item>Accessories</item>
         <item>Joyor Spare Parts</item>
     </string-array>
-
-
-
     <string name="filter">Filter</string>
-    <string name="cancle_process">Cancle Process</string>
+    <string name="cancel_process">Cancel Process</string>
     <string name="new_password">New Password</string>
     <string name="old_password">Old Password</string>
     <string name="confirm_password">Confirm Password</string>
@@ -107,17 +99,17 @@
     <string name="model">Model</string>
     <string name="serial_no">Serial Number</string>
     <string name="country">Country</string>
-    <string name="date_purchase">Date Purchase</string>
-    <string name="product_register_succuessfully">Product Register Successfully</string>
+    <string name="date_purchase">Date of Purchase</string>
+    <string name="product_register_succuessfully">Product Registered Successfully</string>
     <string name="model_">Model:</string>
     <string name="serial_no_">Serial Number:</string>
     <string name="country_">Country:</string>
-    <string name="date_purchase_">Date Purchase:</string>
-    <string name="address_detail">Address Detail</string>
+    <string name="date_purchase_">Date of Purchase:</string>
+    <string name="address_detail">Address Details</string>
     <string name="no_amount">€0.0</string>
     <string name="product_register">Register Product</string>
-    <string name="product_detail">Product Detail</string>
-    <string name="password_change_successfully">Password Change Successfully</string>
+    <string name="product_detail">Product Details</string>
+    <string name="password_change_successfully">Password Changed Successfully</string>
     <string name="profile_profile">Profile Update</string>
     <string name="change_password">Change Password</string>
     <string name="reset_password">Reset Password</string>
@@ -127,19 +119,21 @@
     <string name="select_product">Select Product</string>
     <string name="euro_currency">EUR</string>
     <string name="register_products">Registered Products</string>
-    <string name="order_place_successfully">Order Place Successfully</string>
+    <string name="order_place_successfully">Order Placed Successfully</string>
     <string name="name_required">Name is Required</string>
     <string name="old_password_required">Old Password is Required</string>
     <string name="for_any_support"> You Must Register Your Product &amp; Login For Tech Support</string>
     <string name="confirm_password_required">Confirm Password is Required</string>
     <string name="new_password_required">New Password is Required</string>
-    <string name="new_password_old_password">Entered Password Not Match</string>
+    <string name="new_password_old_password">Entered Passwords Do Not Match</string>
     <string name="pal_login">Paypal Login</string>
     <string name="ok_key">OK</string>
     <string name="message_required">Message is Required</string>
-    <string name="currency">€%1$s</string>
     <string name="register_product_required">Select Registered Product</string>
     <string name="no_register_products">No Registered Products</string>
+    <string name="both_field_required">Both Fields are Required</string>
+    <string name="date_format">%1$s-%2$s-%3$s</string>
+    <string name="currency">€%1$s</string>
 
 
 </resources>

@@ -10,10 +10,7 @@ import androidx.lifecycle.ViewModelProviders
 import com.google.android.gms.maps.model.LatLng
 import com.joyor.R
 import com.joyor.databinding.ActivityGpsBinding
-import com.joyor.helper.Constants
-import com.joyor.helper.moveForResult
-import com.joyor.helper.moveTo
-import com.joyor.helper.showToast
+import com.joyor.helper.*
 import com.joyor.viewmodel.GpsViewModel
 
 class GpsActivity : AppCompatActivity() {
@@ -27,15 +24,16 @@ class GpsActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setLanguage()
         binding = DataBindingUtil.setContentView(this, R.layout.activity_gps)
         viewModel = ViewModelProviders.of(this).get(GpsViewModel::class.java)
         binding.viewModel = viewModel
-        viewModel.isStartClick.observe(this, Observer { it ->
+        viewModel.isStartClick.observe(this, Observer {
             if (it) {
                 if (latLngYl != null && latLngDl != null)
                     moveTo(GoogleMapRouteActivity.newInstance(this, latLngYl!!, latLngDl!!))
                 else
-                    showToast("Both Field is Required")
+                    showToast(getString(R.string.both_field_required))
             }
         })
         viewModel.isBack.observe(this, Observer {

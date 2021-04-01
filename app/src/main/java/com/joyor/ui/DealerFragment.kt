@@ -98,9 +98,10 @@ class DealerFragment : Fragment(), OnMapReadyCallback {
                 builder.include(markerOrigin.position)
                 gMap!!.addMarker(markerOrigin)
             }
+
             if (store.size > 0) {
                 val bounds = builder.build()
-                val cu = CameraUpdateFactory.newLatLngBounds(bounds, 20)
+                val cu = CameraUpdateFactory.newLatLngBounds(bounds, 10)
                 gMap!!.animateCamera(cu)
             }
         }
@@ -113,6 +114,8 @@ class DealerFragment : Fragment(), OnMapReadyCallback {
 
     override fun onMapReady(googleMap: GoogleMap?) {
         gMap = googleMap!!
+                    gMap!!.setPadding(100, 100, 100, 100)
+
     }
 }
 

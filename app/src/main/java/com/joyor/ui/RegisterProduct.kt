@@ -4,7 +4,6 @@ import android.app.Activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.ActionMode
 import android.view.View
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
@@ -27,6 +26,7 @@ class RegisterProduct : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setLanguage()
         binding = DataBindingUtil.setContentView(this, R.layout.activity_register_product)
         loading = CustomProgressBar(this)
         viewModel = ViewModelProviders.of(this).get(RegisterProductViewModel::class.java)

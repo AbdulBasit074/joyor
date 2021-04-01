@@ -14,10 +14,7 @@ import com.joyor.adapter.ColorAdapterRv
 import com.joyor.adapter.FeatureAdapterRv
 import com.joyor.adapter.ProductSliderViewPagerAdapter
 import com.joyor.databinding.ActivityProductDetailBinding
-import com.joyor.helper.CartUpdateEvent
-import com.joyor.helper.Constants
-import com.joyor.helper.HorizantalMidDivider
-import com.joyor.helper.showToast
+import com.joyor.helper.*
 import com.joyor.model.Product
 import com.joyor.model.room.JoyorDb
 import com.joyor.viewmodel.ProductDetailViewModel
@@ -37,6 +34,7 @@ class ProductDetailActivity : AppCompatActivity() {
     private var imagesList: ArrayList<String> = ArrayList()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setLanguage()
         binding = DataBindingUtil.setContentView(this, R.layout.activity_product_detail)
         viewModel = ViewModelProviders.of(this).get(ProductDetailViewModel::class.java)
         viewModel.product.value = intent.getParcelableExtra(Constants.product)

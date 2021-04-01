@@ -24,13 +24,16 @@ class CartViewModel : ViewModel(), Results {
 
     companion object {
         var isCouponApply: Boolean = false
+        var couponCodeApply: String =""
     }
 
     init {
         couponCode.value = ""
         isCouponApply = false
     }
-
+    fun returnCouponCode(): String {
+            return couponCodeApply
+    }
     fun onCheckOut() {
         ischeckOut.value = true
     }
@@ -39,6 +42,7 @@ class CartViewModel : ViewModel(), Results {
         if (couponCode.value!!.isNotEmpty()) {
             if (!isCouponApply) {
                 progressBar.value = true
+                couponCodeApply = couponCode.value!!
                 OrderService(couponApplyRequest, this).getApplyCoupon(couponCode.value!!)
             }
         } else {
@@ -52,7 +56,6 @@ class CartViewModel : ViewModel(), Results {
         discountGot.value = couponDiscount[0].couponAmount
         isCouponApply = true
     }
-
     override fun onFailure(requestCode: Int, data: String) {
         progressBar.value = false
         showToast.value = data

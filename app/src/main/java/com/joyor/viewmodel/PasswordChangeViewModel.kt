@@ -64,7 +64,7 @@ class PasswordChangeViewModel : ViewModel(), Results {
                 return false
             }
             !(newPassword.value.equals(confirmPassword.value)) -> {
-                showToast.value = context.getString(R.string.confirm_password_required)
+                showToast.value = context.getString(R.string.new_password_old_password)
                 return false
             }
 

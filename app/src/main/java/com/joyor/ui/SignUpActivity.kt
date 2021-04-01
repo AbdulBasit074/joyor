@@ -8,10 +8,7 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.preference.PreferenceManager
 import com.joyor.R
 import com.joyor.databinding.SignupLayoutBinding
-import com.joyor.helper.Constants
-import com.joyor.helper.CustomProgressBar
-import com.joyor.helper.moveToAndFinish
-import com.joyor.helper.showToast
+import com.joyor.helper.*
 import com.joyor.model.room.JoyorDb
 import com.joyor.viewmodel.SignUpViewModel
 
@@ -23,6 +20,7 @@ class SignUpActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setLanguage()
         binding = DataBindingUtil.setContentView(this, R.layout.signup_layout)
         loading = CustomProgressBar(this)
         viewModel = ViewModelProviders.of(this).get(SignUpViewModel::class.java)

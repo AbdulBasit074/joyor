@@ -25,6 +25,7 @@ import com.joyor.databinding.ActivityAddressOnMapBinding
 import com.joyor.helper.Constants
 import com.joyor.helper.askToEnableGPS
 import com.joyor.helper.getCurrentLocation
+import com.joyor.helper.setLanguage
 import com.karumi.dexter.Dexter
 import com.karumi.dexter.PermissionToken
 import com.karumi.dexter.listener.PermissionDeniedResponse
@@ -44,6 +45,7 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setLanguage()
         mBinding = DataBindingUtil.setContentView(this, R.layout.activity_address_on_map)
         initView()
     }

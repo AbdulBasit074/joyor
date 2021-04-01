@@ -62,7 +62,7 @@ class CartFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         productCartList.addAll(JoyorDb.newInstance(requireContext()).productDao().getAllCartProduct())
         viewModel.ischeckOut.observe(requireActivity(), Observer {
-            var couponDetail = CouponLines(viewModel.couponCode.value, discountAmount.toString())
+            var couponDetail = CouponLines(viewModel.returnCouponCode(), discountAmount.toString())
             if (discountAmount == 0.0f)
                 couponDetail = CouponLines()
             moveTo(CheckOutActivity.newInstance(requireContext(), String.format("%.2f",totalAmount), couponDetail))

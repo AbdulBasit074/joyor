@@ -2,7 +2,6 @@ package com.joyor.ui
 
 import android.content.Context
 import android.content.Intent
-import android.graphics.Color
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
@@ -17,10 +16,12 @@ import com.google.maps.android.PolyUtil
 import com.joyor.R
 import com.joyor.databinding.ActivityGoogleMapRouteBinding
 import com.joyor.helper.Constants
+import com.joyor.helper.setLanguage
 import com.joyor.service.Results
 import com.joyor.service.google.GoogleService
 import com.joyor.viewmodel.RouteViewModel
 import org.json.JSONObject
+
 
 class GoogleMapRouteActivity : AppCompatActivity(), OnMapReadyCallback, Results {
 
@@ -39,6 +40,7 @@ class GoogleMapRouteActivity : AppCompatActivity(), OnMapReadyCallback, Results 
     private lateinit var viewModel: RouteViewModel
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setLanguage()
         binding = DataBindingUtil.setContentView(this, R.layout.activity_google_map_route)
         origin = intent.getParcelableExtra(Constants.origin)!!
         destination = intent.getParcelableExtra(Constants.destination)!!
@@ -53,9 +55,10 @@ class GoogleMapRouteActivity : AppCompatActivity(), OnMapReadyCallback, Results 
 
     override fun onMapReady(googleMap: GoogleMap?) {
         map = googleMap!!
+        map.setPadding(100, 100, 100, 100)
         map.mapType = GoogleMap.MAP_TYPE_NORMAL
         if (origin != null && destination != null) {
-            GoogleService(directionRequest, this).getDirection(matchLatLan(origin!!), matchLatLan(destination!!), false, "driving", getString(R.string.google_maps_api))
+            GoogleService(directionRequest, this).getDirection(matchLatLan(origin!!), matchLatLan(destination!!), false, "walking", getString(R.string.google_maps_api))
         }
     }
 
@@ -65,10 +68,10 @@ class GoogleMapRouteActivity : AppCompatActivity(), OnMapReadyCallback, Results 
 
     override fun onSuccess(requestCode: Int, data: String) {
         var jsonObj = JSONObject(data)
-        var routesArray = jsonObj.getJSONArray("routes")
+        val routesArray = jsonObj.getJSONArray("routes")
         jsonObj = routesArray.get(0) as JSONObject
         jsonObj = jsonObj.getJSONObject("overview_polyline")
-        var polyLine = jsonObj.getString("points")
+        val polyLine = jsonObj.getString("points")
         if (polyLine.isNotEmpty())
             checkLatLanList(polyLine)
     }
@@ -85,13 +88,19 @@ class GoogleMapRouteActivity : AppCompatActivity(), OnMapReadyCallback, Results 
             .startCap(RoundCap())
             .endCap(RoundCap())
         val patternDotted: List<PatternItem> = listOf(gap, dot)
-        val markerDestination = MarkerOptions().position(LatLng(destination?.latitude!!, destination?.longitude!!))
-        val markerOrigin = MarkerOptions().position(LatLng(origin?.latitude!!, origin?.longitude!!))
+        val markerDestination = MarkerOptions().position(destination!!)
+        val markerOrigin = MarkerOptions().position(origin!!)
         map.addMarker(markerDestination)
         map.addMarker(markerOrigin)
         polyLines.pattern(patternDotted)
         map.addPolyline(polyLines)
         map.animateCamera(CameraUpdateFactory.newLatLngZoom(origin, 17f))
+
+        val builder = LatLngBounds.Builder()
+        builder.include(destination)
+        builder.include(origin)
+        val bounds = builder.build()
+        map.animateCamera(CameraUpdateFactory.newLatLngBounds(bounds, 20))
     }
 
     override fun onFailure(requestCode: Int, data: String) {
