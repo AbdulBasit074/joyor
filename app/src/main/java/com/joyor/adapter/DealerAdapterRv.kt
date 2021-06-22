@@ -57,13 +57,16 @@ class DealerAdapterRv(private val items: ArrayList<Store>, private val viewModel
 
         return object : Filter() {
             override fun performFiltering(constraint: CharSequence?): FilterResults {
-                val charSearch = constraint.toString()
+                val charSearch = constraint.toString().toLowerCase(Locale.ROOT)
                 filterStoreList = if (charSearch.isEmpty()) {
                     items
                 } else {
                     val resultList = ArrayList<Store>()
                     for (row in items) {
-                        if (row.title?.toLowerCase(Locale.ROOT)!!.contains(charSearch.toLowerCase(Locale.ROOT))) {
+                        if (row.title?.toLowerCase(Locale.ROOT)!!.contains(charSearch)) {
+                            resultList.add(row)
+                        }
+                        if (row.address?.toLowerCase(Locale.ROOT)!!.contains(charSearch) && !resultList.contains(row)) {
                             resultList.add(row)
                         }
                     }

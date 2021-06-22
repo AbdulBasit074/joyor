@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
+
     <item
         android:id="@+id/product"
         android:icon="@drawable/ic_cart_inactive"
         tools:ignore="MenuTitle" />
+
     <item
         android:id="@+id/cartMenu"
         android:icon="@drawable/ic_order_inactive"
@@ -22,7 +23,6 @@
         android:icon="@drawable/ic_support_inactive"
         android:title="@string/support"
         tools:ignore="MenuTitle" />
-
 
     <item
         android:id="@+id/location"

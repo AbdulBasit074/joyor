@@ -15,6 +15,7 @@ import com.joyor.databinding.TechSupportFragmentBinding
 import com.joyor.helper.*
 import com.joyor.model.room.JoyorDb
 import com.joyor.viewmodel.TechSupportViewModel
+import java.lang.StringBuilder
 
 
 class TechSupportFragment : Fragment() {
@@ -27,7 +28,7 @@ class TechSupportFragment : Fragment() {
     private var userRegisterProductModelList: ArrayList<String> = ArrayList()
 
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         binding = DataBindingUtil.inflate(inflater, R.layout.tech_support_fragment, container, false)
         return binding.root
     }
@@ -37,7 +38,12 @@ class TechSupportFragment : Fragment() {
         viewModel = ViewModelProviders.of(this).get(TechSupportViewModel::class.java)
 
         progressDialog = CustomProgressBar(requireContext())
-        viewModel.user.value = JoyorDb.newInstance(requireActivity()).userDao().getLoggedUser()
+        val user = JoyorDb.newInstance(requireActivity()).userDao().getLoggedUser()
+        viewModel.user.value = user
+        if (user != null) {
+            viewModel.name.value = StringBuilder().append(user.firstName).append(" ").append(user.lastName).toString()
+            viewModel.email.value = user.email
+        }
         viewModel.context = requireContext()
         binding.viewModel = viewModel
         viewModel.showToast.observe(requireActivity(), Observer {
@@ -109,6 +115,7 @@ class TechSupportFragment : Fragment() {
         dialog.setCustomTitle(binding.root.context.customTextView(getString(R.string.select_product)))
         dialog.show()
     }
+
     override fun onResume() {
         super.onResume()
         viewModel.user.value = JoyorDb.newInstance(requireActivity()).userDao().getLoggedUser()

@@ -10,7 +10,6 @@ import com.joyor.service.register.RegisterService
 
 class RegisterNewProductViewModel : ViewModel(), Results {
 
-
     var showToast: MutableLiveData<String> = MutableLiveData()
     var user: MutableLiveData<User> = MutableLiveData()
     var back: MutableLiveData<Boolean> = MutableLiveData()
@@ -21,7 +20,8 @@ class RegisterNewProductViewModel : ViewModel(), Results {
     var country: MutableLiveData<String> = MutableLiveData()
     var purchaseDate: MutableLiveData<String> = MutableLiveData()
     var datePurchase: MutableLiveData<Boolean> = MutableLiveData()
-    var isCountrySelet: MutableLiveData<Boolean> = MutableLiveData()
+    var isModelSelect: MutableLiveData<Boolean> = MutableLiveData()
+    var isCountrySelect: MutableLiveData<Boolean> = MutableLiveData()
     lateinit var context: Context
     private val registerProducts: Int = 2221
 
@@ -49,8 +49,12 @@ class RegisterNewProductViewModel : ViewModel(), Results {
         }
     }
 
+    fun onModelSelect() {
+        isModelSelect.value = true
+    }
+
     fun onCountrySelect() {
-        isCountrySelet.value = true
+        isCountrySelect.value = true
     }
 
     private fun isInputOk(): Boolean {

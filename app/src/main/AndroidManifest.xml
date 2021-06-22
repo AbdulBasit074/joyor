@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.joyor">
 
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
     <uses-permission android:name="android.permission.INTERNET" />
 
@@ -77,6 +78,9 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".ui.MapActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.ForgotPasswordActivity"
             android:screenOrientation="portrait" />
 
         <service

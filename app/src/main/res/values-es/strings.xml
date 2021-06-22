@@ -127,10 +127,16 @@
     <string name="both_field_required">Ambos campos son obligatorios</string>
     <string name="date_format">%1$s-%2$s-%3$s</string>
     <string name="currency">€%1$s</string>
+    <string name="forgot_password_qm"><u>¿Has olvidado tu contraseña?</u></string>
+    <string name="forgot_password">Has olvidado tu contraseña</string>
+    <string name="submit">Entregar</string>
 
 
     <!-- BELOW STRING NOT ADDED YET NOW-->
 
+    <string name="joyor_scooters">Patinetes Elécticos Joyor</string>
+    <string name="accessories">Accesorios</string>
+    <string name="joyor_spare_parts">Piezas de Recambio Joyor</string>
     <string-array name="filter_list">
         <item>Filtro</item>
         <item>Patinetes Elécticos Joyor</item>

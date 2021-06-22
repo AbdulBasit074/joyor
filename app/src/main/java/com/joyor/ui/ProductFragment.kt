@@ -1,5 +1,6 @@
 package com.joyor.ui
 
+import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -8,6 +9,7 @@ import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Spinner
 import android.widget.SpinnerAdapter
+import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.adapters.AdapterViewBindingAdapter
 import androidx.fragment.app.Fragment
@@ -47,7 +49,7 @@ class ProductFragment : Fragment() {
         viewModel.context = requireContext()
         viewModel.getProducts()
         binding.viewModel = viewModel
-        setSpinnerValues()
+        setTabListeners()
         viewModel.productListing.observe(requireActivity(), Observer {
             productList.clear()
             productList.addAll(it)
@@ -67,19 +69,42 @@ class ProductFragment : Fragment() {
         setProductAdapter()
     }
 
-    private fun setSpinnerValues() {
-        val adapterSpinner: ArrayAdapter<String> = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, resources.getStringArray(R.array.filter_list))
-        adapterSpinner.setDropDownViewResource(R.layout.li_drop_down)
-        binding.spinner.adapter = adapterSpinner
-        binding.spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onNothingSelected(parent: AdapterView<*>?) {
-            }
-
-            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-                adapter.filter.filter(resources.getStringArray(R.array.filter_list)[position].toString())
-            }
+    private fun setTabListeners() {
+        binding.scootersTab.setOnClickListener {
+            resetTabs()
+            binding.scootersTab.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.light_reddish))
+            binding.scootersIv.setImageResource(R.drawable.ic_scooters_on)
+            binding.scootersTv.setTextColor(Color.WHITE)
+            adapter.filter.filter(getString(R.string.joyor_scooters))
+        }
+        binding.accessoriesTab.setOnClickListener {
+            resetTabs()
+            binding.accessoriesTab.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.light_reddish))
+            binding.accessoriesIv.setImageResource(R.drawable.ic_scooters_on)
+            binding.accessoriesTv.setTextColor(Color.WHITE)
+            adapter.filter.filter(getString(R.string.accessories))
+        }
+        binding.sparePartsTab.setOnClickListener {
+            resetTabs()
+            binding.sparePartsTab.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.light_reddish))
+            binding.sparePartsIv.setImageResource(R.drawable.ic_scooters_on)
+            binding.sparePartsTv.setTextColor(Color.WHITE)
+            adapter.filter.filter(getString(R.string.joyor_spare_parts))
         }
     }
+
+    private fun resetTabs() {
+        binding.scootersTab.setBackgroundColor(Color.WHITE)
+        binding.scootersIv.setImageResource(R.drawable.ic_scooters_off)
+        binding.scootersTv.setTextColor(Color.BLACK)
+        binding.accessoriesTab.setBackgroundColor(Color.WHITE)
+        binding.accessoriesIv.setImageResource(R.drawable.ic_accessories_off)
+        binding.accessoriesTv.setTextColor(Color.BLACK)
+        binding.sparePartsTab.setBackgroundColor(Color.WHITE)
+        binding.sparePartsIv.setImageResource(R.drawable.ic_spare_parts_off)
+        binding.sparePartsTv.setTextColor(Color.BLACK)
+    }
+
     private fun setProductAdapter() {
         adapter = ProductAdapterRv(requireContext(), productList, viewModel)
         binding.productList.layoutManager = GridLayoutManager(activity, 2)

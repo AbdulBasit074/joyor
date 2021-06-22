@@ -5,12 +5,9 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.google.gson.Gson
 import com.joyor.helper.Constants
-import com.joyor.helper.moveTo
 import com.joyor.model.User
 import com.joyor.service.Results
 import com.joyor.service.auth.AuthService
-import com.joyor.service.auth.StoreService
-import com.joyor.ui.HomeActivity
 import org.json.JSONObject
 
 class SignUpViewModel : ViewModel(), Results {

@@ -32,14 +32,18 @@ class ProductDetailActivity : AppCompatActivity() {
     private lateinit var viewModel: ProductDetailViewModel
     private lateinit var binding: ActivityProductDetailBinding
     private var imagesList: ArrayList<String> = ArrayList()
+    private lateinit var progressDialog: CustomProgressBar
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setLanguage()
         binding = DataBindingUtil.setContentView(this, R.layout.activity_product_detail)
+        progressDialog = CustomProgressBar(this)
         viewModel = ViewModelProviders.of(this).get(ProductDetailViewModel::class.java)
-        viewModel.product.value = intent.getParcelableExtra(Constants.product)
+        val product: Product = intent.getParcelableExtra(Constants.product)!!
+        viewModel.product.value = product
         binding.viewModel = viewModel
-
+        viewModel.getProductDetails(product.id)
         viewModel.product.observe(this, Observer {
             if (!viewModel.addToCart.value!!) {
                 imagesList.clear()
@@ -88,6 +92,18 @@ class ProductDetailActivity : AppCompatActivity() {
                 binding.descriptionView.visibility = View.GONE
                 binding.featureView.visibility = View.VISIBLE
             }
+        })
+        viewModel.product.observe(this, Observer {
+            if (viewModel.product.value!!.variations?.options?.size!! > 0) {
+                binding.colorList.adapter = ColorAdapterRv(viewModel.product.value!!.variations?.options, viewModel)
+                viewModel.onColorSelect(viewModel.product.value!!.variations?.options!![0])
+            }
+        })
+        viewModel.progressBar.observe(this, Observer {
+            if (it) {
+                progressDialog.show()
+            } else
+                progressDialog.dismiss()
         })
     }
 

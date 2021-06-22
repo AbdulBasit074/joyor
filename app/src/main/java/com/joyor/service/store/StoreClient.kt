@@ -1,4 +1,4 @@
-package com.joyor.service.auth
+package com.joyor.service.store
 
 
 import okhttp3.ResponseBody
@@ -12,6 +12,10 @@ interface StoreClient {
     fun getStore(): Call<ResponseBody>
 
     @GET("products")
-    fun getProduct(): Call<ResponseBody>
+    fun getProducts(): Call<ResponseBody>
+
+    @FormUrlEncoded
+    @POST("product_detail")
+    fun getProductDetails(@Field("product_id") productId: Int?): Call<ResponseBody>
 
 }

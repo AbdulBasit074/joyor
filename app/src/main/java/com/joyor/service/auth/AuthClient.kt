@@ -70,4 +70,10 @@ interface AuthClient {
         @Field("confirm_password") confirmPassword: String
     ): Call<ResponseBody>
 
+    @FormUrlEncoded
+    @POST("user/forgot_password")
+    fun forgotPassword(
+        @Field("email") email: String
+    ): Call<ResponseBody>
+
 }

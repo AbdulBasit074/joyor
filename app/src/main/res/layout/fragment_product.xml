@@ -13,35 +13,117 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <Spinner
-            android:id="@+id/spinner"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/topTabsContainer"
             android:layout_width="match_parent"
-            android:layout_height="?actionBarSize"
-            android:backgroundTint="@color/light_reddish"
-            android:drawSelectorOnTop="true"
-            android:dropDownVerticalOffset="?actionBarSize"
-            android:paddingStart="@dimen/_10sdp"
-            android:spinnerMode="dropdown"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:ignore="RtlSymmetry" />
+            android:layout_height="@dimen/_100sdp"
+            app:layout_constraintTop_toTopOf="parent">
 
-        <View
-            android:id="@+id/divider"
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@color/divider"
-            app:layout_constraintTop_toBottomOf="@id/spinner" />
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/scootersTab"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:background="@color/light_reddish"
+                app:layout_constraintEnd_toStartOf="@id/accessoriesTab"
+                app:layout_constraintStart_toStartOf="parent">
 
+                <ImageView
+                    android:id="@+id/scootersIv"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:contentDescription="@null"
+                    android:padding="@dimen/_32sdp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/ic_scooters_on"
+                    app:layout_constraintBottom_toTopOf="@id/scootersTv"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/scootersTv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@string/joyor_scooters"
+                    android:textColor="@android:color/white"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="@id/scootersIv"
+                    app:layout_constraintStart_toStartOf="@id/scootersIv" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/accessoriesTab"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:background="@android:color/white"
+                app:layout_constraintEnd_toStartOf="@id/sparePartsTab"
+                app:layout_constraintStart_toEndOf="@id/scootersTab">
+
+                <ImageView
+                    android:id="@+id/accessoriesIv"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:contentDescription="@null"
+                    android:padding="@dimen/_24sdp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/ic_accessories_off"
+                    app:layout_constraintBottom_toTopOf="@id/accessoriesTv"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/accessoriesTv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@string/accessories"
+                    android:textColor="@android:color/black"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="@id/accessoriesIv"
+                    app:layout_constraintStart_toStartOf="@id/accessoriesIv" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/sparePartsTab"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:background="@android:color/white"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/accessoriesTab">
+
+                <ImageView
+                    android:id="@+id/sparePartsIv"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:contentDescription="@null"
+                    android:padding="@dimen/_24sdp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/ic_spare_parts_off"
+                    app:layout_constraintBottom_toTopOf="@id/sparePartsTv"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/sparePartsTv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="@string/joyor_spare_parts"
+                    android:textColor="@android:color/black"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="@id/sparePartsIv"
+                    app:layout_constraintStart_toStartOf="@id/sparePartsIv" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/productList"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/divider"
+            app:layout_constraintTop_toBottomOf="@id/topTabsContainer"
             tools:listitem="@layout/li_product" />
-
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

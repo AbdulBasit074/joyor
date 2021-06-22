@@ -13,8 +13,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@drawable/signup_back">
+        android:layout_height="match_parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
 
@@ -60,6 +59,13 @@
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/background_login"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/topHeader" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/switchBtn"
@@ -204,9 +210,23 @@
                     app:layout_constraintTop_toBottomOf="@id/email"
                     tools:ignore="RtlSymmetry" />
 
+                <TextView
+                    android:id="@+id/forgotPasswordTv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/futura_bold_font"
+                    android:paddingStart="@dimen/_8sdp"
+                    android:paddingEnd="0dp"
+                    android:paddingTop="@dimen/_8sdp"
+                    android:paddingBottom="@dimen/_8sdp"
+                    android:text="@string/forgot_password_qm"
+                    android:textColor="@android:color/white"
+                    android:textSize="@dimen/_12ssp"
+                    android:onClick="@{()->viewModel.onForgotPasswordClicked()}"
+                    app:layout_constraintEnd_toEndOf="@id/password"
+                    app:layout_constraintTop_toBottomOf="@id/password" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
-
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/loginBtn"
@@ -215,9 +235,9 @@
                 android:background="@drawable/round_border_brown"
                 android:fontFamily="@font/futura_bold_font"
                 android:onClick="@{()->viewModel.onLoginSignUpClick()}"
-                android:text="@string/login"
                 android:paddingStart="@dimen/_5sdp"
                 android:paddingEnd="@dimen/_5sdp"
+                android:text="@string/login"
                 android:textColor="@color/white"
                 android:textSize="@dimen/_13ssp"
                 app:layout_constraintBottom_toBottomOf="@id/signUpView"

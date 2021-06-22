@@ -1,9 +1,18 @@
 package com.joyor.ui
 
+import android.Manifest
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
+import android.content.pm.PackageManager
+import android.location.Location
+import android.location.LocationListener
+import android.location.LocationManager
+import android.net.Uri
 import android.os.Bundle
+import android.provider.Settings
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityCompat
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
@@ -16,15 +25,29 @@ import com.google.maps.android.PolyUtil
 import com.joyor.R
 import com.joyor.databinding.ActivityGoogleMapRouteBinding
 import com.joyor.helper.Constants
+import com.joyor.helper.getCurrentLocation
 import com.joyor.helper.setLanguage
 import com.joyor.service.Results
 import com.joyor.service.google.GoogleService
 import com.joyor.viewmodel.RouteViewModel
+import com.karumi.dexter.Dexter
+import com.karumi.dexter.PermissionToken
+import com.karumi.dexter.listener.PermissionDeniedResponse
+import com.karumi.dexter.listener.PermissionGrantedResponse
+import com.karumi.dexter.listener.PermissionRequest
+import com.karumi.dexter.listener.single.PermissionListener
 import org.json.JSONObject
 
 
 class GoogleMapRouteActivity : AppCompatActivity(), OnMapReadyCallback, Results {
 
+    private lateinit var binding: ActivityGoogleMapRouteBinding
+    private var origin: LatLng? = null
+    private lateinit var map: GoogleMap
+    private var directionRequest: Int = 2231
+    private var destination: LatLng? = null
+    private var currentLocationMarker: Marker? = null
+    private lateinit var viewModel: RouteViewModel
 
     companion object {
         fun newInstance(context: Context, destination: LatLng, origin: LatLng): Intent {
@@ -32,12 +55,6 @@ class GoogleMapRouteActivity : AppCompatActivity(), OnMapReadyCallback, Results 
         }
     }
 
-    private lateinit var binding: ActivityGoogleMapRouteBinding
-    private var origin: LatLng? = null
-    private lateinit var map: GoogleMap
-    private var directionRequest: Int = 2231
-    private var destination: LatLng? = null
-    private lateinit var viewModel: RouteViewModel
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setLanguage()
@@ -60,6 +77,29 @@ class GoogleMapRouteActivity : AppCompatActivity(), OnMapReadyCallback, Results 
         if (origin != null && destination != null) {
             GoogleService(directionRequest, this).getDirection(matchLatLan(origin!!), matchLatLan(destination!!), false, "walking", getString(R.string.google_maps_api))
         }
+        Dexter.withContext(this)
+            .withPermission(Manifest.permission.ACCESS_FINE_LOCATION)
+            .withListener(object : PermissionListener {
+                @SuppressLint("MissingPermission")
+                override fun onPermissionGranted(response: PermissionGrantedResponse) {
+                    val locationManager = getSystemService(LOCATION_SERVICE) as LocationManager?
+                    locationManager?.requestLocationUpdates(LocationManager.GPS_PROVIDER, 4000L, 0f) {
+                        currentLocationMarker?.position = LatLng(it.latitude, it.longitude)
+                    }
+                }
+
+                override fun onPermissionDenied(response: PermissionDeniedResponse) {
+                    if (response.isPermanentlyDenied) {
+                        val intent = Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS, Uri.fromParts("package", packageName, null))
+                        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                        startActivity(intent)
+                    }
+                }
+
+                override fun onPermissionRationaleShouldBeShown(permission: PermissionRequest, token: PermissionToken) {
+                    token.continuePermissionRequest()
+                }
+            }).check()
     }
 
     private fun matchLatLan(latLan: LatLng): String {
@@ -89,9 +129,10 @@ class GoogleMapRouteActivity : AppCompatActivity(), OnMapReadyCallback, Results 
             .endCap(RoundCap())
         val patternDotted: List<PatternItem> = listOf(gap, dot)
         val markerDestination = MarkerOptions().position(destination!!)
-        val markerOrigin = MarkerOptions().position(origin!!)
         map.addMarker(markerDestination)
-        map.addMarker(markerOrigin)
+        val markerOrigin = MarkerOptions().position(origin!!).icon(BitmapDescriptorFactory.fromResource(R.mipmap.ic_current_location_marker))
+        currentLocationMarker?.remove()
+        currentLocationMarker = map.addMarker(markerOrigin)
         polyLines.pattern(patternDotted)
         map.addPolyline(polyLines)
         map.animateCamera(CameraUpdateFactory.newLatLngZoom(origin, 17f))
@@ -100,7 +141,7 @@ class GoogleMapRouteActivity : AppCompatActivity(), OnMapReadyCallback, Results 
         builder.include(destination)
         builder.include(origin)
         val bounds = builder.build()
-        map.animateCamera(CameraUpdateFactory.newLatLngBounds(bounds, 20))
+        map.animateCamera(CameraUpdateFactory.newLatLngBounds(bounds, 140))
     }
 
     override fun onFailure(requestCode: Int, data: String) {

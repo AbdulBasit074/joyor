@@ -22,6 +22,7 @@ class LoginSignUpViewModel : ViewModel(), Results {
     var isLogin: MutableLiveData<Boolean> = MutableLiveData()
     var user: MutableLiveData<User> = MutableLiveData()
     var showProgress: MutableLiveData<Boolean> = MutableLiveData()
+    var forgotPasswordClicked: MutableLiveData<Boolean> = MutableLiveData()
     var userAddress: MutableLiveData<Address> = MutableLiveData()
     var name: MutableLiveData<String> = MutableLiveData()
     var nameSure: MutableLiveData<String> = MutableLiveData()
@@ -63,6 +64,10 @@ class LoginSignUpViewModel : ViewModel(), Results {
 
     fun onSignUpClick() {
         isLogin.value = false
+    }
+
+    fun onForgotPasswordClicked() {
+        forgotPasswordClicked.value = true
     }
 
     fun onLoginSignUpClick() {

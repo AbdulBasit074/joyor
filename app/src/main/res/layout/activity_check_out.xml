@@ -331,6 +331,7 @@
                     android:text="@string/payment_method"
                     android:textColor="@color/light_reddish"
                     android:textSize="@dimen/_17ssp"
+                    android:visibility="gone"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/additionalInfoEt" />
 
@@ -342,6 +343,7 @@
                     android:layout_marginEnd="@dimen/_15sdp"
                     android:checkedButton="@id/idCash"
                     android:paddingBottom="@dimen/_20sdp"
+                    android:visibility="gone"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/paymentMethodTitle">
 

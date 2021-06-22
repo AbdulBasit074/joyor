@@ -84,6 +84,9 @@
     <string name="tech_support">Tech Support</string>
     <string name="product_added">Product added in Cart</string>
 
+    <string name="joyor_scooters">Joyor Scooters</string>
+    <string name="accessories">Accessories</string>
+    <string name="joyor_spare_parts">Joyor Spare Parts</string>
     <string-array name="filter_list">
         <item>Filter</item>
         <item>Joyor Scooters</item>
@@ -134,6 +137,9 @@
     <string name="both_field_required">Both Fields are Required</string>
     <string name="date_format">%1$s-%2$s-%3$s</string>
     <string name="currency">€%1$s</string>
+    <string name="forgot_password_qm"><u>Forgot Password?</u></string>
+    <string name="forgot_password">Forgot Password</string>
+    <string name="submit">Submit</string>
 
 
 </resources>

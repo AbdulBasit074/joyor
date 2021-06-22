@@ -44,7 +44,7 @@ class CheckOutViewModel : ViewModel(), Results {
         userAddress.value = Address()
         couponLinesList = ArrayList()
         additionalInfo.value = ""
-        isManual.value = true
+        isManual.value = false
         checkOut.value = false
         orderPlaceSuccessfully.value = false
     }

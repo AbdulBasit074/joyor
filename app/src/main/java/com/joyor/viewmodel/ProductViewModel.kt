@@ -9,7 +9,7 @@ import com.joyor.helper.Constants
 import com.joyor.helper.Persister
 import com.joyor.model.Product
 import com.joyor.service.Results
-import com.joyor.service.auth.StoreService
+import com.joyor.service.store.StoreService
 
 class ProductViewModel : ViewModel(), Results {
 

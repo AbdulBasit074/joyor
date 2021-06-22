@@ -1,4 +1,4 @@
-package com.joyor.service.auth
+package com.joyor.service.store
 
 import com.joyor.service.BaseService
 import com.joyor.service.Results
@@ -11,8 +11,13 @@ class StoreService(requestCode: Int, callBack: Results) : BaseService(requestCod
     fun getStore() {
         RetrofitClient.getInstance().create(StoreClient::class.java).getStore().enqueue(this)
     }
+
     fun getProducts() {
-        RetrofitClient.getInstance().create(StoreClient::class.java).getProduct().enqueue(this)
+        RetrofitClient.getInstance().create(StoreClient::class.java).getProducts().enqueue(this)
+    }
+
+    fun getProductDetails(productId: Int?) {
+        RetrofitClient.getInstance().create(StoreClient::class.java).getProductDetails(productId).enqueue(this)
     }
 
 

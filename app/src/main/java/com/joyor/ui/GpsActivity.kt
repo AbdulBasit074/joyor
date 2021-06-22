@@ -31,7 +31,7 @@ class GpsActivity : AppCompatActivity() {
         viewModel.isStartClick.observe(this, Observer {
             if (it) {
                 if (latLngYl != null && latLngDl != null)
-                    moveTo(GoogleMapRouteActivity.newInstance(this, latLngYl!!, latLngDl!!))
+                    moveTo(GoogleMapRouteActivity.newInstance(this, latLngDl!!, latLngYl!!))
                 else
                     showToast(getString(R.string.both_field_required))
             }

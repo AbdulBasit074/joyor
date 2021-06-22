@@ -56,5 +56,9 @@ class AuthService(requestCode: Int, callBack: Results) : BaseService(requestCode
         RetrofitClient.getInstance().create(AuthClient::class.java).changePassword(userId,oldPassword, newPassword,confirmPassword).enqueue(this)
     }
 
+    fun forgotPassword(email: String) {
+        RetrofitClient.getInstance().create(AuthClient::class.java).forgotPassword(email).enqueue(this)
+    }
+
 
 }

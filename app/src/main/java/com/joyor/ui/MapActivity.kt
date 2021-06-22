@@ -59,7 +59,6 @@ class MapActivity : AppCompatActivity(), OnMapReadyCallback {
             askToEnableGPS { requestCode, resultCode, data -> onActivityResult(requestCode, resultCode, data) }
         mBinding.searchEtContainer.setOnClickListener {
             val intent = Autocomplete.IntentBuilder(AutocompleteActivityMode.OVERLAY, fields)
-                .setCountry("ae")
                 .build(this)
             startActivityForResult(intent, searchPlaceRc)
         }

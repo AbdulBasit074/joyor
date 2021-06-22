@@ -84,6 +84,12 @@ class LoginActivity : AppCompatActivity() {
         viewModel.showToast.observe(this, Observer {
             showToast(it)
         })
+        viewModel.forgotPasswordClicked.observe(this, Observer {
+            if (it) {
+                moveTo(ForgotPasswordActivity::class.java)
+                viewModel.forgotPasswordClicked.value = false
+            }
+        })
         viewModel.isBack.observe(this, Observer { finish() })
         viewModel.userAddress.observe(this, Observer {
             if (it != null) {
