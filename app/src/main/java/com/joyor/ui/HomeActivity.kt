@@ -20,6 +20,7 @@ import com.joyor.helper.setLanguage
 import com.joyor.model.Product
 import com.joyor.model.room.JoyorDb
 import com.joyor.viewmodel.HomeViewModel
+import lib.android.paypal.com.magnessdk.a.b.e
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
 import org.greenrobot.eventbus.ThreadMode
@@ -37,6 +38,8 @@ class HomeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setLanguage()
         EventBus.getDefault().register(this)
+        e.printStackTrace()
+
         binding = DataBindingUtil.setContentView(this, R.layout.main_layout)
         viewModel = ViewModelProviders.of(this).get(HomeViewModel::class.java)
         binding.viewModelDetail = viewModel
